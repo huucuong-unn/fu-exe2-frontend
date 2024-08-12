@@ -1,0 +1,28 @@
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures the container takes at least the full height of the viewport */
+    height: 1080px;
+}
+
+.content-container {
+    flex: 1; /* This makes the content container take up all available space */
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1; /* This makes the actual content take up all available space within the content container */
+    overflow: auto; /* Optional: This makes the content scrollable if it overflows */
+}
+
+header {
+    flex-shrink: 0; /* Ensures the header does not shrink */
+}
+
+footer {
+    flex-shrink: 0; /* Ensures the footer does not shrink */
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}

@@ -1,0 +1,19 @@
+@import 'normalize.css';
+
+:root {
+    --primary: red; //example
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Montserrat, sans-serif' !important;
+}
+
+html {
+    font-size: 14px !important;
+}
+
+body {
+    line-height: 1.5;
+    text-rendering: optimizeSpeed;
+}
