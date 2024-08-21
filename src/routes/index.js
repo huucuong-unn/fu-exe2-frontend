@@ -40,6 +40,9 @@ import Test from '~/pages/Test';
 import FooterHome from '~/parts/FooterHome';
 import RegisterUser from '~/pages/new/RegisterUser';
 import ResetPassword from '~/pages/new/ResetPassword';
+import Header from '~/parts/Header';
+import FindYourPlan from '~/pages/new/FindYourPlan';
+import FullLayout from '~/components/Layouts/FullLayout';
 // import DefaultLayout from '~/components/Layouts/DefaultLayout';
 
 const publicRoutes = [
@@ -86,8 +89,10 @@ const publicRoutes = [
     { path: '/register', component: RegisterUser, layout: null },
     { path: '/forgot-password', component: ForgotPassword, layout: null },
     { path: '/reset-password', component: ResetPassword, layout: null },
+    { path: '/offer', component: FindYourPlan, layout: FullLayout },
 
     { path: '/test/footer', component: FooterHome, layout: null },
+    { path: '/test/header', component: Header, layout: null },
 ];
 
 const adminRoutes = [
