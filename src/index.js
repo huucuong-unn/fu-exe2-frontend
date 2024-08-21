@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom/client';
 import App from '~/App';
 import reportWebVitals from './reportWebVitals';
 import GlobalStyles from './components/GlobalStyles';
+import 'bootstrap/dist/css/bootstrap.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-document.title = 'Tortee - Connecting mentors and mentees';
+document.title = 'Tortee';
 root.render(
     <React.StrictMode>
         <GlobalStyles>

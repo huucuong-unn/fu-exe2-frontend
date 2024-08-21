@@ -6,7 +6,7 @@ import CompaniesCampaignDetail from '~/pages/CompaniesCampaignDetails';
 import CompaniesCampaignHistory from '~/pages/CompaniesCampaignHistory';
 import CompanyDetails from '~/pages/CompanyDetails';
 import Following from '~/pages/Following';
-import ForgotPassword from '~/pages/ForgotPassword';
+import ForgotPassword from '~/pages/new/ForgotPassword';
 import LandingPage from '~/pages/LandingPage';
 import { MentorProfile } from '~/pages/MentorProfile';
 import SignInSide from '~/pages/SignInSide';
@@ -31,6 +31,15 @@ import SignUpForCompany from '~/pages/SignUpForCompany';
 import NotAuthorized from '~/pages/NotAuthorized';
 import MentorManageProfile from '~/pages/MentorManageProfile';
 import AdminSignIn from '~/pages/AdminSignIn';
+
+//new
+import LoginUser from '~/pages/new/LoginUser';
+import LoginAdmin from '~/pages/new/LoginAdmin';
+import LoginBusiness from '~/pages/new/LoginBusiness';
+import Test from '~/pages/Test';
+import FooterHome from '~/parts/FooterHome';
+import RegisterUser from '~/pages/new/RegisterUser';
+import ResetPassword from '~/pages/new/ResetPassword';
 // import DefaultLayout from '~/components/Layouts/DefaultLayout';
 
 const publicRoutes = [
@@ -51,7 +60,7 @@ const publicRoutes = [
     { path: '/sign-in', component: SignInSide, layout: null },
     { path: '/admin/sign-in', component: AdminSignIn, layout: null },
     { path: '/sign-up', component: SignUp, layout: null },
-    { path: '/forgot-password', component: ForgotPassword, layout: null },
+    // { path: '/forgot-password', component: ForgotPassword, layout: null },
 
     { path: '/checkout', component: Checkout, layout: null },
 
@@ -69,6 +78,16 @@ const publicRoutes = [
 
     { path: '/NotAuthoried', component: NotAuthorized, layout: null },
     { path: '/test', component: UserProfilesTest, layout: null },
+
+    //new
+    { path: '/login', component: LoginUser, layout: null },
+    { path: '/admin/login', component: LoginAdmin, layout: null },
+    { path: '/business/login', component: LoginBusiness, layout: null },
+    { path: '/register', component: RegisterUser, layout: null },
+    { path: '/forgot-password', component: ForgotPassword, layout: null },
+    { path: '/reset-password', component: ResetPassword, layout: null },
+
+    { path: '/test/footer', component: FooterHome, layout: null },
 ];
 
 const adminRoutes = [

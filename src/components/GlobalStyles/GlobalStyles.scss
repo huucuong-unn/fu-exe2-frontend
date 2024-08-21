@@ -6,7 +6,7 @@
 
 * {
     box-sizing: border-box;
-    font-family: 'Montserrat, sans-serif' !important;
+    font-family: 'Kumbh Sans', sans-serif !important;
 }
 
 html {
@@ -16,4 +16,8 @@ html {
 body {
     line-height: 1.5;
     text-rendering: optimizeSpeed;
+}
+
+.css-md26zr-MuiInputBase-root-MuiOutlinedInput-root {
+    border-radius: 24px !important;
 }
