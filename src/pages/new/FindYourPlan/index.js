@@ -115,7 +115,7 @@ export default function FindYourPlan() {
                                     width: '32%',
                                     height: '400px',
                                     borderRadius: '20px',
-                                    padding: '20px',
+                                    padding: '35px',
                                     textAlign: 'center',
                                 }}
                             >
@@ -129,35 +129,180 @@ export default function FindYourPlan() {
                                 <Typography
                                     component="h1"
                                     variant="h4"
-                                    sx={{ fontWeight: '700', fontSize: '28px', color: 'white' }}
+                                    sx={{ fontWeight: '700', fontSize: '48px', color: 'white', marginTop: '20px' }}
                                 >
-                                    FREE <br />
-                                    forever free
+                                    FREE
                                 </Typography>
                                 <Typography
                                     component="h1"
                                     variant="h4"
-                                    sx={{ fontWeight: '700', fontSize: '28px', color: 'white' }}
+                                    sx={{ fontWeight: '500', fontSize: '25px', color: 'white', marginTop: '-10px' }}
                                 >
-                                    Get started
-                                </Typography>{' '}
+                                    forever free
+                                </Typography>
+                                <Button
+                                    type="submit"
+                                    fullWidth
+                                    variant="contained"
+                                    sx={{
+                                        mt: 2,
+                                        bgcolor: '#051D40',
+                                        borderRadius: '24px',
+                                        padding: '12px 0',
+                                        fontSize: '16px',
+                                        ':hover': {
+                                            bgcolor: '#fff',
+                                            color: '#051D40',
+                                        },
+                                        border: '1px solid #02F18D',
+                                    }}
+                                >
+                                    Get Started
+                                </Button>
                                 <Typography
                                     component="h1"
                                     variant="h4"
-                                    sx={{ fontWeight: '700', fontSize: '28px', color: 'white' }}
+                                    sx={{ fontWeight: '300', fontSize: '24px', color: '#ffffff', marginTop: '20px' }}
                                 >
                                     Unlimited Job Applications
                                 </Typography>
+                                <Typography
+                                    component="h1"
+                                    variant="h4"
+                                    sx={{ fontWeight: '300', fontSize: '24px', color: '#ffffff', marginTop: '20px' }}
+                                >
+                                    1 trial of CV Reviews by AI
+                                </Typography>
                             </Box>
                             <Box
-                                sx={{ backgroundColor: '#051D40', width: '32%', height: '400px', borderRadius: '20px' }}
+                                sx={{
+                                    backgroundColor: '#051D40',
+                                    width: '32%',
+                                    height: '400px',
+                                    borderRadius: '20px',
+                                    padding: '35px',
+                                    textAlign: 'center',
+                                }}
                             >
-                                2
+                                <Typography
+                                    component="h1"
+                                    variant="h4"
+                                    sx={{ fontWeight: '700', fontSize: '28px', color: 'white' }}
+                                >
+                                    Silver Tee
+                                </Typography>
+                                <Typography
+                                    component="h1"
+                                    variant="h4"
+                                    sx={{ fontWeight: '700', fontSize: '48px', color: 'white', marginTop: '20px' }}
+                                >
+                                    50.000 VND
+                                </Typography>
+                                <Typography
+                                    component="h1"
+                                    variant="h4"
+                                    sx={{ fontWeight: '500', fontSize: '25px', color: 'white', marginTop: '-10px' }}
+                                >
+                                    monthly
+                                </Typography>
+                                <Button
+                                    type="submit"
+                                    fullWidth
+                                    variant="contained"
+                                    sx={{
+                                        mt: 2,
+                                        bgcolor: '#051D40',
+                                        borderRadius: '24px',
+                                        padding: '12px 0',
+                                        fontSize: '16px',
+                                        ':hover': {
+                                            bgcolor: '#fff',
+                                            color: '#051D40',
+                                        },
+                                        border: '1px solid #02F18D',
+                                    }}
+                                >
+                                    Get Started
+                                </Button>
+                                <Typography
+                                    component="h1"
+                                    variant="h4"
+                                    sx={{ fontWeight: '300', fontSize: '24px', color: '#ffffff', marginTop: '20px' }}
+                                >
+                                    Unlimited Job Applications
+                                </Typography>
+                                <Typography
+                                    component="h1"
+                                    variant="h4"
+                                    sx={{ fontWeight: '300', fontSize: '24px', color: '#ffffff', marginTop: '20px' }}
+                                >
+                                    30 trial of CV Reviews by AI
+                                </Typography>
                             </Box>
                             <Box
-                                sx={{ backgroundColor: '#051D40', width: '32%', height: '400px', borderRadius: '20px' }}
+                                sx={{
+                                    backgroundColor: '#051D40',
+                                    width: '32%',
+                                    height: '400px',
+                                    borderRadius: '20px',
+                                    padding: '35px',
+                                    textAlign: 'center',
+                                }}
                             >
-                                3
+                                <Typography
+                                    component="h1"
+                                    variant="h4"
+                                    sx={{ fontWeight: '700', fontSize: '28px', color: 'white' }}
+                                >
+                                    Golden Tee
+                                </Typography>
+                                <Typography
+                                    component="h1"
+                                    variant="h4"
+                                    sx={{ fontWeight: '700', fontSize: '48px', color: 'white', marginTop: '20px' }}
+                                >
+                                    75.000 VND
+                                </Typography>
+                                <Typography
+                                    component="h1"
+                                    variant="h4"
+                                    sx={{ fontWeight: '500', fontSize: '25px', color: 'white', marginTop: '-10px' }}
+                                >
+                                    monthly
+                                </Typography>
+                                <Button
+                                    type="submit"
+                                    fullWidth
+                                    variant="contained"
+                                    sx={{
+                                        mt: 2,
+                                        bgcolor: '#051D40',
+                                        borderRadius: '24px',
+                                        padding: '12px 0',
+                                        fontSize: '16px',
+                                        ':hover': {
+                                            bgcolor: '#fff',
+                                            color: '#051D40',
+                                        },
+                                        border: '1px solid #02F18D',
+                                    }}
+                                >
+                                    Get Started
+                                </Button>
+                                <Typography
+                                    component="h1"
+                                    variant="h4"
+                                    sx={{ fontWeight: '300', fontSize: '24px', color: '#ffffff', marginTop: '20px' }}
+                                >
+                                    Unlimited Job Applications
+                                </Typography>
+                                <Typography
+                                    component="h1"
+                                    variant="h4"
+                                    sx={{ fontWeight: '300', fontSize: '24px', color: '#ffffff', marginTop: '20px' }}
+                                >
+                                    80 trial of CV Reviews by AI
+                                </Typography>
                             </Box>
                         </Box>
                     </Box>
