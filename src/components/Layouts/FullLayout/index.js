@@ -5,7 +5,7 @@ function FullLayout({ children }) {
     return (
         <div>
             <Header />
-            <div>{children}</div>
+            <div style={{ marginTop: '80px' }}>{children}</div>
             <FooterHome />
         </div>
     );

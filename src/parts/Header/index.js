@@ -1,6 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import './Header.scss';
 import logo from '~/assets/images/logo.png';
+import { useEffect, useState } from 'react';
 
 const NAV_ITEMS = [
     { name: 'Internship Program', path: '/test/header' },
@@ -10,6 +11,17 @@ const NAV_ITEMS = [
 ];
 
 function Header() {
+    const [scroll, setScroll] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => setScroll(window.scrollY > 70);
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll(); // Check initial scroll position
+
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     return (
         <div
             style={{
@@ -17,12 +29,16 @@ function Header() {
                 gap: 30,
                 width: '100%',
                 height: '80px',
-                // backgroundColor: 'black',
                 fontSize: '18px',
                 // color: 'white',
+                position: 'fixed',
+                zIndex: 100,
+                top: 0,
+                backgroundColor: scroll ? 'white' : 'transparent',
                 justifyContent: 'space-around',
-                borderBottom: '1px solid #e0e0e0',
                 alignItems: 'center',
+                boxShadow: scroll ? '0 -6px 10px 5px rgba(0,0,0,0.5)' : 'none',
+                opacity: 0.9,
             }}
         >
             <div>

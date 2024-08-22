@@ -151,7 +151,7 @@ export default function FindYourPlan() {
                                         padding: '12px 0',
                                         fontSize: '16px',
                                         ':hover': {
-                                            bgcolor: '#fff',
+                                            bgcolor: '#02F18D',
                                             color: '#051D40',
                                         },
                                         border: '1px solid #02F18D',
@@ -216,7 +216,7 @@ export default function FindYourPlan() {
                                         padding: '12px 0',
                                         fontSize: '16px',
                                         ':hover': {
-                                            bgcolor: '#fff',
+                                            bgcolor: '#02F18D',
                                             color: '#051D40',
                                         },
                                         border: '1px solid #02F18D',
@@ -281,7 +281,7 @@ export default function FindYourPlan() {
                                         padding: '12px 0',
                                         fontSize: '16px',
                                         ':hover': {
-                                            bgcolor: '#fff',
+                                            bgcolor: '#02F18D',
                                             color: '#051D40',
                                         },
                                         border: '1px solid #02F18D',

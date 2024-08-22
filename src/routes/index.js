@@ -43,6 +43,7 @@ import ResetPassword from '~/pages/new/ResetPassword';
 import Header from '~/parts/Header';
 import FindYourPlan from '~/pages/new/FindYourPlan';
 import FullLayout from '~/components/Layouts/FullLayout';
+import Homepage from '~/pages/new/Homepage';
 // import DefaultLayout from '~/components/Layouts/DefaultLayout';
 
 const publicRoutes = [
@@ -89,6 +90,7 @@ const publicRoutes = [
     { path: '/register', component: RegisterUser, layout: null },
     { path: '/forgot-password', component: ForgotPassword, layout: null },
     { path: '/reset-password', component: ResetPassword, layout: null },
+    { path: '/home', component: Homepage, layout: FullLayout },
     { path: '/offer', component: FindYourPlan, layout: FullLayout },
 
     { path: '/test/footer', component: FooterHome, layout: null },
