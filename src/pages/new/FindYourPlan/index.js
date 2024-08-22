@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import AccountAPI from '~/API/AccountAPI';
 import storageService from '~/components/StorageService/storageService';
-import findYourPlanBackground from '~/assets/images/findyourplan.png';
+import findYourPlanBackground from '~/assets/images/findyourplan.jpg';
 
 function Copyright(props) {
     return (
