@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import AccountAPI from '~/API/AccountAPI';
 import storageService from '~/components/StorageService/storageService';
-import adminLoginBackground from '~/assets/images/adminlogin.png';
+import adminLoginBackground from '~/assets/images/adminlogin.webp';
 
 function Copyright(props) {
     return (

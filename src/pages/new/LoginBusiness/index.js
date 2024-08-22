@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import AccountAPI from '~/API/AccountAPI';
 import storageService from '~/components/StorageService/storageService';
-import businessLoginBackground from '~/assets/images/businesslogin.png';
+import businessLoginBackground from '~/assets/images/businesslogin.webp';
 
 function Copyright(props) {
     return (

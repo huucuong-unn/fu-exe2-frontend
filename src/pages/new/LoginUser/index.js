@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import AccountAPI from '~/API/AccountAPI';
 import storageService from '~/components/StorageService/storageService';
-import menteeLoginBackground from '~/assets/images/menteelogin.png';
+import menteeLoginBackground from '~/assets/images/menteelogin.webp';
 
 const clientId = '478388298220-qhn8p4akrr4hsidbvnp999v5tn0u3s93.apps.googleusercontent.com';
 
