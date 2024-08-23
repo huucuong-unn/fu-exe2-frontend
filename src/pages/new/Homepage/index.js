@@ -268,7 +268,7 @@ export default function Homepage() {
                                                 flexGrow: 1,
                                                 boxShadow: 'none',
                                                 my: 2,
-                                                backgroundColor: 'rgba(255, 255, 255, 0.5);',
+                                                backgroundColor: 'rgba(255, 255, 255, 0.0);',
                                             }}
                                         >
                                             <Box
@@ -380,7 +380,7 @@ export default function Homepage() {
                                                     justifyContent: 'space-between',
                                                     flexGrow: 1,
                                                     boxShadow: 'none',
-                                                    backgroundColor: 'rgba(255, 255, 255, 0.3);',
+                                                    backgroundColor: 'rgba(255, 255, 255, 0.0);',
                                                 }}
                                             >
                                                 <Box
@@ -485,7 +485,7 @@ export default function Homepage() {
                                                     justifyContent: 'space-between',
                                                     flexGrow: 1,
                                                     boxShadow: 'none',
-                                                    backgroundColor: 'rgba(255, 255, 255, 0.3);',
+                                                    backgroundColor: 'rgba(255, 255, 255, 0.0);',
                                                 }}
                                             >
                                                 <Box
