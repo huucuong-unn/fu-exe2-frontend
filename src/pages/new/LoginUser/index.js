@@ -227,7 +227,7 @@ export default function LoginUser() {
                                     id="password"
                                     autoComplete="current-password"
                                 />
-                                <Link to="/register" style={{ textDecoration: 'none' }}>
+                                <Link to="/forgot-password" style={{ textDecoration: 'none' }}>
                                     <Typography sx={{ textAlign: 'right' }}>Forgot Password?</Typography>
                                 </Link>
                                 <Button

@@ -232,7 +232,7 @@ export default function Homepage() {
                                     square
                                     sx={{
                                         borderRadius: '35px',
-                                        backgroundColor: 'white',
+                                        backgroundColor: 'rgba(255, 255, 255, 0.7);',
                                         height: '100%',
                                         display: 'flex',
                                         padding: '20px  ',
@@ -268,6 +268,7 @@ export default function Homepage() {
                                                 flexGrow: 1,
                                                 boxShadow: 'none',
                                                 my: 2,
+                                                backgroundColor: 'rgba(255, 255, 255, 0.5);',
                                             }}
                                         >
                                             <Box
@@ -343,7 +344,7 @@ export default function Homepage() {
                                         square
                                         sx={{
                                             borderRadius: '35px',
-                                            backgroundColor: 'white',
+                                            backgroundColor: 'rgba(255, 255, 255, 0.8);',
                                             height: '100%',
                                             display: 'flex',
                                             padding: '20px  ',
@@ -379,6 +380,7 @@ export default function Homepage() {
                                                     justifyContent: 'space-between',
                                                     flexGrow: 1,
                                                     boxShadow: 'none',
+                                                    backgroundColor: 'rgba(255, 255, 255, 0.3);',
                                                 }}
                                             >
                                                 <Box
@@ -446,12 +448,13 @@ export default function Homepage() {
                                         square
                                         sx={{
                                             borderRadius: '35px',
-                                            backgroundColor: 'white',
+                                            backgroundColor: 'rgba(255, 255, 255, 0.8);',
                                             height: '100%',
                                             display: 'flex',
                                             padding: '20px  ',
                                             gap: '25px',
                                             width: '30%',
+                                            opacity: '0.9',
                                         }}
                                     >
                                         <Box>
@@ -482,6 +485,7 @@ export default function Homepage() {
                                                     justifyContent: 'space-between',
                                                     flexGrow: 1,
                                                     boxShadow: 'none',
+                                                    backgroundColor: 'rgba(255, 255, 255, 0.3);',
                                                 }}
                                             >
                                                 <Box
