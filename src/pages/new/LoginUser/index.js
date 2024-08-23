@@ -162,6 +162,7 @@ export default function LoginUser() {
                     backgroundPosition: 'center',
                     backgroundImage: `url(${menteeLoginBackground})`,
                     justifyContent: 'right',
+                    minHeight: '100vh',
                 }}
             >
                 <CssBaseline />
@@ -226,7 +227,9 @@ export default function LoginUser() {
                                     id="password"
                                     autoComplete="current-password"
                                 />
-                                <Typography sx={{ textAlign: 'right' }}>Forget Password?</Typography>
+                                <Link to="/register" style={{ textDecoration: 'none' }}>
+                                    <Typography sx={{ textAlign: 'right' }}>Forgot Password?</Typography>
+                                </Link>
                                 <Button
                                     type="submit"
                                     fullWidth
