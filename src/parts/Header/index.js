@@ -4,9 +4,9 @@ import logo from '~/assets/images/logo.png';
 import { useEffect, useState } from 'react';
 
 const NAV_ITEMS = [
-    { name: 'Internship Program', path: '/test/header' },
+    { name: 'Internship Program', path: '/home' },
     { name: 'AI Resume Checker', path: '/ai-resume' },
-    { name: 'About us', path: '/about-us' },
+    { name: 'About Us', path: '/about-us' },
     { name: 'Blog', path: '/blog' },
 ];
 

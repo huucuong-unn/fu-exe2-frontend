@@ -44,6 +44,8 @@ import Header from '~/parts/Header';
 import FindYourPlan from '~/pages/new/FindYourPlan';
 import FullLayout from '~/components/Layouts/FullLayout';
 import Homepage from '~/pages/new/Homepage';
+import AboutUs from '~/pages/new/AboutUs';
+import AIResumeChecker from '~/pages/new/AIResumeChecker';
 // import DefaultLayout from '~/components/Layouts/DefaultLayout';
 
 const publicRoutes = [
@@ -92,6 +94,8 @@ const publicRoutes = [
     { path: '/reset-password', component: ResetPassword, layout: null },
     { path: '/home', component: Homepage, layout: FullLayout },
     { path: '/offer', component: FindYourPlan, layout: FullLayout },
+    { path: '/about-us', component: AboutUs, layout: FullLayout },
+    { path: '/ai-resume', component: AIResumeChecker, layout: FullLayout },
 
     { path: '/test/footer', component: FooterHome, layout: null },
     { path: '/test/header', component: Header, layout: null },
