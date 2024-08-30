@@ -46,6 +46,7 @@ import FullLayout from '~/components/Layouts/FullLayout';
 import Homepage from '~/pages/new/Homepage';
 import AboutUs from '~/pages/new/AboutUs';
 import AIResumeChecker from '~/pages/new/AIResumeChecker';
+import Blog from '~/pages/new/Blog';
 // import DefaultLayout from '~/components/Layouts/DefaultLayout';
 
 const publicRoutes = [
@@ -96,6 +97,7 @@ const publicRoutes = [
     { path: '/offer', component: FindYourPlan, layout: FullLayout },
     { path: '/about-us', component: AboutUs, layout: FullLayout },
     { path: '/ai-resume', component: AIResumeChecker, layout: FullLayout },
+    { path: '/blog', component: Blog, layout: FullLayout },
 
     { path: '/test/footer', component: FooterHome, layout: null },
     { path: '/test/header', component: Header, layout: null },
