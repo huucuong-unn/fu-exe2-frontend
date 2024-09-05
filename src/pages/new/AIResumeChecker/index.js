@@ -398,6 +398,7 @@ export default function AIResumeChecker() {
                                     </Typography>
 
                                     <Button
+                                        component="label"
                                         type="submit"
                                         fullWidth
                                         variant="contained"
@@ -415,6 +416,7 @@ export default function AIResumeChecker() {
                                         }}
                                     >
                                         Upload your resume
+                                        <input type="file" style={{ display: 'none' }} />
                                     </Button>
                                     <Typography
                                         component="h1"

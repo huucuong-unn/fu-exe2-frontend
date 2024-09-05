@@ -47,6 +47,8 @@ import Homepage from '~/pages/new/Homepage';
 import AboutUs from '~/pages/new/AboutUs';
 import AIResumeChecker from '~/pages/new/AIResumeChecker';
 import Blog from '~/pages/new/Blog';
+import InternshipProgram from '~/pages/new/InternshipProgram';
+import InternshipProgramDetail from '~/pages/new/InternshipProgramDetail';
 // import DefaultLayout from '~/components/Layouts/DefaultLayout';
 
 const publicRoutes = [
@@ -98,6 +100,8 @@ const publicRoutes = [
     { path: '/about-us', component: AboutUs, layout: FullLayout },
     { path: '/ai-resume', component: AIResumeChecker, layout: FullLayout },
     { path: '/blog', component: Blog, layout: FullLayout },
+    { path: '/internship-program', component: InternshipProgram, layout: FullLayout },
+    { path: '/internship-program-detail', component: InternshipProgramDetail, layout: FullLayout },
 
     { path: '/test/footer', component: FooterHome, layout: null },
     { path: '/test/header', component: Header, layout: null },
