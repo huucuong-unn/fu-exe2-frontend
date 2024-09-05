@@ -244,7 +244,7 @@ export default function InternshipProgramDetail() {
                                     padding: '0 8%',
                                 }}
                             >
-                                About Internship Program
+                                TECHCOMBANK
                             </Typography>
                             <Typography sx={{ textAlign: 'left', fontSize: '24px', width: '100%', padding: '0 8%' }}>
                                 The most professional Internship Program for you
