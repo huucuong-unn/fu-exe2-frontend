@@ -102,7 +102,7 @@ export default function InternshipProgramDetail() {
                     item
                     sx={{
                         backgroundColor: 'white',
-                        height: '150vh',
+                        height: '200vh',
                         width: '100%',
                         display: 'flex',
                         justifyContent: 'center',
@@ -111,6 +111,7 @@ export default function InternshipProgramDetail() {
                         flexDirection: 'column',
                         gap: '5px',
                         width: '100%',
+                        marginBottom: '10vh',
                     }}
                 >
                     {/* <CssBaseline /> */}
@@ -227,7 +228,7 @@ export default function InternshipProgramDetail() {
                         <Box
                             sx={{
                                 my: 8,
-                                mx: 4,
+                                // mx: 4,
                                 display: 'flex',
                                 flexDirection: 'column',
                                 // alignItems: 'center',
@@ -248,6 +249,28 @@ export default function InternshipProgramDetail() {
                             </Typography>
                             <Typography sx={{ textAlign: 'left', fontSize: '24px', width: '100%', padding: '0 8%' }}>
                                 The most professional Internship Program for you
+                            </Typography>
+                            <Typography
+                                component="h1"
+                                variant="h4"
+                                sx={{
+                                    textAlign: 'left',
+                                    fontWeight: '900',
+                                    fontSize: '32px',
+                                    color: '#051D40',
+                                    padding: '0 8%',
+                                    mt: 5,
+                                }}
+                            >
+                                About Company
+                            </Typography>
+                            <Typography sx={{ textAlign: 'left', fontSize: '24px', width: '100%', padding: '0 8%' }}>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been the industry's standard dummy text ever since the 1500s, when an unknown
+                                printer took a galley of type and scrambled it to make a type specimen book. Lorem
+                                Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                                been the industry's standard dummy text ever since the 1500s, when an unknown printer
+                                took a galley of type and scrambled it to make a type specimen book.
                             </Typography>
                         </Box>
                     </Grid>

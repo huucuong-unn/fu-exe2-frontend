@@ -4,7 +4,7 @@ import logo from '~/assets/images/logo.png';
 import { useEffect, useState } from 'react';
 
 const NAV_ITEMS = [
-    { name: 'Internship Program', path: '/home' },
+    { name: 'Internship Program', path: '/internship-program' },
     { name: 'AI Resume Checker', path: '/ai-resume' },
     { name: 'About Us', path: '/about-us' },
     { name: 'Blog', path: '/blog' },
@@ -42,7 +42,7 @@ function Header() {
             }}
         >
             <div>
-                <Link to="/">
+                <Link to="/home">
                     <img src={logo} alt="Logo" style={{ width: '120px' }} />
                 </Link>
             </div>

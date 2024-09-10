@@ -627,11 +627,12 @@ export default function Homepage() {
                                     square
                                     sx={{
                                         borderRadius: '35px',
-                                        backgroundColor: 'rgba(255, 255, 255, 0.7);',
+                                        backgroundColor: 'rgba(255, 255, 255, 0.0);',
                                         height: '100%',
                                         display: 'flex',
                                         padding: '20px  ',
                                         gap: '25px',
+                                        border: '1px solid #02F18D',
                                     }}
                                 >
                                     <Box>
@@ -645,80 +646,16 @@ export default function Homepage() {
                                         <Typography
                                             component="h1"
                                             variant="h4"
-                                            sx={{ fontWeight: '900', fontSize: '42px', color: '#051D40' }}
+                                            sx={{ fontWeight: '900', fontSize: '42px', color: 'white' }}
                                         >
                                             Techcombank Future Gen 2025 - Develop a Future You
                                         </Typography>
-                                        <Typography sx={{ my: 3, fontSize: '18px' }}>
+                                        <Typography sx={{ my: 3, fontSize: '18px', color: 'white' }}>
                                             Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                                             Lorem Ipsum has been the industry's standard dummy text ever since the
                                             1500s, when an unknown printer took a galley of type and scrambled it to
                                             make a type specimen book.{' '}
                                         </Typography>
-                                        <Card
-                                            sx={{
-                                                display: 'flex',
-                                                flexDirection: 'column',
-                                                justifyContent: 'space-between',
-                                                flexGrow: 1,
-                                                boxShadow: 'none',
-                                                my: 2,
-                                                backgroundColor: 'rgba(255, 255, 255, 0.0);',
-                                            }}
-                                        >
-                                            <Box
-                                                sx={{
-                                                    display: 'flex',
-                                                    flexDirection: 'row',
-                                                    justifyContent: 'space-between',
-                                                    alignItems: 'center',
-                                                    pr: 2,
-                                                }}
-                                            >
-                                                <CardHeader
-                                                    avatar={<Avatar src={techcombank} />}
-                                                    title={<Typography fontWeight="bold">Techcombank</Typography>}
-                                                    subheader="Ho Chi Minh city - June 25, 2024"
-                                                />
-                                            </Box>
-                                        </Card>
-                                        <Grid sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
-                                            <Button
-                                                type="submit"
-                                                variant="contained"
-                                                sx={{
-                                                    width: '30%',
-                                                    bgcolor: '#051D40',
-                                                    borderRadius: '24px',
-                                                    padding: '12px 0',
-                                                    fontSize: '16px',
-                                                    ':hover': {
-                                                        bgcolor: '#02F18D',
-                                                        color: '#051D40',
-                                                    },
-                                                }}
-                                            >
-                                                Apply Now
-                                            </Button>{' '}
-                                            <Button
-                                                type="submit"
-                                                variant="contained"
-                                                sx={{
-                                                    width: '30%',
-
-                                                    bgcolor: '#051D40',
-                                                    borderRadius: '24px',
-                                                    padding: '12px 0',
-                                                    fontSize: '16px',
-                                                    ':hover': {
-                                                        bgcolor: '#02F18D',
-                                                        color: '#051D40',
-                                                    },
-                                                }}
-                                            >
-                                                Details
-                                            </Button>
-                                        </Grid>
                                     </Box>
                                 </Grid>
                                 <Grid
@@ -739,12 +676,13 @@ export default function Homepage() {
                                         square
                                         sx={{
                                             borderRadius: '35px',
-                                            backgroundColor: 'rgba(255, 255, 255, 0.8);',
+                                            backgroundColor: 'rgba(255, 255, 255, 0.0);',
                                             height: '100%',
                                             display: 'flex',
                                             padding: '20px  ',
                                             gap: '25px',
                                             width: '30%',
+                                            border: '1px solid #02F18D',
                                         }}
                                     >
                                         <Box>
@@ -758,79 +696,16 @@ export default function Homepage() {
                                             <Typography
                                                 component="h1"
                                                 variant="h4"
-                                                sx={{ fontWeight: '900', fontSize: '24px', color: '#051D40' }}
+                                                sx={{ fontWeight: '900', fontSize: '24px', color: 'white' }}
                                             >
                                                 Techcombank Future Gen 2025 - Develop a Future You
                                             </Typography>
-                                            <Typography sx={{ my: 1, fontSize: '12px' }}>
+                                            <Typography sx={{ my: 1, fontSize: '12px', color: 'white' }}>
                                                 Lorem Ipsum is simply dummy text of the printing and typesetting
                                                 industry. Lorem Ipsum has been the industry's standard dummy text ever
                                                 since the 1500s, when an unknown printer took a galley of type and
                                                 scrambled it to make a type specimen book.{' '}
                                             </Typography>
-                                            <Card
-                                                sx={{
-                                                    display: 'flex',
-                                                    flexDirection: 'column',
-                                                    justifyContent: 'space-between',
-                                                    flexGrow: 1,
-                                                    boxShadow: 'none',
-                                                    backgroundColor: 'rgba(255, 255, 255, 0.0);',
-                                                }}
-                                            >
-                                                <Box
-                                                    sx={{
-                                                        display: 'flex',
-                                                        flexDirection: 'row',
-                                                        justifyContent: 'space-between',
-                                                        alignItems: 'center',
-                                                        pr: 2,
-                                                    }}
-                                                >
-                                                    <CardHeader
-                                                        avatar={<Avatar src={techcombank} />}
-                                                        title={<Typography fontWeight="bold">Techcombank</Typography>}
-                                                        subheader="Ho Chi Minh city - June 25, 2024"
-                                                    />
-                                                </Box>
-                                            </Card>
-                                            <Grid sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
-                                                <Button
-                                                    type="submit"
-                                                    variant="contained"
-                                                    sx={{
-                                                        width: '30%',
-                                                        bgcolor: '#051D40',
-                                                        borderRadius: '24px',
-                                                        padding: '12px 0',
-                                                        fontSize: '12px',
-                                                        ':hover': {
-                                                            bgcolor: '#02F18D',
-                                                            color: '#051D40',
-                                                        },
-                                                    }}
-                                                >
-                                                    Apply Now
-                                                </Button>
-                                                <Button
-                                                    type="submit"
-                                                    variant="contained"
-                                                    sx={{
-                                                        width: '30%',
-
-                                                        bgcolor: '#051D40',
-                                                        borderRadius: '24px',
-                                                        padding: '12px 0',
-                                                        fontSize: '12px',
-                                                        ':hover': {
-                                                            bgcolor: '#02F18D',
-                                                            color: '#051D40',
-                                                        },
-                                                    }}
-                                                >
-                                                    Details
-                                                </Button>
-                                            </Grid>
                                         </Box>
                                     </Grid>
                                     <Grid
@@ -843,13 +718,14 @@ export default function Homepage() {
                                         square
                                         sx={{
                                             borderRadius: '35px',
-                                            backgroundColor: 'rgba(255, 255, 255, 0.8);',
+                                            backgroundColor: 'rgba(255, 255, 255, 0.0);',
                                             height: '100%',
                                             display: 'flex',
                                             padding: '20px  ',
                                             gap: '25px',
                                             width: '30%',
                                             opacity: '0.9',
+                                            border: '1px solid #02F18D',
                                         }}
                                     >
                                         <Box>
@@ -863,79 +739,16 @@ export default function Homepage() {
                                             <Typography
                                                 component="h1"
                                                 variant="h4"
-                                                sx={{ fontWeight: '900', fontSize: '24px', color: '#051D40' }}
+                                                sx={{ fontWeight: '900', fontSize: '24px', color: 'white' }}
                                             >
                                                 Techcombank Future Gen 2025 - Develop a Future You
                                             </Typography>
-                                            <Typography sx={{ my: 1, fontSize: '12px' }}>
+                                            <Typography sx={{ my: 1, fontSize: '12px', color: 'white' }}>
                                                 Lorem Ipsum is simply dummy text of the printing and typesetting
                                                 industry. Lorem Ipsum has been the industry's standard dummy text ever
                                                 since the 1500s, when an unknown printer took a galley of type and
                                                 scrambled it to make a type specimen book.{' '}
                                             </Typography>
-                                            <Card
-                                                sx={{
-                                                    display: 'flex',
-                                                    flexDirection: 'column',
-                                                    justifyContent: 'space-between',
-                                                    flexGrow: 1,
-                                                    boxShadow: 'none',
-                                                    backgroundColor: 'rgba(255, 255, 255, 0.0);',
-                                                }}
-                                            >
-                                                <Box
-                                                    sx={{
-                                                        display: 'flex',
-                                                        flexDirection: 'row',
-                                                        justifyContent: 'space-between',
-                                                        alignItems: 'center',
-                                                        pr: 2,
-                                                    }}
-                                                >
-                                                    <CardHeader
-                                                        avatar={<Avatar src={techcombank} />}
-                                                        title={<Typography fontWeight="bold">Techcombank</Typography>}
-                                                        subheader="Ho Chi Minh city - June 25, 2024"
-                                                    />
-                                                </Box>
-                                            </Card>
-                                            <Grid sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
-                                                <Button
-                                                    type="submit"
-                                                    variant="contained"
-                                                    sx={{
-                                                        width: '30%',
-                                                        bgcolor: '#051D40',
-                                                        borderRadius: '24px',
-                                                        padding: '12px 0',
-                                                        fontSize: '12px',
-                                                        ':hover': {
-                                                            bgcolor: '#02F18D',
-                                                            color: '#051D40',
-                                                        },
-                                                    }}
-                                                >
-                                                    Apply Now
-                                                </Button>
-                                                <Button
-                                                    type="submit"
-                                                    variant="contained"
-                                                    sx={{
-                                                        width: '30%',
-
-                                                        bgcolor: '#051D40',
-                                                        borderRadius: '24px',
-                                                        padding: '12px 0',
-                                                        fontSize: '12px',
-                                                        ':hover': {
-                                                            bgcolor: '#02F18D',
-                                                            color: '#051D40',
-                                                        },
-                                                    }}
-                                                >
-                                                    Details
-                                                </Button>
-                                            </Grid>
                                         </Box>
                                     </Grid>
                                 </Grid>
