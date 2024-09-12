@@ -1,4 +1,14 @@
-import { Avatar, Card, CardHeader } from '@mui/material';
+import {
+    Autocomplete,
+    Avatar,
+    Card,
+    CardHeader,
+    Input,
+    OutlinedInput,
+    Pagination,
+    PaginationItem,
+    TextField,
+} from '@mui/material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
@@ -10,6 +20,10 @@ import blogBackground from '~/assets/images/blog.webp';
 import homepageBackground from '~/assets/images/homepage.webp';
 import techcombank from '~/assets/images/techcombank.png';
 import internshipProgramBackground from '~/assets/images/internshipprogram.webp';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { useState } from 'react';
+import { white } from '@mui/material/colors';
 
 function Copyright(props) {
     return (
@@ -25,6 +39,29 @@ const defaultTheme = createTheme();
 
 export default function InternshipProgram() {
     const navigate = useNavigate();
+
+    const options = [
+        { title: 'All Cities' },
+        { title: 'Ho Chi Minh' },
+        { title: 'Ha Noi' },
+        { title: 'Da Nang' },
+        { title: 'Others' },
+    ];
+
+    const [sort, setSort] = useState({
+        page: 1,
+        limit: 9,
+        name: '',
+        address: '',
+    });
+    const [totalPage, setTotalPage] = useState(5);
+
+    const handlePageChange = (event, value) => {
+        setSort((prev) => ({
+            ...prev,
+            page: value,
+        }));
+    };
 
     return (
         <ThemeProvider theme={defaultTheme}>
@@ -223,7 +260,7 @@ export default function InternshipProgram() {
                                                 type="submit"
                                                 variant="contained"
                                                 sx={{
-                                                    width: '30%',
+                                                    width: '40%',
                                                     bgcolor: '#051D40',
                                                     borderRadius: '24px',
                                                     padding: '12px 0',
@@ -240,8 +277,7 @@ export default function InternshipProgram() {
                                                 type="submit"
                                                 variant="contained"
                                                 sx={{
-                                                    width: '30%',
-
+                                                    width: '40%',
                                                     bgcolor: '#051D40',
                                                     borderRadius: '24px',
                                                     padding: '12px 0',
@@ -335,7 +371,7 @@ export default function InternshipProgram() {
                                                     type="submit"
                                                     variant="contained"
                                                     sx={{
-                                                        width: '30%',
+                                                        width: '40%',
                                                         bgcolor: '#051D40',
                                                         borderRadius: '24px',
                                                         padding: '12px 0',
@@ -352,7 +388,7 @@ export default function InternshipProgram() {
                                                     type="submit"
                                                     variant="contained"
                                                     sx={{
-                                                        width: '30%',
+                                                        width: '40%',
 
                                                         bgcolor: '#051D40',
                                                         borderRadius: '24px',
@@ -440,7 +476,7 @@ export default function InternshipProgram() {
                                                     type="submit"
                                                     variant="contained"
                                                     sx={{
-                                                        width: '30%',
+                                                        width: '40%',
                                                         bgcolor: '#051D40',
                                                         borderRadius: '24px',
                                                         padding: '12px 0',
@@ -457,8 +493,7 @@ export default function InternshipProgram() {
                                                     type="submit"
                                                     variant="contained"
                                                     sx={{
-                                                        width: '30%',
-
+                                                        width: '40%',
                                                         bgcolor: '#051D40',
                                                         borderRadius: '24px',
                                                         padding: '12px 0',
@@ -544,6 +579,45 @@ export default function InternshipProgram() {
                             >
                                 The most professional Internship Program for you{' '}
                             </Typography>
+                            <Box sx={{ display: 'flex', gap: '10px', margin: '2% 8%' }}>
+                                <Autocomplete
+                                    options={options}
+                                    getOptionLabel={(option) => option.title}
+                                    sx={{
+                                        width: '30%',
+                                        backgroundColor: 'white',
+                                        borderRadius: '5px',
+                                        border: '1px solid #02F18D',
+                                    }}
+                                    renderInput={(params) => <TextField {...params} label="All Cities" />}
+                                />
+                                <OutlinedInput
+                                    placeholder="Enter keyword skill (Java, PHP, ...), company name, job title, ..."
+                                    name="search"
+                                    sx={{
+                                        width: '50%',
+                                        backgroundColor: 'white',
+                                        borderRadius: '5px',
+                                        border: '1px solid #02F18D',
+                                    }}
+                                />
+                                <Button
+                                    sx={{
+                                        width: '20%',
+                                        backgroundColor: '#02F18D',
+                                        borderRadius: '5px',
+                                        color: '#051D40',
+                                        fontWeight: 'bold',
+                                        fontSize: '16px',
+                                        ':hover': {
+                                            bgcolor: '#051D40',
+                                            color: '#02F18D',
+                                        },
+                                    }}
+                                >
+                                    Search
+                                </Button>
+                            </Box>
                             <Grid sx={{ padding: '3% 8%' }}>
                                 <Grid
                                     sx={{
@@ -623,7 +697,7 @@ export default function InternshipProgram() {
                                                     type="submit"
                                                     variant="contained"
                                                     sx={{
-                                                        width: '30%',
+                                                        width: '40%',
                                                         bgcolor: '#051D40',
                                                         borderRadius: '24px',
                                                         padding: '12px 0',
@@ -640,7 +714,7 @@ export default function InternshipProgram() {
                                                     type="submit"
                                                     variant="contained"
                                                     sx={{
-                                                        width: '30%',
+                                                        width: '40%',
 
                                                         bgcolor: '#051D40',
                                                         borderRadius: '24px',
@@ -728,7 +802,7 @@ export default function InternshipProgram() {
                                                     type="submit"
                                                     variant="contained"
                                                     sx={{
-                                                        width: '30%',
+                                                        width: '40%',
                                                         bgcolor: '#051D40',
                                                         borderRadius: '24px',
                                                         padding: '12px 0',
@@ -745,8 +819,7 @@ export default function InternshipProgram() {
                                                     type="submit"
                                                     variant="contained"
                                                     sx={{
-                                                        width: '30%',
-
+                                                        width: '40%',
                                                         bgcolor: '#051D40',
                                                         borderRadius: '24px',
                                                         padding: '12px 0',
@@ -836,12 +909,12 @@ export default function InternshipProgram() {
                                                     />
                                                 </Box>
                                             </Card>
-                                            <Grid sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
+                                            <Grid sx={{ display: 'flex', justifyContent: 'space-around' }}>
                                                 <Button
                                                     type="submit"
                                                     variant="contained"
                                                     sx={{
-                                                        width: '30%',
+                                                        width: '40%',
                                                         bgcolor: '#051D40',
                                                         borderRadius: '24px',
                                                         padding: '12px 0',
@@ -858,7 +931,7 @@ export default function InternshipProgram() {
                                                     type="submit"
                                                     variant="contained"
                                                     sx={{
-                                                        width: '30%',
+                                                        width: '40%',
 
                                                         bgcolor: '#051D40',
                                                         borderRadius: '24px',
@@ -946,7 +1019,7 @@ export default function InternshipProgram() {
                                                     type="submit"
                                                     variant="contained"
                                                     sx={{
-                                                        width: '30%',
+                                                        width: '40%',
                                                         bgcolor: '#051D40',
                                                         borderRadius: '24px',
                                                         padding: '12px 0',
@@ -963,8 +1036,7 @@ export default function InternshipProgram() {
                                                     type="submit"
                                                     variant="contained"
                                                     sx={{
-                                                        width: '30%',
-
+                                                        width: '40%',
                                                         bgcolor: '#051D40',
                                                         borderRadius: '24px',
                                                         padding: '12px 0',
@@ -982,6 +1054,34 @@ export default function InternshipProgram() {
                                     </Grid>
                                 </Grid>
                             </Grid>
+                            <Box
+                                sx={{
+                                    width: '100%',
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    marginTop: 2,
+                                    backgroundColor: 'white',
+                                    color: 'white',
+                                    borderRadius: '20px',
+                                    opacity: 0.6,
+                                }}
+                            >
+                                <Pagination
+                                    count={totalPage}
+                                    page={sort.page}
+                                    onChange={handlePageChange}
+                                    renderItem={(item) => (
+                                        <PaginationItem
+                                            slots={{
+                                                previous: ArrowBackIcon,
+                                                next: ArrowForwardIcon,
+                                            }}
+                                            {...item}
+                                        />
+                                    )}
+                                />
+                            </Box>
                         </Box>
                     </Grid>
                 </Grid>
