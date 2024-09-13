@@ -586,10 +586,12 @@ export default function InternshipProgram() {
                                     sx={{
                                         width: '30%',
                                         backgroundColor: 'white',
-                                        borderRadius: '5px',
+                                        borderRadius: '25px',
                                         border: '1px solid #02F18D',
                                     }}
-                                    renderInput={(params) => <TextField {...params} label="All Cities" />}
+                                    renderInput={(params) => (
+                                        <TextField {...params} label="All Cities" sx={{ borderRadius: '25px' }} />
+                                    )}
                                 />
                                 <OutlinedInput
                                     placeholder="Enter keyword skill (Java, PHP, ...), company name, job title, ..."
@@ -597,7 +599,7 @@ export default function InternshipProgram() {
                                     sx={{
                                         width: '50%',
                                         backgroundColor: 'white',
-                                        borderRadius: '5px',
+                                        borderRadius: '25px',
                                         border: '1px solid #02F18D',
                                     }}
                                 />
