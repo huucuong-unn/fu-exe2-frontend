@@ -54,7 +54,6 @@ import PaymentFailed from '~/pages/new/PaymentFailed';
 // import DefaultLayout from '~/components/Layouts/DefaultLayout';
 
 const publicRoutes = [
-    { path: '/', component: Homepage },
     { path: '/following', component: Following },
     { path: '/mentors', component: Mentors },
     { path: '/mentor/:mentorId', component: MentorProfile },
@@ -98,6 +97,7 @@ const publicRoutes = [
     { path: '/forgot-password', component: ForgotPassword, layout: null },
     { path: '/reset-password', component: ResetPassword, layout: null },
     { path: '/home', component: Homepage, layout: FullLayout },
+    { path: '/', component: Homepage, layout: null },
     { path: '/offer', component: FindYourPlan, layout: FullLayout },
     { path: '/about-us', component: AboutUs, layout: FullLayout },
     { path: '/ai-resume', component: AIResumeChecker, layout: FullLayout },
