@@ -97,7 +97,7 @@ const publicRoutes = [
     { path: '/forgot-password', component: ForgotPassword, layout: null },
     { path: '/reset-password', component: ResetPassword, layout: null },
     { path: '/home', component: Homepage, layout: FullLayout },
-    { path: '/', component: Homepage, layout: null },
+    { path: '/', component: Homepage, layout: FullLayout },
     { path: '/offer', component: FindYourPlan, layout: FullLayout },
     { path: '/about-us', component: AboutUs, layout: FullLayout },
     { path: '/ai-resume', component: AIResumeChecker, layout: FullLayout },
