@@ -54,7 +54,7 @@ import PaymentFailed from '~/pages/new/PaymentFailed';
 // import DefaultLayout from '~/components/Layouts/DefaultLayout';
 
 const publicRoutes = [
-    { path: '/', component: LandingPage },
+    { path: '/', component: Homepage },
     { path: '/following', component: Following },
     { path: '/mentors', component: Mentors },
     { path: '/mentor/:mentorId', component: MentorProfile },
