@@ -48,11 +48,15 @@ const AccountAPI = {
     findAccountById(id) {
         return axiosClient.get(`/v1/account/${id}`);
     },
+
+    //new
     login(data, includeAuthorization = false) {
-        return axiosClient.post('/v1/auth/login', data);
+        return axiosClient.post('/v1/user/login', data);
     },
+
+    //new
     loginWithGoogle(data, includeAuthorization = false) {
-        return axiosClient.post('/v1/auth/login-google', data);
+        return axiosClient.post('/v1/user/login-google', data);
     },
 
     getAccountForAdminSearch(params, includeAuthorization = false) {

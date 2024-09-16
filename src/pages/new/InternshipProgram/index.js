@@ -23,22 +23,14 @@ import internshipProgramBackground from '~/assets/images/internshipprogram.webp'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useState } from 'react';
-import { white } from '@mui/material/colors';
-
-function Copyright(props) {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center" {...props}>
-            {'Copyright ©Tortee '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+import InternshipProgramAPI from '~/API/InternshipProgramAPI';
 
 const defaultTheme = createTheme();
 
 export default function InternshipProgram() {
     const navigate = useNavigate();
+
+    const [outstandingInternshipPrograms, setOutstandingInternshipPrograms] = useState();
 
     const options = [
         { title: 'All Cities' },
@@ -62,6 +54,21 @@ export default function InternshipProgram() {
             page: value,
         }));
     };
+
+    useState(() => {
+        const fetchOutstandingInternshipPrograms = async () => {
+            try {
+                const response = await InternshipProgramAPI.getTop3OutstandingInternshipProgram();
+                setOutstandingInternshipPrograms(response);
+                console.log('get api fetchOutstandingInternshipPrograms response', response);
+            } catch (error) {
+                console.log('get api fetchOutstandingInternshipPrograms error', error);
+                console.log(error);
+            }
+        };
+
+        fetchOutstandingInternshipPrograms();
+    }, []);
 
     return (
         <ThemeProvider theme={defaultTheme}>
@@ -209,8 +216,8 @@ export default function InternshipProgram() {
                                 >
                                     <Box>
                                         <img
-                                            src={techcombank}
-                                            alt="techcombank"
+                                            src={outstandingInternshipPrograms?.[0]?.picture}
+                                            alt="internship"
                                             style={{ width: '560px', height: '470px' }}
                                         />
                                     </Box>
@@ -220,13 +227,10 @@ export default function InternshipProgram() {
                                             variant="h4"
                                             sx={{ fontWeight: '900', fontSize: '42px', color: '#051D40' }}
                                         >
-                                            Techcombank Future Gen 2025 - Develop a Future You
+                                            {outstandingInternshipPrograms?.[0]?.titleName}
                                         </Typography>
                                         <Typography sx={{ my: 3, fontSize: '18px' }}>
-                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the
-                                            1500s, when an unknown printer took a galley of type and scrambled it to
-                                            make a type specimen book.{' '}
+                                            {outstandingInternshipPrograms?.[0]?.description}
                                         </Typography>
                                         <Card
                                             sx={{
@@ -249,9 +253,25 @@ export default function InternshipProgram() {
                                                 }}
                                             >
                                                 <CardHeader
-                                                    avatar={<Avatar src={techcombank} />}
-                                                    title={<Typography fontWeight="bold">Techcombank</Typography>}
-                                                    subheader="Ho Chi Minh city - June 25, 2024"
+                                                    avatar={
+                                                        <Avatar
+                                                            src={outstandingInternshipPrograms?.[0]?.businessPicture}
+                                                        />
+                                                    }
+                                                    title={
+                                                        <Typography fontWeight="bold">
+                                                            {outstandingInternshipPrograms?.[0]?.businessName}
+                                                        </Typography>
+                                                    }
+                                                    subheader={
+                                                        outstandingInternshipPrograms?.[0]?.location +
+                                                        ' - ' +
+                                                        outstandingInternshipPrograms?.[0]
+                                                            ? new Date(
+                                                                  outstandingInternshipPrograms?.[0]?.createDate,
+                                                              ).toLocaleDateString('en-CA') // Format to YYYY-MM-DD
+                                                            : '2022-04-06' // Extract YYYY-MM-DD
+                                                    }
                                                 />
                                             </Box>
                                         </Card>
@@ -607,7 +627,7 @@ export default function InternshipProgram() {
                                     sx={{
                                         width: '20%',
                                         backgroundColor: '#02F18D',
-                                        borderRadius: '5px',
+                                        borderRadius: '25px',
                                         color: '#051D40',
                                         fontWeight: 'bold',
                                         fontSize: '16px',
@@ -654,7 +674,7 @@ export default function InternshipProgram() {
                                                 style={{ width: '187px', height: '157px' }}
                                             />
                                         </Box>
-                                        <Box>
+                                        <Box sx={{ textAlign: 'left' }}>
                                             <Typography
                                                 component="h1"
                                                 variant="h4"
@@ -871,7 +891,7 @@ export default function InternshipProgram() {
                                                 style={{ width: '187px', height: '157px' }}
                                             />
                                         </Box>
-                                        <Box>
+                                        <Box sx={{ textAlign: 'left' }}>
                                             <Typography
                                                 component="h1"
                                                 variant="h4"

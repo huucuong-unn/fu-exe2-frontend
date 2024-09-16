@@ -1,4 +1,3 @@
-import { Avatar, Card, CardHeader } from '@mui/material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
@@ -8,11 +7,12 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import blogBackground from '~/assets/images/blog.webp';
 import homepageBackground from '~/assets/images/homepage.webp';
-import techcombank from '~/assets/images/techcombank.png';
 import internshipProgramBackground from '~/assets/images/internshipprogram.webp';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUpload, faFileUpload } from '@fortawesome/free-solid-svg-icons';
-import { useEffect, useState } from 'react';
+import { faUpload } from '@fortawesome/free-solid-svg-icons';
+import { useState } from 'react';
+import axios from 'axios';
+import { CircularProgress, Skeleton } from '@mui/material';
 
 function Copyright(props) {
     return (
@@ -26,39 +26,80 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
-const aiSuggestionsData = {
-    spelling: [
-        {
-            incorrect: 'Builted',
-            correct: 'Built',
-        },
-        {
-            incorrect: 'Gitlad',
-            correct: 'GitLab',
-        },
-        {
-            incorrect: 'apllying',
-            correct: 'applying',
-        },
-    ],
-    sentences: [
-        {
-            original:
-                'In the FPT Software HCM section, the sentence Worked with English-language documentation for technical and project requirements could be rephrased for better flow.',
-            revised: 'I utilized English-language documentation for both technical and project requirements.',
-        },
-    ],
-    positions: [
-        "Based on your CV, you're showcasing a strong skillset in full-stack development. You've demonstrated experience with various technologies, including ReactJS, Spring Boot, ASP.NET Core, and databases like MySQL and PostgreSQL. You've also participated in multiple projects, showcasing your ability to work in a team environment.",
-        'Full-Stack Developer: This is a natural fit given your skills and experience.',
-        'Software Engineer: This is a broader term, but your CV demonstrates the technical skills needed for this role.',
-        'Web Developer: If you want to highlight your front-end expertise, this is a good option.',
-    ],
-};
+// const aiSuggestionsData = {
+//     spelling: [
+//         {
+//             incorrect: 'Builted',
+//             correct: 'Built',
+//         },
+//         {
+//             incorrect: 'Gitlad',
+//             correct: 'GitLab',
+//         },
+//         {
+//             incorrect: 'apllying',
+//             correct: 'applying',
+//         },
+//     ],
+//     sentences: [
+//         {
+//             original:
+//                 'In the FPT Software HCM section, the sentence Worked with English-language documentation for technical and project requirements could be rephrased for better flow.',
+//             revised: 'I utilized English-language documentation for both technical and project requirements.',
+//         },
+//     ],
+//     positions: [
+//         "Based on your CV, you're showcasing a strong skillset in full-stack development. You've demonstrated experience with various technologies, including ReactJS, Spring Boot, ASP.NET Core, and databases like MySQL and PostgreSQL. You've also participated in multiple projects, showcasing your ability to work in a team environment.",
+//         'Full-Stack Developer: This is a natural fit given your skills and experience.',
+//         'Software Engineer: This is a broader term, but your CV demonstrates the technical skills needed for this role.',
+//         'Web Developer: If you want to highlight your front-end expertise, this is a good option.',
+//     ],
+// };
 
 export default function AIResumeChecker() {
+    const [uploading, setUploading] = useState(false); // State to manage upload status'
+    const [aiSuggestionsData, setAiSuggestionsData] = useState(null);
+    const [formSuggestLoading, setFormSuggestLoading] = useState(false); // State to manage upload status'
+
+    const userId = 'c6637ff1-e03e-43a9-aa09-ff5cb77ee867'; // Your example userId
+
+    // Function to call API and upload the file
+    const uploadFile = async (file) => {
+        setUploading(true); // Show a loading state when the upload starts
+        setFormSuggestLoading(true);
+
+        // Prepare form data
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('userId', userId);
+
+        try {
+            const response = await axios.post('https://orca-app-7tb86.ondigitalocean.app/api/v1/coze/file', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+            console.log('File uploaded successfully:', response.data);
+            if (response.data) {
+                setFormSuggestLoading(false);
+            }
+            setAiSuggestionsData(response.data);
+        } catch (error) {
+            console.error('Error uploading file:', error);
+        } finally {
+            setUploading(false); // Reset the loading state
+        }
+    };
+
     const navigate = useNavigate();
 
+    // Handle file change and call upload function immediately
+    const handleFileChange = (e) => {
+        const selectedFile = e.target.files[0];
+        if (selectedFile) {
+            uploadFile(selectedFile); // Upload the file once it's selected
+        }
+    };
     return (
         <ThemeProvider theme={defaultTheme}>
             <Grid sx={{ minHeight: '100vh', backgroundColor: 'white' }}>
@@ -395,7 +436,7 @@ export default function AIResumeChecker() {
                                     padding: '0 8%',
                                 }}
                             >
-                                Get your resume score now!
+                                Get your resume check now!
                             </Typography>
                             <Typography sx={{ textAlign: 'center', fontSize: '24px', width: '100%', padding: '0 8%' }}>
                                 Upload your resume and you’ll get a personalized email with an actionable tasklist.{' '}
@@ -430,12 +471,12 @@ export default function AIResumeChecker() {
 
                                     <Button
                                         component="label"
-                                        type="submit"
                                         fullWidth
                                         variant="contained"
+                                        disabled={uploading} // Disable the button when uploading
                                         sx={{
                                             mt: 2,
-                                            bgcolor: '#051D40',
+                                            bgcolor: '#051D40', // Change color when uploading
                                             borderRadius: '24px',
                                             padding: '12px 0',
                                             fontSize: '16px',
@@ -444,10 +485,15 @@ export default function AIResumeChecker() {
                                                 color: '#051D40',
                                             },
                                             border: '1px solid #02F18D',
+                                            color: 'white',
                                         }}
                                     >
-                                        Upload your resume
-                                        <input type="file" style={{ display: 'none' }} />
+                                        {uploading ? <CircularProgress /> : 'Upload your resume'}
+                                        <input
+                                            type="file"
+                                            style={{ display: 'none' }}
+                                            onChange={handleFileChange} // Call API immediately after file selection
+                                        />
                                     </Button>
                                     <Typography
                                         component="h1"
@@ -463,16 +509,7 @@ export default function AIResumeChecker() {
                                     </Typography>
                                 </Box>
                             </Box>
-
-                            <Box
-                                sx={{
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    width: '100%',
-                                    mt: 6,
-                                }}
-                            >
+                            {formSuggestLoading ? (
                                 <Box
                                     sx={{
                                         backgroundColor: '#051D40',
@@ -480,160 +517,195 @@ export default function AIResumeChecker() {
                                         height: '100%',
                                         borderRadius: '20px',
                                         padding: '35px',
-                                        textAlign: 'left',
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        mt: 6,
+                                        flexDirection: 'column',
                                     }}
                                 >
-                                    <Typography
-                                        component="h1"
-                                        variant="h4"
-                                        sx={{
-                                            textAlign: 'center',
-                                            fontWeight: '900',
-                                            fontSize: '52px',
-                                            color: 'white',
-                                            padding: '0 8%',
-                                        }}
-                                    >
-                                        Our Suggestions !
-                                    </Typography>
-                                    <Typography
-                                        component="h1"
-                                        variant="h4"
-                                        sx={{
-                                            textAlign: 'left',
-                                            fontWeight: '900',
-                                            fontSize: '36px',
-                                            color: 'white',
-                                            padding: '0 8%',
-                                            my: 2,
-                                        }}
-                                    >
-                                        * Spelling
-                                    </Typography>
-
-                                    {aiSuggestionsData.spelling.map((item) => (
-                                        <Box
-                                            sx={{
-                                                padding: '0 8%',
-                                                my: 2,
-                                            }}
-                                        >
-                                            <Typography
-                                                component="h1"
-                                                variant="h4"
-                                                sx={{
-                                                    textAlign: 'left',
-                                                    fontWeight: '500',
-                                                    fontSize: '24px',
-                                                    color: 'lightcoral',
-                                                }}
-                                            >
-                                                Incorrect: {item.incorrect}
-                                            </Typography>
-                                            <Typography
-                                                component="h1"
-                                                variant="h4"
-                                                sx={{
-                                                    textAlign: 'left',
-                                                    fontWeight: '500',
-                                                    fontSize: '24px',
-                                                    color: 'lightgreen',
-                                                }}
-                                            >
-                                                Correct: {item.correct}
-                                            </Typography>
-                                        </Box>
-                                    ))}
-
-                                    <Typography
-                                        component="h1"
-                                        variant="h4"
-                                        sx={{
-                                            textAlign: 'left',
-                                            fontWeight: '900',
-                                            fontSize: '36px',
-                                            color: 'white',
-                                            padding: '0 8%',
-                                            my: 2,
-                                            mt: 5,
-                                        }}
-                                    >
-                                        * Sentences
-                                    </Typography>
-
-                                    {aiSuggestionsData.sentences.map((item) => (
-                                        <Box
-                                            sx={{
-                                                padding: '0 8%',
-                                                my: 2,
-                                            }}
-                                        >
-                                            <Typography
-                                                component="h1"
-                                                variant="h4"
-                                                sx={{
-                                                    textAlign: 'left',
-                                                    fontWeight: '500',
-                                                    fontSize: '24px',
-                                                    color: 'lightcoral',
-                                                }}
-                                            >
-                                                Original: {item.original}
-                                            </Typography>
-                                            <Typography
-                                                component="h1"
-                                                variant="h4"
-                                                sx={{
-                                                    textAlign: 'left',
-                                                    fontWeight: '500',
-                                                    fontSize: '24px',
-                                                    color: 'lightgreen',
-                                                }}
-                                            >
-                                                Our advise: {item.revised}
-                                            </Typography>
-                                        </Box>
-                                    ))}
-                                    <Typography
-                                        component="h1"
-                                        variant="h4"
-                                        sx={{
-                                            textAlign: 'left',
-                                            fontWeight: '900',
-                                            fontSize: '36px',
-                                            color: 'white',
-                                            padding: '0 8%',
-                                            my: 2,
-                                            mt: 5,
-                                        }}
-                                    >
-                                        * Suggestions
-                                    </Typography>
-
-                                    {aiSuggestionsData.positions.map((item) => (
-                                        <Box
-                                            sx={{
-                                                padding: '0 8%',
-                                                my: 2,
-                                            }}
-                                        >
-                                            <Typography
-                                                component="h1"
-                                                variant="h4"
-                                                sx={{
-                                                    textAlign: 'left',
-                                                    fontWeight: '500',
-                                                    fontSize: '24px',
-                                                    color: 'white',
-                                                    mt: 5,
-                                                }}
-                                            >
-                                                - {item}
-                                            </Typography>
-                                        </Box>
-                                    ))}
+                                    <Skeleton sx={{ bgcolor: 'grey.600', width: '70%', mt: 2 }} />
+                                    <Skeleton sx={{ bgcolor: 'grey.600', width: '70%', mt: 2 }} />
+                                    <Skeleton sx={{ bgcolor: 'grey.600', width: '70%', mt: 2 }} />
+                                    <Skeleton sx={{ bgcolor: 'grey.600', width: '70%', mt: 2 }} />
                                 </Box>
-                            </Box>
+                            ) : aiSuggestionsData &&
+                              (aiSuggestionsData?.spelling ||
+                                  aiSuggestionsData?.sentences ||
+                                  aiSuggestionsData?.positions) ? (
+                                <Box
+                                    sx={{
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        width: '100%',
+                                        mt: 6,
+                                    }}
+                                >
+                                    <Box
+                                        sx={{
+                                            backgroundColor: '#051D40',
+                                            width: '100%',
+                                            height: '100%',
+                                            borderRadius: '20px',
+                                            padding: '35px',
+                                            textAlign: 'left',
+                                        }}
+                                    >
+                                        <Typography
+                                            component="h1"
+                                            variant="h4"
+                                            sx={{
+                                                textAlign: 'center',
+                                                fontWeight: '900',
+                                                fontSize: '52px',
+                                                color: 'white',
+                                                padding: '0 8%',
+                                            }}
+                                        >
+                                            Our Suggestions !
+                                        </Typography>
+                                        <Typography
+                                            component="h1"
+                                            variant="h4"
+                                            sx={{
+                                                textAlign: 'left',
+                                                fontWeight: '900',
+                                                fontSize: '36px',
+                                                color: 'white',
+                                                padding: '0 8%',
+                                                my: 2,
+                                            }}
+                                        >
+                                            * Spelling
+                                        </Typography>
+
+                                        {aiSuggestionsData?.spelling?.map((item) => (
+                                            <Box
+                                                sx={{
+                                                    padding: '0 8%',
+                                                    my: 2,
+                                                }}
+                                            >
+                                                <Typography
+                                                    component="h1"
+                                                    variant="h4"
+                                                    sx={{
+                                                        textAlign: 'left',
+                                                        fontWeight: '500',
+                                                        fontSize: '24px',
+                                                        color: 'lightcoral',
+                                                    }}
+                                                >
+                                                    Incorrect: {item.incorrect}
+                                                </Typography>
+                                                <Typography
+                                                    component="h1"
+                                                    variant="h4"
+                                                    sx={{
+                                                        textAlign: 'left',
+                                                        fontWeight: '500',
+                                                        fontSize: '24px',
+                                                        color: 'lightgreen',
+                                                    }}
+                                                >
+                                                    Correct: {item.correct}
+                                                </Typography>
+                                            </Box>
+                                        ))}
+
+                                        <Typography
+                                            component="h1"
+                                            variant="h4"
+                                            sx={{
+                                                textAlign: 'left',
+                                                fontWeight: '900',
+                                                fontSize: '36px',
+                                                color: 'white',
+                                                padding: '0 8%',
+                                                my: 2,
+                                                mt: 5,
+                                            }}
+                                        >
+                                            * Sentences
+                                        </Typography>
+
+                                        {aiSuggestionsData?.sentences?.map((item) => (
+                                            <Box
+                                                sx={{
+                                                    padding: '0 8%',
+                                                    my: 2,
+                                                }}
+                                            >
+                                                <Typography
+                                                    component="h1"
+                                                    variant="h4"
+                                                    sx={{
+                                                        textAlign: 'left',
+                                                        fontWeight: '500',
+                                                        fontSize: '24px',
+                                                        color: 'lightcoral',
+                                                    }}
+                                                >
+                                                    Original: {item.original}
+                                                </Typography>
+                                                <Typography
+                                                    component="h1"
+                                                    variant="h4"
+                                                    sx={{
+                                                        textAlign: 'left',
+                                                        fontWeight: '500',
+                                                        fontSize: '24px',
+                                                        color: 'lightgreen',
+                                                    }}
+                                                >
+                                                    Our advise: {item.revised}
+                                                </Typography>
+                                            </Box>
+                                        ))}
+                                        <Typography
+                                            component="h1"
+                                            variant="h4"
+                                            sx={{
+                                                textAlign: 'left',
+                                                fontWeight: '900',
+                                                fontSize: '36px',
+                                                color: 'white',
+                                                padding: '0 8%',
+                                                my: 2,
+                                                mt: 5,
+                                            }}
+                                        >
+                                            * Suggestions
+                                        </Typography>
+
+                                        {aiSuggestionsData?.positions?.map((item) => (
+                                            <Box
+                                                sx={{
+                                                    padding: '0 8%',
+                                                    my: 2,
+                                                }}
+                                            >
+                                                <Typography
+                                                    component="h1"
+                                                    variant="h4"
+                                                    sx={{
+                                                        textAlign: 'left',
+                                                        fontWeight: '500',
+                                                        fontSize: '24px',
+                                                        color: 'white',
+                                                        mt: 5,
+                                                    }}
+                                                >
+                                                    - {item}
+                                                </Typography>
+                                            </Box>
+                                        ))}
+                                    </Box>
+                                </Box>
+                            ) : (
+                                <></>
+                            )}
                         </Box>
                     </Grid>
                 </Grid>

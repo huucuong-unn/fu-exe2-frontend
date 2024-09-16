@@ -6,7 +6,7 @@
             "localhost",
             ".localhost"
         ],
-        "proxy": "https://tortee-463vt.ondigitalocean.app"
+        "proxy": "https://orca-app-7tb86.ondigitalocean.app"
     },
     "private": true,
     "dependencies": {
