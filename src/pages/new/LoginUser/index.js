@@ -66,6 +66,8 @@ export default function LoginUser() {
 
     const handleGoogleLoginSuccess = async (response) => {
         try {
+            setLoginLoading(true); // Start the loading spinner
+
             const token = '';
             const decoded = jwtDecode(response?.credential);
             console.log('Google login success:', response);
@@ -78,8 +80,14 @@ export default function LoginUser() {
             const userInfo = await AccountAPI.loginWithGoogle(data);
 
             if (userInfo) {
+                setLoginLoading(false); // Stop loading spinner
                 storageService.setItem('userInfo', userInfo);
                 navigate('/');
+            } else {
+                // If login fails (non-200 status)
+                setLoginLoading(false);
+                setShowAlertError(true); // Show error alert
+                setTimeout(() => setShowAlertError(false), 5000); // Hide alert after 5s
             }
         } catch (error) {
             console.log(error);
