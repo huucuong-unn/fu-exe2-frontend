@@ -9,23 +9,15 @@ import { useNavigate } from 'react-router-dom';
 import blogBackground from '~/assets/images/blog.webp';
 import aboutUsBackground from '~/assets/images/aboutus.webp';
 import techcombank from '~/assets/images/techcombank.png';
-import internshipProgramBackground from '~/assets/images/internshipprogram.webp';
-
-function Copyright(props) {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center" {...props}>
-            {'Copyright ©Tortee '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+import techcombanklogo from '~/assets/images/techcombanklogo.png';
+import fptlogo from '~/assets/images/fptlogo.png';
+import vnglogo from '~/assets/images/vnglogo.png';
+import microsoftlogo from '~/assets/images/microsoftlogo.png';
 
 const defaultTheme = createTheme();
 
 export default function AboutUs() {
     const navigate = useNavigate();
-
     return (
         <ThemeProvider theme={defaultTheme}>
             <Grid sx={{ minHeight: '100vh', backgroundColor: 'white' }}>
@@ -129,10 +121,19 @@ export default function AboutUs() {
                                 md={4}
                                 sx={{ display: 'flex', justifyContent: 'space-evenly', fontSize: '16px' }}
                             >
-                                <Typography>Techcombank</Typography>
-                                <Typography>Techcombank</Typography>
-                                <Typography>Techcombank</Typography>
-                                <Typography>Techcombank</Typography>
+                                <Typography sx={{ width: '20%' }}>
+                                    <img style={{ width: '50%' }} src={techcombanklogo} alt="company logo" />
+                                    Techcombank
+                                </Typography>
+                                <Typography sx={{ width: '20%' }}>
+                                    <img style={{ width: '50%' }} src={fptlogo} alt="company logo" />
+                                </Typography>
+                                <Typography sx={{ width: '20%' }}>
+                                    <img style={{ width: '50%' }} src={vnglogo} alt="company logo" />
+                                </Typography>
+                                <Typography sx={{ width: '20%' }}>
+                                    <img style={{ width: '50%' }} src={microsoftlogo} alt="company logo" />
+                                </Typography>{' '}
                             </Grid>
                         </Grid>
                     </Grid>
@@ -173,6 +174,7 @@ export default function AboutUs() {
                                 display: 'flex',
                                 flexDirection: 'column',
                                 // alignItems: 'center',
+                                textAlign: 'left',
                             }}
                         >
                             <Typography

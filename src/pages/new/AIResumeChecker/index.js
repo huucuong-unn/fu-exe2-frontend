@@ -10,58 +10,32 @@ import homepageBackground from '~/assets/images/homepage.webp';
 import internshipProgramBackground from '~/assets/images/internshipprogram.webp';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpload } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { CircularProgress, Skeleton } from '@mui/material';
-
-function Copyright(props) {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center" {...props}>
-            {'Copyright ©Tortee '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+import storageService from '~/components/StorageService/storageService';
 
 const defaultTheme = createTheme();
-
-// const aiSuggestionsData = {
-//     spelling: [
-//         {
-//             incorrect: 'Builted',
-//             correct: 'Built',
-//         },
-//         {
-//             incorrect: 'Gitlad',
-//             correct: 'GitLab',
-//         },
-//         {
-//             incorrect: 'apllying',
-//             correct: 'applying',
-//         },
-//     ],
-//     sentences: [
-//         {
-//             original:
-//                 'In the FPT Software HCM section, the sentence Worked with English-language documentation for technical and project requirements could be rephrased for better flow.',
-//             revised: 'I utilized English-language documentation for both technical and project requirements.',
-//         },
-//     ],
-//     positions: [
-//         "Based on your CV, you're showcasing a strong skillset in full-stack development. You've demonstrated experience with various technologies, including ReactJS, Spring Boot, ASP.NET Core, and databases like MySQL and PostgreSQL. You've also participated in multiple projects, showcasing your ability to work in a team environment.",
-//         'Full-Stack Developer: This is a natural fit given your skills and experience.',
-//         'Software Engineer: This is a broader term, but your CV demonstrates the technical skills needed for this role.',
-//         'Web Developer: If you want to highlight your front-end expertise, this is a good option.',
-//     ],
-// };
 
 export default function AIResumeChecker() {
     const [uploading, setUploading] = useState(false); // State to manage upload status'
     const [aiSuggestionsData, setAiSuggestionsData] = useState(null);
     const [formSuggestLoading, setFormSuggestLoading] = useState(false); // State to manage upload status'
+    const [userInfo, setUserInfo] = useState(storageService.getItem('userInfo') || null);
 
-    const userId = 'c6637ff1-e03e-43a9-aa09-ff5cb77ee867'; // Your example userId
+    useEffect(() => {
+        const fetchUser = async () => {
+            // This useEffect is now only for updating userInfo if it changes in localStorage
+            const storedUserInfo = await storageService.getItem('userInfo');
+
+            if (storedUserInfo !== null) {
+                setUserInfo(storedUserInfo);
+                console.log(storedUserInfo);
+                console.log(userInfo);
+            }
+        };
+        fetchUser();
+    }, []);
 
     // Function to call API and upload the file
     const uploadFile = async (file) => {
@@ -71,7 +45,7 @@ export default function AIResumeChecker() {
         // Prepare form data
         const formData = new FormData();
         formData.append('file', file);
-        formData.append('userId', userId);
+        formData.append('userId', userInfo?.id);
 
         try {
             const response = await axios.post('https://orca-app-7tb86.ondigitalocean.app/api/v1/coze/file', formData, {
@@ -453,7 +427,7 @@ export default function AIResumeChecker() {
                                 <Box
                                     sx={{
                                         backgroundColor: '#051D40',
-                                        width: '45%',
+                                        width: '40%',
                                         height: '300px',
                                         borderRadius: '20px',
                                         padding: '35px',
@@ -532,7 +506,8 @@ export default function AIResumeChecker() {
                             ) : aiSuggestionsData &&
                               (aiSuggestionsData?.spelling ||
                                   aiSuggestionsData?.sentences ||
-                                  aiSuggestionsData?.positions) ? (
+                                  aiSuggestionsData?.positions) &&
+                              userInfo?.id === aiSuggestionsData?.userId ? (
                                 <Box
                                     sx={{
                                         display: 'flex',

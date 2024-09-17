@@ -1083,8 +1083,6 @@ export default function InternshipProgram() {
                                     justifyContent: 'center',
                                     alignItems: 'center',
                                     marginTop: 2,
-                                    backgroundColor: 'white',
-                                    color: 'white',
                                     borderRadius: '20px',
                                     opacity: 0.6,
                                 }}
@@ -1092,6 +1090,7 @@ export default function InternshipProgram() {
                                 <Pagination
                                     count={totalPage}
                                     page={sort.page}
+                                    color="primary"
                                     onChange={handlePageChange}
                                     renderItem={(item) => (
                                         <PaginationItem
@@ -1099,6 +1098,7 @@ export default function InternshipProgram() {
                                                 previous: ArrowBackIcon,
                                                 next: ArrowForwardIcon,
                                             }}
+                                            sx={{ color: 'white', fontWeight: '600', fontSize: '16px' }}
                                             {...item}
                                         />
                                     )}

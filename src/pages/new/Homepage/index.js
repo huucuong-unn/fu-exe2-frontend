@@ -240,6 +240,7 @@ export default function Homepage() {
                                         display: 'flex',
                                         padding: '20px  ',
                                         gap: '25px',
+                                        textAlign: 'left',
                                     }}
                                 >
                                     <Box>
@@ -335,6 +336,7 @@ export default function Homepage() {
                                         justifyContent: 'space-evenly',
                                         gap: '30px',
                                         marginTop: '30px',
+                                        textAlign: 'left',
                                     }}
                                 >
                                     <Grid
