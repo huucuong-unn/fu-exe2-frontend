@@ -1,8 +1,10 @@
-import { HorizontalRuleOutlined, LineAxisOutlined } from '@mui/icons-material';
 import { Box, Button, Divider, Grid } from '@mui/material';
 import SuccessCircle from '~/components/new/SuccessCircle';
+import { useNavigate } from 'react-router-dom';
 
 export default function PaymentSuccess() {
+    const navigate = useNavigate();
+
     return (
         <Grid
             sx={{
@@ -59,6 +61,9 @@ export default function PaymentSuccess() {
                                 bgcolor: '#02F18D',
                                 color: '#051D40',
                             },
+                        }}
+                        onClick={() => {
+                            navigate('/');
                         }}
                     >
                         Back to Home

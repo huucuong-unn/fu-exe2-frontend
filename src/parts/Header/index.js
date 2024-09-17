@@ -1,9 +1,21 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import './Header.scss';
 import logo from '~/assets/images/logo.png';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import storageService from '~/components/StorageService/storageService';
-import { Button } from '@mui/material';
+import {
+    Avatar,
+    Box,
+    Button,
+    Divider,
+    IconButton,
+    ListItemIcon,
+    Menu,
+    MenuItem,
+    Tooltip,
+    Typography,
+} from '@mui/material';
+import { Logout } from '@mui/icons-material';
 
 const NAV_ITEMS = [
     { name: 'Internship Program', path: '/internship-program' },
@@ -15,15 +27,23 @@ const NAV_ITEMS = [
 function Header() {
     const [scroll, setScroll] = useState(false);
     const navigate = useNavigate();
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const openForUserOption = Boolean(anchorEl);
 
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
     const handleLogout = () => {
+        setAnchorEl(null);
         // Remove user information from localStorage
         localStorage.removeItem('userInfo');
 
         // Redirect to the sign-up page
         navigate('/login');
     };
-
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
     useEffect(() => {
         const handleScroll = () => setScroll(window.scrollY > 70);
 
@@ -32,6 +52,10 @@ function Header() {
 
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    const handleCloseProfile = () => {
+        setAnchorEl(null);
+    };
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -102,10 +126,71 @@ function Header() {
                 </ul>
             </div>
             {userInfo ? (
-                <div>
-                    Login success
-                    <Button onClick={handleLogout}>Logout</Button>
-                </div>
+                <React.Fragment>
+                    <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+                        {userInfo?.name}
+                        <Tooltip title="Account settings">
+                            <IconButton
+                                onClick={handleClick}
+                                size="small"
+                                sx={{ ml: 2 }}
+                                aria-controls={openForUserOption ? 'account-menu' : undefined}
+                                aria-haspopup="true"
+                                aria-expanded={openForUserOption ? 'true' : undefined}
+                            >
+                                <Avatar src={userInfo?.avatarUrl} />
+                            </IconButton>
+                        </Tooltip>
+                    </Box>
+                    <Menu
+                        anchorEl={anchorEl}
+                        id="account-menu"
+                        open={openForUserOption}
+                        onClose={handleClose}
+                        onClick={handleClose}
+                        PaperProps={{
+                            elevation: 0,
+                            sx: {
+                                minWidth: 200,
+                                overflow: 'visible',
+                                filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                                mt: 1.5,
+                                '& .MuiAvatar-root': {
+                                    width: 32,
+                                    height: 32,
+                                    ml: -0.5,
+                                    mr: 1,
+                                },
+                                '&::before': {
+                                    content: '""',
+                                    display: 'block',
+                                    position: 'absolute',
+                                    top: 0,
+                                    right: 14,
+                                    width: 10,
+                                    height: 10,
+                                    bgcolor: 'background.paper',
+                                    transform: 'translateY(-50%) rotate(45deg)',
+                                    zIndex: 0,
+                                },
+                            },
+                        }}
+                        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+                    >
+                        <MenuItem onClick={handleCloseProfile}>
+                            <Avatar src="https://cdn-icons-png.flaticon.com/128/12340/12340380.png" />
+                            Profile
+                        </MenuItem>
+                        <Divider />
+                        <MenuItem onClick={handleLogout}>
+                            <ListItemIcon>
+                                <Logout fontSize="small" />
+                            </ListItemIcon>
+                            Logout
+                        </MenuItem>
+                    </Menu>
+                </React.Fragment>
             ) : (
                 <div style={{ display: 'flex', gap: '8px' }}>
                     <Link to="/login" className="button btn-outline">

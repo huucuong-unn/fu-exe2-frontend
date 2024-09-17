@@ -1,7 +1,10 @@
-import { Box, Button, Divider, Grid } from '@mui/material';
+import { Box, Button, Grid } from '@mui/material';
 import FailedCircle from '~/components/new/FailedCircle';
+import { useNavigate } from 'react-router-dom';
 
 export default function PaymentFailed() {
+    const navigate = useNavigate();
+
     return (
         <Grid
             sx={{
@@ -44,6 +47,9 @@ export default function PaymentFailed() {
                                 bgcolor: '#02F18D',
                                 color: '#051D40',
                             },
+                        }}
+                        onClick={() => {
+                            navigate('/');
                         }}
                     >
                         Back to Home

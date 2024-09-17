@@ -337,6 +337,7 @@ export default function InternshipProgram() {
                                             padding: '20px  ',
                                             gap: '25px',
                                             width: '30%',
+                                            textAlign: 'justify',
                                         }}
                                     >
                                         <Box>
@@ -442,6 +443,7 @@ export default function InternshipProgram() {
                                             gap: '25px',
                                             width: '30%',
                                             opacity: '0.9',
+                                            textAlign: 'justify',
                                         }}
                                     >
                                         <Box>
@@ -674,7 +676,7 @@ export default function InternshipProgram() {
                                                 style={{ width: '187px', height: '157px' }}
                                             />
                                         </Box>
-                                        <Box sx={{ textAlign: 'left' }}>
+                                        <Box sx={{ textAlign: 'justify' }}>
                                             <Typography
                                                 component="h1"
                                                 variant="h4"

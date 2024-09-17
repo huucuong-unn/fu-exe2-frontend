@@ -151,7 +151,7 @@ export default function AIResumeChecker() {
                                     },
                                 }}
                             >
-                                Explore
+                                Explore Our Plans
                             </Button>
                         </Box>
                     </Grid>
