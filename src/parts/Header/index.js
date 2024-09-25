@@ -3,25 +3,15 @@ import './Header.scss';
 import logo from '~/assets/images/logo.png';
 import React, { useEffect, useState } from 'react';
 import storageService from '~/components/StorageService/storageService';
-import {
-    Avatar,
-    Box,
-    Button,
-    Divider,
-    IconButton,
-    ListItemIcon,
-    Menu,
-    MenuItem,
-    Tooltip,
-    Typography,
-} from '@mui/material';
+import { Avatar, Box, Divider, IconButton, ListItemIcon, Menu, MenuItem, Tooltip } from '@mui/material';
 import { Logout } from '@mui/icons-material';
 
 const NAV_ITEMS = [
-    { name: 'Internship Program', path: '/internship-program' },
+    // { name: 'Internship Program', path: '/internship-program' },
     { name: 'AI Resume Checker', path: '/ai-resume' },
-    { name: 'About Us', path: '/about-us' },
+    { name: 'AI Subscription Plans  🎉', path: '/offer' },
     { name: 'Blog', path: '/blog' },
+    { name: 'About Us', path: '/about-us' },
 ];
 
 function Header() {
@@ -138,7 +128,11 @@ function Header() {
                                 aria-haspopup="true"
                                 aria-expanded={openForUserOption ? 'true' : undefined}
                             >
-                                <Avatar src={userInfo?.avatarUrl} />
+                                {userInfo?.pictureUrl ? (
+                                    <Avatar src={userInfo?.pictureUrl} />
+                                ) : (
+                                    <Avatar src="https://cdn-icons-png.flaticon.com/128/12340/12340380.png" />
+                                )}{' '}
                             </IconButton>
                         </Tooltip>
                     </Box>
@@ -179,9 +173,14 @@ function Header() {
                         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                     >
                         <MenuItem onClick={handleCloseProfile}>
-                            <Avatar src="https://cdn-icons-png.flaticon.com/128/12340/12340380.png" />
+                            {userInfo?.pictureUrl ? (
+                                <Avatar src={userInfo?.pictureUrl} />
+                            ) : (
+                                <Avatar src="https://cdn-icons-png.flaticon.com/128/12340/12340380.png" />
+                            )}
                             Profile
                         </MenuItem>
+                        <MenuItem>{userInfo?.planType} Member</MenuItem>
                         <Divider />
                         <MenuItem onClick={handleLogout}>
                             <ListItemIcon>

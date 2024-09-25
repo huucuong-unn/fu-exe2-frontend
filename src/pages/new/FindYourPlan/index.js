@@ -232,7 +232,13 @@ export default function FindYourPlan() {
                                         maxHeight: '54px',
                                     }}
                                 >
-                                    {isLoadingClickSilverTee ? <CircularProgress /> : 'Get Started'}
+                                    {userInfo?.planType === 'Silver Tee' ? (
+                                        'Current Plan'
+                                    ) : isLoadingClickSilverTee ? (
+                                        <CircularProgress />
+                                    ) : (
+                                        'Get Started'
+                                    )}
                                 </Button>
                                 <Typography
                                     component="h1"
@@ -299,7 +305,13 @@ export default function FindYourPlan() {
                                         maxHeight: '54px',
                                     }}
                                 >
-                                    {isLoadingClickGoldenTee ? <CircularProgress /> : 'Get Started'}
+                                    {userInfo?.planType === 'Golden Tee' ? (
+                                        'Current Plan'
+                                    ) : isLoadingClickGoldenTee ? (
+                                        <CircularProgress />
+                                    ) : (
+                                        'Get Started'
+                                    )}
                                 </Button>
                                 <Typography
                                     component="h1"

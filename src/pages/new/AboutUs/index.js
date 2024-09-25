@@ -1,4 +1,4 @@
-import { Avatar, Card, CardHeader } from '@mui/material';
+import { Avatar, Card, CardHeader, CircularProgress } from '@mui/material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
@@ -13,11 +13,57 @@ import techcombanklogo from '~/assets/images/techcombanklogo.png';
 import fptlogo from '~/assets/images/fptlogo.png';
 import vnglogo from '~/assets/images/vnglogo.png';
 import microsoftlogo from '~/assets/images/microsoftlogo.png';
+import PayosAPI from '~/API/PayosAPI';
+import storageService from '~/components/StorageService/storageService';
+import { useState } from 'react';
 
 const defaultTheme = createTheme();
 
 export default function AboutUs() {
     const navigate = useNavigate();
+
+    const [userInfo, setUserInfo] = useState(storageService.getItem('userInfo') || null);
+    const [isLoadingClickSilverTee, setIsLoadingClickSilverTee] = useState(false);
+    const [isLoadingClickGoldenTee, setIsLoadingClickGoldenTee] = useState(false);
+
+    const handleGoCheckoutSilverTee = async (event) => {
+        try {
+            if (userInfo) {
+                setIsLoadingClickSilverTee(true);
+                const response = await PayosAPI.goCheckout({
+                    productName: 'Silver Tee',
+                    userId: userInfo?.id,
+                });
+                console.log(response);
+                if (response.data.checkoutUrl) {
+                    setIsLoadingClickSilverTee(false);
+                    window.location.href = response.data.checkoutUrl;
+                }
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const handleGoCheckoutGoldenTee = async (event) => {
+        try {
+            if (userInfo) {
+                setIsLoadingClickGoldenTee(true);
+
+                const response = await PayosAPI.goCheckout({
+                    productName: 'Golden Tee',
+                    userId: userInfo?.id,
+                });
+                console.log(response);
+                if (response.data.checkoutUrl) {
+                    setIsLoadingClickGoldenTee(false);
+                    window.location.href = response.data.checkoutUrl;
+                }
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
     return (
         <ThemeProvider theme={defaultTheme}>
             <Grid sx={{ minHeight: '100vh', backgroundColor: 'white' }}>
@@ -887,7 +933,7 @@ export default function AboutUs() {
                                             border: '1px solid #02F18D',
                                         }}
                                     >
-                                        Get Started
+                                        Default Plan
                                     </Button>
                                     <Typography
                                         component="h1"
@@ -937,7 +983,7 @@ export default function AboutUs() {
                                         variant="h4"
                                         sx={{ fontWeight: '700', fontSize: '48px', color: 'white', marginTop: '20px' }}
                                     >
-                                        50.000 VND
+                                        20.000 VND
                                     </Typography>
                                     <Typography
                                         component="h1"
@@ -950,6 +996,7 @@ export default function AboutUs() {
                                         type="submit"
                                         fullWidth
                                         variant="contained"
+                                        onClick={handleGoCheckoutSilverTee}
                                         sx={{
                                             mt: 2,
                                             bgcolor: '#051D40',
@@ -961,9 +1008,10 @@ export default function AboutUs() {
                                                 color: '#051D40',
                                             },
                                             border: '1px solid #02F18D',
+                                            maxHeight: '54px',
                                         }}
                                     >
-                                        Get Started
+                                        {isLoadingClickSilverTee ? <CircularProgress /> : 'Get Started'}
                                     </Button>
                                     <Typography
                                         component="h1"
@@ -987,7 +1035,7 @@ export default function AboutUs() {
                                             marginTop: '20px',
                                         }}
                                     >
-                                        30 trial of CV Reviews by AI
+                                        20 trial of CV Reviews by AI
                                     </Typography>
                                 </Box>
                                 <Box
@@ -1013,7 +1061,7 @@ export default function AboutUs() {
                                         variant="h4"
                                         sx={{ fontWeight: '700', fontSize: '48px', color: 'white', marginTop: '20px' }}
                                     >
-                                        75.000 VND
+                                        40.000 VND
                                     </Typography>
                                     <Typography
                                         component="h1"
@@ -1026,6 +1074,7 @@ export default function AboutUs() {
                                         type="submit"
                                         fullWidth
                                         variant="contained"
+                                        onClick={handleGoCheckoutGoldenTee}
                                         sx={{
                                             mt: 2,
                                             bgcolor: '#051D40',
@@ -1037,9 +1086,10 @@ export default function AboutUs() {
                                                 color: '#051D40',
                                             },
                                             border: '1px solid #02F18D',
+                                            maxHeight: '54px',
                                         }}
                                     >
-                                        Get Started
+                                        {isLoadingClickGoldenTee ? <CircularProgress /> : 'Get Started'}
                                     </Button>
                                     <Typography
                                         component="h1"
@@ -1063,7 +1113,7 @@ export default function AboutUs() {
                                             marginTop: '20px',
                                         }}
                                     >
-                                        80 trial of CV Reviews by AI
+                                        50 trial of CV Reviews by AI
                                     </Typography>
                                 </Box>
                             </Box>

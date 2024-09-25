@@ -109,7 +109,7 @@ export default function Homepage() {
                     </Grid>
                 </Grid>
 
-                {/* Feature Companies */}
+                {/* Feature Companies
                 <Grid sx={{ backgroundColor: '#051D40', padding: '40px 0' }}>
                     <Typography
                         component="h1"
@@ -166,7 +166,7 @@ export default function Homepage() {
                             <Typography>Techcombank</Typography>
                         </Grid>
                     </Grid>
-                </Grid>
+                </Grid> */}
 
                 {/* Program */}
                 <Grid

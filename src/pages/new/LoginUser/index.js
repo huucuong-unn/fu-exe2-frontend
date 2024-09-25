@@ -8,6 +8,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import AccountAPI from '~/API/AccountAPI';
 import storageService from '~/components/StorageService/storageService';
 import menteeLoginBackground from '~/assets/images/menteelogin.webp';
+import SubscriptionAPI from '~/API/SubscriptionAPI';
 
 const clientId = '478388298220-qhn8p4akrr4hsidbvnp999v5tn0u3s93.apps.googleusercontent.com';
 
@@ -47,7 +48,13 @@ export default function LoginUser() {
             // If status is 200, login successful
             if (userInfo) {
                 setLoginLoading(false); // Stop loading spinner
+
+                const currentPlan = await SubscriptionAPI.getByUserId(userInfo.id);
+                userInfo.planType = currentPlan.planType;
+                userInfo.subscriptionId = currentPlan.id;
+
                 storageService.setItem('userInfo', userInfo); // Store user info
+
                 navigate('/'); // Navigate to home page
             } else {
                 // If login fails (non-200 status)
@@ -81,6 +88,11 @@ export default function LoginUser() {
 
             if (userInfo) {
                 setLoginLoading(false); // Stop loading spinner
+
+                const currentPlan = await SubscriptionAPI.getByUserId(userInfo.id);
+                userInfo.planType = currentPlan?.planType;
+                userInfo.subscriptionId = currentPlan?.id;
+
                 storageService.setItem('userInfo', userInfo);
                 navigate('/');
             } else {
