@@ -18,7 +18,7 @@ export default function LoginUser() {
     const [showAlert, setShowAlert] = useState(false);
     const [showAlertError, setShowAlertError] = useState(false);
     const location = useLocation();
-    const [role, setRole] = useState('student'); //dafault role is student
+    const [role, setRole] = useState('student'); //default role is student
     const [loginLoading, setLoginLoading] = useState(false);
 
     useEffect(() => {

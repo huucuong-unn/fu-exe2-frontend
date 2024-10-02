@@ -9,20 +9,40 @@ import blogBackground from '~/assets/images/blog.webp';
 import homepageBackground from '~/assets/images/homepage.webp';
 import internshipProgramBackground from '~/assets/images/internshipprogram.webp';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUpload } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Alert, CircularProgress, Skeleton } from '@mui/material';
+import {
+    Alert,
+    Autocomplete,
+    CircularProgress,
+    FormControl,
+    FormHelperText,
+    InputLabel,
+    MenuItem,
+    Select,
+    Skeleton,
+    TextField,
+} from '@mui/material';
 import storageService from '~/components/StorageService/storageService';
+import AIResumeAPI from '~/API/AIResumeAPI';
+import { Document, Packer, Paragraph, TextRun } from 'docx';
+import { saveAs } from 'file-saver';
 
 const defaultTheme = createTheme();
 
-export default function AIResumeChecker() {
+export default function AICoverLetter() {
     const [uploading, setUploading] = useState(false); // State to manage upload status'
     const [aiSuggestionsData, setAiSuggestionsData] = useState(null);
     const [formSuggestLoading, setFormSuggestLoading] = useState(false); // State to manage upload status'
-    const [userInfo, setUserInfo] = useState(storageService.getItem('userInfo') || null);
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [company, setCompany] = useState('');
+    const [position, setPosition] = useState('');
+    const [language, setLanguage] = useState('English');
+    const [exp, setExp] = useState('None');
     const [showAlertError, setShowAlertError] = useState(false);
+
+    const [userInfo, setUserInfo] = useState(storageService.getItem('userInfo') || null);
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -38,62 +58,63 @@ export default function AIResumeChecker() {
         fetchUser();
     }, []);
 
-    // Function to call API and upload the file
-    const uploadFile = async (file) => {
-        setUploading(true); // Show a loading state when the upload starts
-        setFormSuggestLoading(true);
+    const navigate = useNavigate();
 
-        if (!userInfo) {
-            setShowAlertError(true); // Show error alert
-            setTimeout(() => setShowAlertError(false), 5000); // Hide
-            setUploading(false); // Reset the loading state
-            setFormSuggestLoading(false);
-
-            return;
-        }
-
-        if (userInfo?.remainReviewCVTimes <= 0) {
-            setShowAlertError(true); // Show error alert
-            setTimeout(() => setShowAlertError(false), 5000); // Hide
-            setUploading(false); // Reset the loading state
-            setFormSuggestLoading(false);
-
-            return;
-        }
-
-        // Prepare form data
-        const formData = new FormData();
-        formData.append('file', file);
-        formData.append('userId', userInfo?.id);
-
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const userId = userInfo?.id;
         try {
-            const response = await axios.post('https://orca-app-7tb86.ondigitalocean.app/api/v1/coze/file', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-            });
-            console.log('File uploaded successfully:', response.data);
-            if (response.data) {
+            if (!userId || !name || !email || !phone || !company || !position) {
+                setShowAlertError(true);
+                setTimeout(() => setShowAlertError(false), 5000); // Hide alert after 5s
+                return;
+            }
+
+            const data = {
+                userId: userId,
+                name: name,
+                email: email,
+                phone: phone,
+                company: company,
+                position: position,
+                language: language,
+                experience: exp,
+            };
+            setFormSuggestLoading(true);
+            const coverLetter = await AIResumeAPI.getCoverLetter(data);
+            console.log(coverLetter);
+            if (coverLetter.data) {
                 setFormSuggestLoading(false);
             }
-            setAiSuggestionsData(response.data);
+            setAiSuggestionsData(coverLetter);
+            console.log('cv letter: ', coverLetter);
         } catch (error) {
-            console.error('Error uploading file:', error);
+            console.error('Login error:', error);
             setShowAlertError(true); // Show error alert
             setTimeout(() => setShowAlertError(false), 5000); // Hide
-        } finally {
-            setUploading(false); // Reset the loading state
         }
     };
 
-    const navigate = useNavigate();
+    const handleDownload = async () => {
+        // Create a new Document with a single section
+        const doc = new Document({
+            sections: [
+                {
+                    children: aiSuggestionsData.data.map(
+                        (line) =>
+                            new Paragraph({
+                                children: [new TextRun(line)],
+                            }),
+                    ),
+                },
+            ],
+        });
 
-    // Handle file change and call upload function immediately
-    const handleFileChange = (e) => {
-        const selectedFile = e.target.files[0];
-        if (selectedFile) {
-            uploadFile(selectedFile); // Upload the file once it's selected
-        }
+        // Generate the document into a Blob (binary large object)
+        const blob = await Packer.toBlob(doc);
+
+        // Use FileSaver to trigger download of the .docx file
+        saveAs(blob, 'coverletter.docx');
     };
     return (
         <ThemeProvider theme={defaultTheme}>
@@ -148,7 +169,7 @@ export default function AIResumeChecker() {
                                     padding: '0 10%',
                                 }}
                             >
-                                AI RÉSUME CHECKER
+                                AI COVER LETTER SUPPORT
                             </Typography>
                             <Typography
                                 sx={{ textAlign: 'center', fontSize: '24px', width: '100%', padding: '3% 20%' }}
@@ -420,13 +441,6 @@ export default function AIResumeChecker() {
                                 // alignItems: 'center',
                             }}
                         >
-                            {showAlertError ? (
-                                <Alert width="50%" variant="filled" severity="error">
-                                    Your using time is end or Required logged in
-                                </Alert>
-                            ) : (
-                                <></>
-                            )}
                             <Typography
                                 component="h1"
                                 variant="h4"
@@ -438,10 +452,10 @@ export default function AIResumeChecker() {
                                     padding: '0 8%',
                                 }}
                             >
-                                Get your resume check now!
+                                Fill the form and get cover letter suggestions
                             </Typography>
                             <Typography sx={{ textAlign: 'center', fontSize: '24px', width: '100%', padding: '0 8%' }}>
-                                Upload your resume and you’ll get a personalized email with an actionable tasklist.{' '}
+                                Enter the required information and get your cover letter
                             </Typography>
                             <Box
                                 sx={{
@@ -454,77 +468,162 @@ export default function AIResumeChecker() {
                             >
                                 <Box
                                     sx={{
-                                        backgroundColor: '#051D40',
-                                        width: '40%',
-                                        height: '300px',
+                                        backgroundColor: 'rgba(255, 255, 255, 0.7)',
+                                        width: '80%',
+                                        height: '55x0px',
                                         borderRadius: '20px',
                                         padding: '35px',
                                         textAlign: 'center',
                                     }}
                                 >
-                                    <Typography
-                                        component="h1"
-                                        variant="h4"
-                                        sx={{ fontWeight: '700', fontSize: '42px', color: 'white', marginTop: '20px' }}
+                                    {showAlertError ? (
+                                        <Alert width="50%" variant="filled" severity="error">
+                                            Required logged in and fill all fields
+                                        </Alert>
+                                    ) : (
+                                        <></>
+                                    )}
+                                    <Box
+                                        sx={{
+                                            display: 'flex',
+                                            justifyContent: 'left',
+                                            alignItems: 'center',
+                                            gap: 2,
+                                        }}
                                     >
-                                        <FontAwesomeIcon icon={faUpload} />
-                                        {/* UPLOAD */}
-                                    </Typography>
+                                        <TextField
+                                            margin="normal"
+                                            required
+                                            fullWidth
+                                            id="name"
+                                            label="Full Name"
+                                            name="name"
+                                            autoComplete="name"
+                                            sx={{ flex: 1 }}
+                                            onChange={(e) => setName(e.target.value)}
+                                        />
+                                        <TextField
+                                            margin="normal"
+                                            required
+                                            fullWidth
+                                            id="email"
+                                            label="Mail"
+                                            name="email"
+                                            autoComplete="email"
+                                            sx={{ flex: 1 }}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                        />
+                                    </Box>
+                                    <Box
+                                        sx={{
+                                            display: 'flex',
+                                            justifyContent: 'left',
+                                            alignItems: 'center',
+                                            gap: 2,
+                                        }}
+                                    >
+                                        <TextField
+                                            margin="normal"
+                                            required
+                                            fullWidth
+                                            id="phone"
+                                            label="Phone Number"
+                                            name="phone"
+                                            autoComplete="phone"
+                                            sx={{ flex: 1 }}
+                                            onChange={(e) => setPhone(e.target.value)}
+                                        />
+                                        <TextField
+                                            margin="normal"
+                                            required
+                                            fullWidth
+                                            id="company"
+                                            label="Target Company"
+                                            name="company"
+                                            autoComplete="company"
+                                            sx={{ flex: 1 }}
+                                            onChange={(e) => setCompany(e.target.value)}
+                                        />
+                                    </Box>
+                                    <Box
+                                        sx={{
+                                            display: 'flex',
+                                            justifyContent: 'left',
+                                            alignItems: 'center',
+                                            gap: 2,
+                                        }}
+                                    >
+                                        <TextField
+                                            margin="normal"
+                                            required
+                                            fullWidth
+                                            id="position"
+                                            label="Position Title"
+                                            name="position"
+                                            autoComplete="position"
+                                            sx={{ flex: 1 }}
+                                            onChange={(e) => setPosition(e.target.value)}
+                                        />
+                                    </Box>
+                                    <Box
+                                        sx={{
+                                            display: 'flex',
+                                            justifyContent: 'left',
+                                            alignItems: 'center',
+                                            gap: 2,
+                                            mt: 2,
+                                        }}
+                                    >
+                                        <FormControl sx={{ flex: 1, borderRadius: '25px' }}>
+                                            <InputLabel id="demo-simple-select-label">Language</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-label"
+                                                id="demo-simple-select"
+                                                value={language}
+                                                label="Language"
+                                                onChange={(event) => setLanguage(event.target.value)}
+                                            >
+                                                <MenuItem value="tiếng anh">English</MenuItem>
+                                                <MenuItem value="tiếng việt">Vietnamese</MenuItem>
+                                            </Select>
+                                            <FormHelperText>Default is English</FormHelperText>
+                                        </FormControl>
+                                        <FormControl sx={{ flex: 1, borderRadius: '25px' }}>
+                                            <InputLabel id="demo-simple-select-2">Experience</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-2"
+                                                id="demo-simple-select-2"
+                                                value={exp}
+                                                label="Experience"
+                                                onChange={(event) => setExp(event.target.value)}
+                                            >
+                                                <MenuItem value="không có">None</MenuItem>
+                                                <MenuItem value="có">Experienced</MenuItem>
+                                            </Select>
+                                            <FormHelperText>Default is None</FormHelperText>
+                                        </FormControl>
+                                    </Box>
 
                                     <Button
-                                        component="label"
+                                        type="submit"
                                         fullWidth
                                         variant="contained"
-                                        disabled={uploading} // Disable the button when uploading
                                         sx={{
-                                            mt: 2,
-                                            bgcolor: '#051D40', // Change color when uploading
+                                            mt: 3,
+                                            mb: 2,
+                                            bgcolor: '#051D40',
                                             borderRadius: '24px',
                                             padding: '12px 0',
                                             fontSize: '16px',
                                             ':hover': {
-                                                bgcolor: '#02F18D',
-                                                color: '#051D40',
+                                                bgcolor: '#051D40',
+                                                opacity: '0.8',
                                             },
-                                            border: '1px solid #02F18D',
-                                            color: 'white',
                                         }}
+                                        onClick={handleSubmit}
                                     >
-                                        {uploading ? <CircularProgress /> : 'Upload your resume'}
-                                        <input
-                                            type="file"
-                                            style={{ display: 'none' }}
-                                            onChange={handleFileChange} // Call API immediately after file selection
-                                        />
+                                        {formSuggestLoading ? <CircularProgress /> : 'Get Your Cover Letter'}
                                     </Button>
-                                    <Typography
-                                        component="h1"
-                                        variant="h4"
-                                        sx={{
-                                            fontWeight: '300',
-                                            fontSize: '18px',
-                                            color: '#ffffff',
-                                            marginTop: '20px',
-                                        }}
-                                    >
-                                        Drop your resume here or choose a file. PDF only. Max 2MB file size
-                                    </Typography>
-                                    {userInfo ? (
-                                        <Typography
-                                            component="h1"
-                                            variant="h4"
-                                            sx={{
-                                                fontWeight: '300',
-                                                fontSize: '18px',
-                                                color: '#ffffff',
-                                                marginTop: '20px',
-                                            }}
-                                        >
-                                            <b>Remaining: </b> {userInfo?.remainReviewCVTimes}
-                                        </Typography>
-                                    ) : (
-                                        <></>
-                                    )}
                                 </Box>
                             </Box>
                             {formSuggestLoading ? (
@@ -547,11 +646,7 @@ export default function AIResumeChecker() {
                                     <Skeleton sx={{ bgcolor: 'grey.600', width: '70%', mt: 2 }} />
                                     <Skeleton sx={{ bgcolor: 'grey.600', width: '70%', mt: 2 }} />
                                 </Box>
-                            ) : aiSuggestionsData &&
-                              (aiSuggestionsData?.spelling ||
-                                  aiSuggestionsData?.sentences ||
-                                  aiSuggestionsData?.positions) &&
-                              userInfo?.id === aiSuggestionsData?.userId ? (
+                            ) : aiSuggestionsData && userInfo?.id === aiSuggestionsData?.userId ? (
                                 <Box
                                     sx={{
                                         display: 'flex',
@@ -582,123 +677,9 @@ export default function AIResumeChecker() {
                                                 padding: '0 8%',
                                             }}
                                         >
-                                            Our Suggestions !
+                                            Your Cover Letter!
                                         </Typography>
-                                        <Typography
-                                            component="h1"
-                                            variant="h4"
-                                            sx={{
-                                                textAlign: 'left',
-                                                fontWeight: '900',
-                                                fontSize: '36px',
-                                                color: 'white',
-                                                padding: '0 8%',
-                                                my: 2,
-                                            }}
-                                        >
-                                            * Spelling
-                                        </Typography>
-
-                                        {aiSuggestionsData?.spelling?.map((item) => (
-                                            <Box
-                                                sx={{
-                                                    padding: '0 8%',
-                                                    my: 2,
-                                                }}
-                                            >
-                                                <Typography
-                                                    component="h1"
-                                                    variant="h4"
-                                                    sx={{
-                                                        textAlign: 'left',
-                                                        fontWeight: '500',
-                                                        fontSize: '24px',
-                                                        color: 'lightcoral',
-                                                    }}
-                                                >
-                                                    Incorrect: {item.incorrect}
-                                                </Typography>
-                                                <Typography
-                                                    component="h1"
-                                                    variant="h4"
-                                                    sx={{
-                                                        textAlign: 'left',
-                                                        fontWeight: '500',
-                                                        fontSize: '24px',
-                                                        color: 'lightgreen',
-                                                    }}
-                                                >
-                                                    Correct: {item.correct}
-                                                </Typography>
-                                            </Box>
-                                        ))}
-
-                                        <Typography
-                                            component="h1"
-                                            variant="h4"
-                                            sx={{
-                                                textAlign: 'left',
-                                                fontWeight: '900',
-                                                fontSize: '36px',
-                                                color: 'white',
-                                                padding: '0 8%',
-                                                my: 2,
-                                                mt: 5,
-                                            }}
-                                        >
-                                            * Sentences
-                                        </Typography>
-
-                                        {aiSuggestionsData?.sentences?.map((item) => (
-                                            <Box
-                                                sx={{
-                                                    padding: '0 8%',
-                                                    my: 2,
-                                                }}
-                                            >
-                                                <Typography
-                                                    component="h1"
-                                                    variant="h4"
-                                                    sx={{
-                                                        textAlign: 'left',
-                                                        fontWeight: '500',
-                                                        fontSize: '24px',
-                                                        color: 'lightcoral',
-                                                    }}
-                                                >
-                                                    Original: {item.original}
-                                                </Typography>
-                                                <Typography
-                                                    component="h1"
-                                                    variant="h4"
-                                                    sx={{
-                                                        textAlign: 'left',
-                                                        fontWeight: '500',
-                                                        fontSize: '24px',
-                                                        color: 'lightgreen',
-                                                    }}
-                                                >
-                                                    Our advise: {item.revised}
-                                                </Typography>
-                                            </Box>
-                                        ))}
-                                        <Typography
-                                            component="h1"
-                                            variant="h4"
-                                            sx={{
-                                                textAlign: 'left',
-                                                fontWeight: '900',
-                                                fontSize: '36px',
-                                                color: 'white',
-                                                padding: '0 8%',
-                                                my: 2,
-                                                mt: 5,
-                                            }}
-                                        >
-                                            * Suggestions
-                                        </Typography>
-
-                                        {aiSuggestionsData?.positions?.map((item) => (
+                                        {aiSuggestionsData?.data?.map((item) => (
                                             <Box
                                                 sx={{
                                                     padding: '0 8%',
@@ -713,13 +694,30 @@ export default function AIResumeChecker() {
                                                         fontWeight: '500',
                                                         fontSize: '24px',
                                                         color: 'white',
-                                                        mt: 5,
                                                     }}
                                                 >
-                                                    - {item}
+                                                    {item}
                                                 </Typography>
                                             </Box>
                                         ))}
+                                        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                                            <Button
+                                                type="submit"
+                                                variant="contained"
+                                                onClick={handleDownload}
+                                                sx={{
+                                                    mt: 2,
+                                                    bgcolor: '#02F18D',
+                                                    borderRadius: '24px',
+                                                    padding: '12px 0',
+                                                    fontSize: '16px',
+                                                    maxHeight: '54px',
+                                                    width: '30%',
+                                                }}
+                                            >
+                                                Download as .DOCX
+                                            </Button>
+                                        </Box>
                                     </Box>
                                 </Box>
                             ) : (

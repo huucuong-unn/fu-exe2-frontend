@@ -16,6 +16,10 @@ const AIResumeAPI = {
         const authorizedConfig = this.addAuthorizationHeader({}, includeAuthorization);
         return axiosClient.get(url, authorizedConfig);
     },
+    getCoverLetter(data) {
+        const url = `v1/coze/cover-letter`;
+        return axiosClient.post(url, data);
+    },
 };
 
 export default AIResumeAPI;

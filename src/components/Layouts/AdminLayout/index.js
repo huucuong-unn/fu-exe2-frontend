@@ -1,18 +1,16 @@
-import * as React from 'react';
-import { styled, createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
+import { createTheme, styled, ThemeProvider, useTheme } from '@mui/material/styles';
 
-import { CssBaseline, Box, Toolbar, List, Typography, Divider, Badge, IconButton, Menu, MenuItem } from '@mui/material';
+import { Box, Divider, IconButton, List, Menu, MenuItem, Toolbar, Typography } from '@mui/material';
 
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import Logout from '@mui/icons-material/Logout';
+import MenuIcon from '@mui/icons-material/Menu';
 import MuiAppBar from '@mui/material/AppBar';
 import MuiDrawer from '@mui/material/Drawer';
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import Logout from '@mui/icons-material/Logout';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import { useNavigate } from 'react-router-dom';
 
-import { MainListItems, SecondaryListItems } from '~/components/listItems';
+import { MainListItems } from '~/components/listItems';
 
 import { useState } from 'react';
 
@@ -148,7 +146,7 @@ export function Sidebar() {
         localStorage.removeItem('userInfo');
 
         // Redirect to the sign-up page
-        navigate('/admin/sign-in');
+        navigate('/admin/login');
     };
     const [open, setOpen] = useState(true);
     const theme = useTheme();
@@ -167,11 +165,7 @@ export function Sidebar() {
                     px: [1],
                 }}
             >
-                <Box sx={{ flexGrow: 1 }}>
-                    <Typography variant="h6" sx={{ textAlign: 'center' }}>
-                        Hi Admin
-                    </Typography>
-                </Box>
+                <Box sx={{ flexGrow: 1 }}></Box>
                 <IconButton onClick={toggleDrawer}>
                     <ChevronLeftIcon />
                 </IconButton>
@@ -196,8 +190,8 @@ export default function AdminLayout({ children }) {
     return (
         <ThemeProvider theme={defaultTheme}>
             <Box sx={{ display: 'flex' }}>
-                <CssBaseline />
-                <NavbarAdmin />
+                {/* <CssBaseline /> */}
+                {/* <NavbarAdmin /> */}
                 <Sidebar />
                 <Box
                     component="main"
@@ -207,10 +201,8 @@ export default function AdminLayout({ children }) {
                         flexGrow: 1,
                         height: '100vh',
                         overflow: 'auto',
-                        padding: theme.spacing(3),
                     }}
                 >
-                    <Toolbar />
                     {children}
                 </Box>
             </Box>

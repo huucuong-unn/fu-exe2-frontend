@@ -5,14 +5,28 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import aboutUsBackground from '~/assets/images/aboutus.webp';
-import techcombank from '~/assets/images/techcombank.png';
 import blogBackground from '~/assets/images/blog.webp';
 import { Button } from '@mui/material';
+import { useEffect, useState } from 'react';
+import BlogAPI from '~/API/BlogAPI';
 
 const defaultTheme = createTheme();
 
 export default function Blog() {
     const navigate = useNavigate();
+    const [blogs, setBlogs] = useState([]);
+    useEffect(() => {
+        const fetchBlogs = async () => {
+            try {
+                const response = await BlogAPI.getBlogs();
+                setBlogs(response);
+                console.log(response);
+            } catch (error) {
+                console.log('Failed to fetch blogs: ', error);
+            }
+        };
+        fetchBlogs();
+    }, []);
 
     return (
         <ThemeProvider theme={defaultTheme}>
@@ -144,171 +158,63 @@ export default function Blog() {
                                         marginTop: '30px',
                                     }}
                                 >
-                                    <Grid
-                                        item
-                                        xs={12}
-                                        sm={12}
-                                        md={12}
-                                        component={Paper}
-                                        elevation={6}
-                                        square
-                                        sx={{
-                                            borderRadius: '35px',
-                                            backgroundColor: '#051D40',
-                                            height: '370px',
-                                            display: 'flex',
-                                            padding: '20px  ',
-                                            gap: '25px',
-                                            width: '30%',
-                                            border: '1px solid #02F18D',
-                                        }}
-                                    >
-                                        <Box>
-                                            <img
-                                                src={techcombank}
-                                                alt="techcombank"
-                                                style={{ width: '187px', height: '157px' }}
-                                            />
-                                            <Typography
-                                                component="h1"
-                                                variant="h4"
-                                                sx={{ fontWeight: '900', fontSize: '24px', color: 'white', mt: 3 }}
-                                            >
-                                                Techcombank Future Gen 2025 - Develop a Future You
-                                            </Typography>
-                                            <Button
-                                                type="submit"
-                                                fullWidth
-                                                variant="contained"
-                                                // onClick={handleGoCheckoutGoldenTee}
-                                                sx={{
-                                                    mt: 2,
-                                                    bgcolor: '#051D40',
-                                                    borderRadius: '24px',
-                                                    padding: '12px 0',
-                                                    fontSize: '16px',
-                                                    ':hover': {
-                                                        bgcolor: '#02F18D',
-                                                        color: '#051D40',
-                                                    },
-                                                    border: '1px solid #02F18D',
-                                                    maxHeight: '54px',
-                                                }}
-                                            >
-                                                Explore
-                                            </Button>
-                                        </Box>
-                                    </Grid>
-                                    <Grid
-                                        item
-                                        xs={12}
-                                        sm={12}
-                                        md={12}
-                                        component={Paper}
-                                        elevation={6}
-                                        square
-                                        sx={{
-                                            borderRadius: '35px',
-                                            backgroundColor: '#051D40',
-                                            height: '370px',
-                                            display: 'flex',
-                                            padding: '20px  ',
-                                            gap: '25px',
-                                            width: '30%',
-                                            border: '1px solid #02F18D',
-                                        }}
-                                    >
-                                        <Box>
-                                            <img
-                                                src={techcombank}
-                                                alt="techcombank"
-                                                style={{ width: '187px', height: '157px' }}
-                                            />
-                                            <Typography
-                                                component="h1"
-                                                variant="h4"
-                                                sx={{ fontWeight: '900', fontSize: '24px', color: 'white', mt: 3 }}
-                                            >
-                                                Techcombank Future Gen 2025 - Develop a Future You
-                                            </Typography>
-                                            <Button
-                                                type="submit"
-                                                fullWidth
-                                                variant="contained"
-                                                // onClick={handleGoCheckoutGoldenTee}
-                                                sx={{
-                                                    mt: 2,
-                                                    bgcolor: '#051D40',
-                                                    borderRadius: '24px',
-                                                    padding: '12px 0',
-                                                    fontSize: '16px',
-                                                    ':hover': {
-                                                        bgcolor: '#02F18D',
-                                                        color: '#051D40',
-                                                    },
-                                                    border: '1px solid #02F18D',
-                                                    maxHeight: '54px',
-                                                }}
-                                            >
-                                                Explore
-                                            </Button>
-                                        </Box>
-                                    </Grid>
-                                    <Grid
-                                        item
-                                        xs={12}
-                                        sm={12}
-                                        md={12}
-                                        component={Paper}
-                                        elevation={6}
-                                        square
-                                        sx={{
-                                            borderRadius: '35px',
-                                            backgroundColor: '#051D40',
-                                            height: '370px',
-                                            display: 'flex',
-                                            padding: '20px  ',
-                                            gap: '25px',
-                                            width: '30%',
-                                            border: '1px solid #02F18D',
-                                        }}
-                                    >
-                                        <Box>
-                                            <img
-                                                src={techcombank}
-                                                alt="techcombank"
-                                                style={{ width: '187px', height: '157px' }}
-                                            />
-                                            <Typography
-                                                component="h1"
-                                                variant="h4"
-                                                sx={{ fontWeight: '900', fontSize: '24px', color: 'white', mt: 3 }}
-                                            >
-                                                Techcombank Future Gen 2025 - Develop a Future You
-                                            </Typography>
-                                            <Button
-                                                type="submit"
-                                                fullWidth
-                                                variant="contained"
-                                                // onClick={handleGoCheckoutGoldenTee}
-                                                sx={{
-                                                    mt: 2,
-                                                    bgcolor: '#051D40',
-                                                    borderRadius: '24px',
-                                                    padding: '12px 0',
-                                                    fontSize: '16px',
-                                                    ':hover': {
-                                                        bgcolor: '#02F18D',
-                                                        color: '#051D40',
-                                                    },
-                                                    border: '1px solid #02F18D',
-                                                    maxHeight: '54px',
-                                                }}
-                                            >
-                                                Explore
-                                            </Button>
-                                        </Box>
-                                    </Grid>
+                                    {blogs?.map((blog) => (
+                                        <Grid
+                                            item
+                                            xs={12}
+                                            sm={12}
+                                            md={12}
+                                            component={Paper}
+                                            elevation={6}
+                                            square
+                                            sx={{
+                                                borderRadius: '35px',
+                                                backgroundColor: '#051D40',
+                                                height: '370px',
+                                                display: 'flex',
+                                                padding: '20px  ',
+                                                gap: '25px',
+                                                width: '30%',
+                                                border: '1px solid #02F18D',
+                                            }}
+                                        >
+                                            <Box>
+                                                <img
+                                                    src={blog?.picture}
+                                                    alt="techcombank"
+                                                    style={{ width: '187px', height: '157px' }}
+                                                />
+                                                <Typography
+                                                    component="h1"
+                                                    variant="h4"
+                                                    sx={{ fontWeight: '900', fontSize: '24px', color: 'white', mt: 3 }}
+                                                >
+                                                    {blog?.titleName}
+                                                </Typography>
+                                                <Button
+                                                    type="submit"
+                                                    fullWidth
+                                                    variant="contained"
+                                                    onClick={() => navigate(`/blog/${blog?.id}`)}
+                                                    sx={{
+                                                        mt: 2,
+                                                        bgcolor: '#051D40',
+                                                        borderRadius: '24px',
+                                                        padding: '12px 0',
+                                                        fontSize: '16px',
+                                                        ':hover': {
+                                                            bgcolor: '#02F18D',
+                                                            color: '#051D40',
+                                                        },
+                                                        border: '1px solid #02F18D',
+                                                        maxHeight: '54px',
+                                                    }}
+                                                >
+                                                    Explore
+                                                </Button>
+                                            </Box>
+                                        </Grid>
+                                    ))}
                                 </Grid>
                             </Grid>
                         </Box>

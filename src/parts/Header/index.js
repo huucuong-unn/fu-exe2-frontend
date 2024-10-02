@@ -9,7 +9,8 @@ import { Logout } from '@mui/icons-material';
 const NAV_ITEMS = [
     // { name: 'Internship Program', path: '/internship-program' },
     { name: 'AI Resume Checker', path: '/ai-resume' },
-    { name: 'AI Subscription Plans  🎉', path: '/offer' },
+    { name: 'AI Cover Letter', path: '/ai-coverletter' },
+    { name: 'Subscription Plans  🎉', path: '/offer' },
     { name: 'Blog', path: '/blog' },
     { name: 'About Us', path: '/about-us' },
 ];
@@ -172,7 +173,7 @@ function Header() {
                         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                     >
-                        <MenuItem onClick={handleCloseProfile}>
+                        <MenuItem onClick={() => navigate(`/profile/${userInfo?.id}`)}>
                             {userInfo?.pictureUrl ? (
                                 <Avatar src={userInfo?.pictureUrl} />
                             ) : (

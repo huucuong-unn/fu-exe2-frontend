@@ -8,7 +8,6 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PeopleIcon from '@mui/icons-material/People';
 import BarChartIcon from '@mui/icons-material/BarChart';
-import LayersIcon from '@mui/icons-material/Layers';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 
 export const MainListItems = () => {
@@ -27,35 +26,23 @@ export const MainListItems = () => {
                 </ListItemIcon>
                 <ListItemText primary="Dashboard" />
             </ListItemButton>
-            <ListItemButton onClick={() => handleNavigate('/admin/orders')}>
+            <ListItemButton onClick={() => handleNavigate('/admin/payment-management')}>
                 <ListItemIcon>
                     <ShoppingCartIcon />
                 </ListItemIcon>
-                <ListItemText primary="Orders" />
+                <ListItemText primary="Payment" />
             </ListItemButton>
-            <ListItemButton onClick={() => handleNavigate('/admin/mentor')}>
+            <ListItemButton onClick={() => handleNavigate('/admin/account-management')}>
                 <ListItemIcon>
                     <PeopleIcon />
                 </ListItemIcon>
-                <ListItemText primary="Mentor" />
+                <ListItemText primary="Accounts" />
             </ListItemButton>
-            <ListItemButton onClick={() => handleNavigate('/admin/mentee')}>
+            <ListItemButton onClick={() => handleNavigate('/admin/blog-management')}>
                 <ListItemIcon>
                     <BarChartIcon />
                 </ListItemIcon>
-                <ListItemText primary="Mentee" />
-            </ListItemButton>
-            <ListItemButton onClick={() => handleNavigate('/admin/campaign')}>
-                <ListItemIcon>
-                    <LayersIcon />
-                </ListItemIcon>
-                <ListItemText primary="Campaign" />
-            </ListItemButton>
-            <ListItemButton onClick={() => handleNavigate('/admin/account')}>
-                <ListItemIcon>
-                    <LayersIcon />
-                </ListItemIcon>
-                <ListItemText primary="Account" />
+                <ListItemText primary="Blogs" />
             </ListItemButton>
         </React.Fragment>
     );

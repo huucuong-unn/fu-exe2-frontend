@@ -8,7 +8,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import blogBackground from '~/assets/images/blog.webp';
 import aboutUsBackground from '~/assets/images/aboutus.webp';
-import techcombank from '~/assets/images/techcombank.png';
 import techcombanklogo from '~/assets/images/techcombanklogo.png';
 import fptlogo from '~/assets/images/fptlogo.png';
 import vnglogo from '~/assets/images/vnglogo.png';
@@ -16,6 +15,7 @@ import microsoftlogo from '~/assets/images/microsoftlogo.png';
 import PayosAPI from '~/API/PayosAPI';
 import storageService from '~/components/StorageService/storageService';
 import { useState } from 'react';
+import aboutusside from '~/assets/images/aboutusside.webp';
 
 const defaultTheme = createTheme();
 
@@ -186,7 +186,7 @@ export default function AboutUs() {
                 </Grid>
 
                 {/* Advantage */}
-                <Grid
+                {/* <Grid
                     container
                     component="main"
                     item
@@ -680,7 +680,7 @@ export default function AboutUs() {
                             </Grid>
                         </Box>
                     </Grid>
-                </Grid>
+                </Grid> */}
 
                 {/* Advantage */}
                 <Grid
@@ -755,25 +755,17 @@ export default function AboutUs() {
                                 display: 'flex',
                                 flexDirection: 'column',
                                 width: '45%',
+                                backgroundRepeat: 'no-repeat',
+                                backgroundColor: (t) =>
+                                    t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center',
+                                backgroundImage: `url(${aboutusside})`,
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                height: '70vh',
                             }}
-                        >
-                            <Typography
-                                component="h1"
-                                variant="h4"
-                                sx={{
-                                    textAlign: 'left',
-                                    fontWeight: '900',
-                                    fontSize: '54px',
-                                    color: '#051D40',
-                                }}
-                            >
-                                To shape success, keep learning the ropes
-                            </Typography>
-                            <Typography sx={{ textAlign: 'center', fontSize: '24px', width: '100%', padding: '0 8%' }}>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s{' '}
-                            </Typography>
-                        </Box>
+                        ></Box>
                     </Grid>
                 </Grid>
 

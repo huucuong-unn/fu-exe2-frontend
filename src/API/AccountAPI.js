@@ -93,6 +93,10 @@ const AccountAPI = {
         const authorizedConfig = this.addAuthorizationHeader(includeAuthorization);
         return axiosClient.get(url, authorizedConfig);
     },
+    getAllAccount() {
+        const url = `/v1/user`;
+        return axiosClient.get(url);
+    },
 };
 
 export default AccountAPI;

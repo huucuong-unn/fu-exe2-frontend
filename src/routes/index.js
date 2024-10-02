@@ -11,7 +11,6 @@ import LandingPage from '~/pages/LandingPage';
 import { MentorProfile } from '~/pages/MentorProfile';
 import SignInSide from '~/pages/SignInSide';
 import SignUp from '~/pages/SignUp';
-import { UserProfile } from '~/pages/UserProfile';
 import UserProfilesTest from '~/pages/SignUp/testUploadImage';
 import { Application } from '~/pages/Application';
 import CreateMentorProfile from '~/pages/CreateMentorProfile';
@@ -48,9 +47,15 @@ import AboutUs from '~/pages/new/AboutUs';
 import AIResumeChecker from '~/pages/new/AIResumeChecker';
 import Blog from '~/pages/new/Blog';
 import InternshipProgram from '~/pages/new/InternshipProgram';
-import InternshipProgramDetail from '~/pages/new/InternshipProgramDetail';
+import InternshipProgramDetail from '~/pages/new/BlogDetail';
 import PaymentSuccess from '~/pages/new/PaymentSuccess';
 import PaymentFailed from '~/pages/new/PaymentFailed';
+import AICoverLetter from '~/pages/new/AICoverLetter';
+import BlogDetail from '~/pages/new/BlogDetail';
+import UserProfile from '~/pages/new/UserProfile';
+import BlogsManagement from '~/pages/new/BlogsManagement';
+import AccountsManagement from '~/pages/new/AccountsManagement';
+import PaymentsManagement from '~/pages/new/PaymentsManagement';
 // import DefaultLayout from '~/components/Layouts/DefaultLayout';
 
 const publicRoutes = [
@@ -101,11 +106,16 @@ const publicRoutes = [
     { path: '/offer', component: FindYourPlan, layout: FullLayout },
     { path: '/about-us', component: AboutUs, layout: FullLayout },
     { path: '/ai-resume', component: AIResumeChecker, layout: FullLayout },
+    { path: '/ai-coverletter', component: AICoverLetter, layout: FullLayout },
     { path: '/blog', component: Blog, layout: FullLayout },
     { path: '/internship-program', component: InternshipProgram, layout: FullLayout },
-    { path: '/internship-program-detail', component: InternshipProgramDetail, layout: FullLayout },
+    { path: '/blog/:blogId', component: BlogDetail, layout: FullLayout },
     { path: '/payment/success', component: PaymentSuccess, layout: null },
     { path: '/payment/failed', component: PaymentFailed, layout: null },
+    { path: '/profile/:userId', component: UserProfile, layout: FullLayout },
+    { path: '/admin/blog-management', component: BlogsManagement, layout: AdminLayout },
+    { path: '/admin/account-management', component: AccountsManagement, layout: AdminLayout },
+    { path: '/admin/payment-management', component: PaymentsManagement, layout: AdminLayout },
 
     { path: '/test/footer', component: FooterHome, layout: null },
     { path: '/test/header', component: Header, layout: null },
