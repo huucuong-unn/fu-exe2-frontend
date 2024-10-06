@@ -24,44 +24,11 @@ import ResetPassword from '~/pages/new/ResetPassword';
 import UserProfile from '~/pages/new/UserProfile';
 import FooterHome from '~/parts/FooterHome';
 import Header from '~/parts/Header';
+import NotAuthorized from '~/pages/NotAuthorized';
+import DashboardManagement from '~/pages/new/DashboardManagement';
 // import DefaultLayout from '~/components/Layouts/DefaultLayout';
 
 const publicRoutes = [
-    // { path: '/following', component: Following },
-    // { path: '/mentors', component: Mentors },
-    // { path: '/mentor/:mentorId', component: MentorProfile },
-    // { path: '/user/profile', component: UserProfile },
-    // { path: '/user/history', component: StudentHistory },
-
-    // //Company
-    // { path: '/company', component: Companies },
-
-    // { path: '/company/:companyId', component: CompanyDetails },
-    // { path: '/company/sign-up', component: SignUpForCompany, layout: null },
-
-    // //Auth
-    // { path: '/sign-in', component: SignInSide, layout: null },
-    // { path: '/admin/sign-in', component: AdminSignIn, layout: null },
-    // { path: '/sign-up', component: SignUp, layout: null },
-    // // { path: '/forgot-password', component: ForgotPassword, layout: null },
-
-    // { path: '/checkout', component: Checkout, layout: null },
-
-    // //Mentor
-    // { path: '/campaigns', component: MentorLandingPage, layout: LayoutWithFooter },
-
-    // // Campaign detail route
-    // { path: '/campaigns/:campaignId', component: CampaignDetail, layout: LayoutWithFooter },
-    // //Mentor
-    // { path: '/mentor-manage-profile', component: MentorManageProfile, layout: LayoutWithFooter },
-
-    // //Payment
-    // { path: '/payment', component: Payment },
-    // { path: '/admin/account', component: AdAccount, layout: AdminLayout },
-
-    // { path: '/NotAuthorized', component: NotAuthorized, layout: null },
-    // { path: '/test', component: UserProfilesTest, layout: null },
-
     //new
     { path: '/login', component: LoginUser, layout: null },
     { path: '/admin/login', component: LoginAdmin, layout: null },
@@ -82,33 +49,18 @@ const publicRoutes = [
     { path: '/payment/failed', component: PaymentFailed, layout: null },
     { path: '/profile/:userId', component: UserProfile, layout: FullLayout },
 
+    { path: '/NotAuthorized', component: NotAuthorized, layout: null },
+
     { path: '/test/footer', component: FooterHome, layout: null },
     { path: '/test/header', component: Header, layout: null },
 ];
 
 const adminRoutes = [
-    //admin
-    // { path: '/admin/mentee', component: AdMentee, layout: AdminLayout },
-    // { path: '/admin/mentor', component: AdMentor, layout: AdminLayout },
-    // { path: '/admin/campaign', component: AdCampaign, layout: AdminLayout },
-    // { path: '/admin/orders', component: AdOrder, layout: AdminLayout },
-    // { path: '/admin/dashboard', component: AdDashboard, layout: AdminLayout },
     { path: '/admin/blog-management', component: BlogsManagement, layout: AdminLayout },
     { path: '/admin/account-management', component: AccountsManagement, layout: AdminLayout },
     { path: '/admin/payment-management', component: PaymentsManagement, layout: AdminLayout },
+    { path: '/admin/dashboard', component: DashboardManagement, layout: AdminLayout },
 ];
-
-// const companyRoutes = [
-//     //company
-//     { path: '/company/campaign-history', component: CompaniesCampaignHistory },
-//     { path: '/company/campaign-details/:campaignId', component: CompaniesCampaignDetail },
-//     { path: '/company/create-mentor-profile', component: CreateMentorProfile },
-//     { path: '/company/create-mentor-History', component: MentorHistoryForCompany },
-// ];
-
-// const studentRoutes = [{ path: '/user/apply', component: Application }];
-
-// const mentorRoutes = [{ path: '/campaigns', component: MentorLandingPage, layout: LayoutWithFooter }];
 
 const privateRoutes = [];
 

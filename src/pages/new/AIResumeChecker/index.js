@@ -172,7 +172,7 @@ export default function AIResumeChecker() {
                                     },
                                 }}
                             >
-                                Explore Our Plans
+                                Khám phá các gói đăng ký !
                             </Button>
                         </Box>
                     </Grid>
@@ -227,7 +227,7 @@ export default function AIResumeChecker() {
                                     padding: '0 8%',
                                 }}
                             >
-                                Featured Benefit
+                                Lợi ích
                             </Typography>
                             <Typography
                                 sx={{
@@ -238,7 +238,7 @@ export default function AIResumeChecker() {
                                     color: '#ccc',
                                 }}
                             >
-                                The most professional Internship Program for you
+                                Các lợi ích mà bạn sẽ nhận được khi sử dụng AI Resume Checker
                             </Typography>
                             <Box
                                 sx={{

@@ -10,9 +10,9 @@ const NAV_ITEMS = [
     // { name: 'Internship Program', path: '/internship-program' },
     { name: 'AI Resume Checker', path: '/ai-resume' },
     { name: 'AI Cover Letter', path: '/ai-coverletter' },
-    { name: 'Subscription Plans  🎉', path: '/offer' },
+    { name: 'Các gói đăng ký  🎉', path: '/offer' },
     { name: 'Blog', path: '/blog' },
-    { name: 'About Us', path: '/about-us' },
+    { name: 'Về chúng tôi', path: '/about-us' },
 ];
 
 function Header() {
@@ -194,10 +194,10 @@ function Header() {
             ) : (
                 <div style={{ display: 'flex', gap: '8px' }}>
                     <Link to="/login" className="button btn-outline">
-                        Log in
+                        Đăng nhập
                     </Link>
                     <Link to="/register" className="button btn-filled">
-                        Sign up
+                        Đăng ký
                     </Link>
                 </div>
             )}
