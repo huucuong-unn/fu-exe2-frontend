@@ -7,7 +7,7 @@ import { Avatar, Box, Divider, IconButton, ListItemIcon, Menu, MenuItem, Tooltip
 import { Logout } from '@mui/icons-material';
 
 const NAV_ITEMS = [
-    // { name: 'Internship Program', path: '/internship-program' },
+    { name: 'Trang chủ', path: '/' },
     { name: 'AI Resume Checker', path: '/ai-resume' },
     { name: 'AI Cover Letter', path: '/ai-coverletter' },
     { name: 'Các gói đăng ký  🎉', path: '/offer' },
@@ -84,7 +84,7 @@ function Header() {
             }}
         >
             <div>
-                <Link to="/home">
+                <Link to="/">
                     <img src={logo} alt="Logo" style={{ width: '120px' }} />
                 </Link>
             </div>

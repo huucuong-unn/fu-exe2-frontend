@@ -187,8 +187,8 @@ export default function LoginUser() {
                                 WELCOME BACK!
                             </Typography>
                             <Typography sx={{ textAlign: 'center', marginTop: '12px' }}>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s
+                                Hãy tiếp tục hành trình tối ưu hóa CV và thư xin việc của bạn với sự hỗ trợ từ AI. Chúng
+                                tôi luôn ở đây để giúp bạn chuẩn bị tốt nhất cho cơ hội thực tập và việc làm mơ ước
                             </Typography>
                             <Box sx={{ width: '100%', typography: 'body1', mt: 2 }}>
                                 <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
