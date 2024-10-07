@@ -82,7 +82,7 @@ export default function Homepage() {
                                 CHÀO MỪNG BẠN ĐẾN VỚI TORTEE HUB!
                             </Typography>
                             <Typography
-                                sx={{ textAlign: 'center', fontSize: '24px', width: '100%', padding: '3% 20%' }}
+                                sx={{ textAlign: 'center', fontSize: '24px', width: '100%', padding: '0 20% 10px 20%' }}
                             >
                                 Nền tảng AI giúp sinh viên và các chuyên gia trẻ tạo CV chuyên nghiệp và viết thư xin
                                 việc cá nhân hóa. TORTEE là một người bạn đồng hành đáng tin cậy, luôn sẵn sàng hỗ trợ

@@ -9,6 +9,8 @@ import BlogAPI from '~/API/BlogAPI';
 import adminLoginBackground from '~/assets/images/adminlogin.webp';
 import CustomizedTreeView from '../CustomizedTreeView';
 import ChartUserByCountry from '~/components/new/ChartUserByCountry';
+import AccountAPI from '~/API/AccountAPI';
+import PageViewsBarChart from '~/components/new/PageViewsBarChart';
 
 function Copyright(props) {
     return (
@@ -55,6 +57,21 @@ export default function DashboardManagement() {
             ],
         },
     ];
+
+    const [numberOfAccounts, setNumberOfAccounts] = useState(0);
+
+    useEffect(() => {
+        const fetchBlogs = async () => {
+            try {
+                const response = await AccountAPI.getAllAccount();
+                setNumberOfAccounts(response.length);
+                console.log(response);
+            } catch (error) {
+                console.log('Failed to fetch accounts: ', error);
+            }
+        };
+        fetchBlogs();
+    }, []);
 
     return (
         <ThemeProvider theme={defaultTheme}>
@@ -128,7 +145,7 @@ export default function DashboardManagement() {
                             >
                                 <CardHeader
                                     title={<Typography fontWeight="bold">Accounts</Typography>}
-                                    subheader="150"
+                                    subheader={numberOfAccounts}
                                 />
                                 {/* <CardContent>
                                     <Chip key={'1'} label={'Label'} sx={{ mr: 1, mb: 1 }} onClick={() => {}} />
@@ -159,10 +176,7 @@ export default function DashboardManagement() {
                                     pr: 2,
                                 }}
                             >
-                                <CardHeader
-                                    title={<Typography fontWeight="bold">Accounts</Typography>}
-                                    subheader="150"
-                                />
+                                <CardHeader title={<Typography fontWeight="bold">Revenue</Typography>} subheader="3" />
                                 {/* <CardContent>
                                     <Chip key={'1'} label={'Label'} sx={{ mr: 1, mb: 1 }} onClick={() => {}} />
                                 </CardContent> */}
@@ -192,10 +206,7 @@ export default function DashboardManagement() {
                                     pr: 2,
                                 }}
                             >
-                                <CardHeader
-                                    title={<Typography fontWeight="bold">Accounts</Typography>}
-                                    subheader="150"
-                                />
+                                <CardHeader title={<Typography fontWeight="bold">Blogs</Typography>} subheader="3" />
                             </Box>
                         </Card>
                     </Grid>
@@ -216,6 +227,9 @@ export default function DashboardManagement() {
                         <Box sx={{ width: '40%' }}>
                             <CustomizedTreeView />
                         </Box>
+                    </Grid>
+                    <Grid>
+                        <PageViewsBarChart />
                     </Grid>
                     <Copyright sx={{ my: 4 }} />
                 </Box>

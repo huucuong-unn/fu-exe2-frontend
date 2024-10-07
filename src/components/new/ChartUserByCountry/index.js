@@ -13,8 +13,6 @@ import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgr
 const data = [
     { label: 'India', value: 50000 },
     { label: 'USA', value: 35000 },
-    { label: 'Brazil', value: 10000 },
-    { label: 'Other', value: 5000 },
 ];
 
 const countries = [
@@ -27,16 +25,6 @@ const countries = [
         name: 'USA',
         value: 35,
         color: 'hsl(220, 25%, 45%)',
-    },
-    {
-        name: 'Brazil',
-        value: 10,
-        color: 'hsl(220, 25%, 30%)',
-    },
-    {
-        name: 'Other',
-        value: 5,
-        color: 'hsl(220, 25%, 20%)',
     },
 ];
 
@@ -116,7 +104,7 @@ export default function ChartUserByCountry() {
         >
             <CardContent>
                 <Typography component="h2" variant="subtitle2">
-                    Users by country
+                    Silver Plan vs Golden Plan
                 </Typography>
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
                     <PieChart

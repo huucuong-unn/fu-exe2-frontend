@@ -975,6 +975,7 @@ export default function AboutUs() {
                                         type="submit"
                                         fullWidth
                                         variant="contained"
+                                        onClick={handleGoCheckoutSilverTee}
                                         sx={{
                                             mt: 2,
                                             bgcolor: '#051D40',
@@ -989,7 +990,7 @@ export default function AboutUs() {
                                             maxHeight: '54px',
                                         }}
                                     >
-                                        {isLoadingClickSilverTee ? <CircularProgress /> : 'Gói Hạng Bạc'}
+                                        {isLoadingClickSilverTee ? <CircularProgress /> : 'Gói hạng Bạc'}
                                     </Button>
                                     <Typography
                                         component="h1"

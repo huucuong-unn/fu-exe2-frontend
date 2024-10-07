@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import blogBackground from '~/assets/images/blog.webp';
-import homepageBackground from '~/assets/images/homepage.webp';
+import aiCVBackground from '~/assets/images/aicvbackground.webp';
 import internshipProgramBackground from '~/assets/images/internshipprogram.webp';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpload } from '@fortawesome/free-solid-svg-icons';
@@ -108,7 +108,7 @@ export default function AIResumeChecker() {
                         backgroundColor: (t) => (t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900]),
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
-                        backgroundImage: `url(${homepageBackground})`,
+                        backgroundImage: `url(${aiCVBackground})`,
                         height: '200vh',
                         width: '100%',
                         display: 'flex',
@@ -143,7 +143,7 @@ export default function AIResumeChecker() {
                                 sx={{
                                     textAlign: 'center',
                                     fontWeight: '900',
-                                    fontSize: '72px',
+                                    fontSize: '92px',
                                     color: '#051D40',
                                     padding: '0 10%',
                                 }}
@@ -151,10 +151,11 @@ export default function AIResumeChecker() {
                                 AI RÉSUME CHECKER
                             </Typography>
                             <Typography
-                                sx={{ textAlign: 'center', fontSize: '24px', width: '100%', padding: '3% 20%' }}
+                                sx={{ textAlign: 'center', fontSize: '24px', width: '100%', padding: '0 20% 2% 20%' }}
                             >
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s
+                                Công cụ kiểm tra và đánh giá CV thông minh sẽ phân tích CV của bạn, đưa ra các gợi ý cải
+                                thiện dựa trên thông tin bạn cung cấp, giúp CV của bạn trở nên chuyên nghiệp và ấn tượng
+                                hơn.
                             </Typography>
                             <Button
                                 onClick={() => navigate('/offer')}
@@ -256,7 +257,7 @@ export default function AIResumeChecker() {
                                     sx={{
                                         backgroundColor: '#051D40',
                                         width: '32%',
-                                        height: '400px',
+                                        height: '450px',
                                         borderRadius: '20px',
                                         padding: '40px',
                                         textAlign: 'left',
@@ -273,30 +274,31 @@ export default function AIResumeChecker() {
                                             marginTop: '20px',
                                             borderBottom: '2px solid #02F18D',
                                             padding: '10px',
-                                        }}
-                                    >
-                                        Lợi ích #1
-                                    </Typography>
-
-                                    <Typography
-                                        component="h1"
-                                        variant="h4"
-                                        sx={{
-                                            fontWeight: '300',
-                                            fontSize: '24px',
-                                            color: '#ffffff',
-                                            textAlign: 'justify',
-                                            marginTop: '20px',
                                         }}
                                     >
                                         Nhận gợi ý chi tiết
                                     </Typography>
+
+                                    <Typography
+                                        component="h1"
+                                        variant="h4"
+                                        sx={{
+                                            fontWeight: '300',
+                                            fontSize: '24px',
+                                            color: '#ffffff',
+                                            textAlign: 'justify',
+                                            marginTop: '20px',
+                                        }}
+                                    >
+                                        Gợi ý về cách sắp xếp thông tin, làm nổi bật kỹ năng và kinh nghiệm của bạn một
+                                        cách hợp lý và chuyên nghiệp
+                                    </Typography>
                                 </Box>{' '}
                                 <Box
                                     sx={{
                                         backgroundColor: '#051D40',
                                         width: '32%',
-                                        height: '400px',
+                                        height: '450px',
                                         borderRadius: '20px',
                                         padding: '40px',
                                         textAlign: 'left',
@@ -313,30 +315,31 @@ export default function AIResumeChecker() {
                                             marginTop: '20px',
                                             borderBottom: '2px solid #02F18D',
                                             padding: '10px',
-                                        }}
-                                    >
-                                        Lợi ích #2
-                                    </Typography>
-
-                                    <Typography
-                                        component="h1"
-                                        variant="h4"
-                                        sx={{
-                                            fontWeight: '300',
-                                            fontSize: '24px',
-                                            color: '#ffffff',
-                                            textAlign: 'justify',
-                                            marginTop: '20px',
                                         }}
                                     >
                                         Tiết kiệm thời gian
                                     </Typography>
+
+                                    <Typography
+                                        component="h1"
+                                        variant="h4"
+                                        sx={{
+                                            fontWeight: '300',
+                                            fontSize: '24px',
+                                            color: '#ffffff',
+                                            textAlign: 'justify',
+                                            marginTop: '20px',
+                                        }}
+                                    >
+                                        Thay vì phải tự mình kiểm tra và chỉnh sửa CV, bạn chỉ cần vài phút để nhận được
+                                        những phản hồi chính xác từ AI
+                                    </Typography>
                                 </Box>{' '}
                                 <Box
                                     sx={{
                                         backgroundColor: '#051D40',
                                         width: '32%',
-                                        height: '400px',
+                                        height: '450px',
                                         borderRadius: '20px',
                                         padding: '40px',
                                         textAlign: 'left',
@@ -355,7 +358,7 @@ export default function AIResumeChecker() {
                                             padding: '10px',
                                         }}
                                     >
-                                        Lợi ích #3
+                                        Tối ưu hóa CV
                                     </Typography>
 
                                     <Typography
@@ -369,7 +372,8 @@ export default function AIResumeChecker() {
                                             marginTop: '20px',
                                         }}
                                     >
-                                        Tối ưu hóa CV
+                                        CV của bạn sẽ trở nên chuyên nghiệp và ấn tượng hơn, thu hút sự chú ý của nhà
+                                        tuyển dụng ngay từ cái nhìn đầu tiên
                                     </Typography>
                                 </Box>
                             </Box>

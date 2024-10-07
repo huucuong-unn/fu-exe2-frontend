@@ -132,7 +132,14 @@ export default function BlogDetail() {
                                 {blog?.titleName}
                             </Typography>
                             <Typography
-                                sx={{ textAlign: 'left', fontSize: '24px', width: '100%', padding: '0 8%', mt: 6 }}
+                                sx={{
+                                    textAlign: 'left',
+                                    fontSize: '24px',
+                                    width: '100%',
+                                    padding: '0 8%',
+                                    mt: 2,
+                                    height: '100%',
+                                }}
                             >
                                 {blog?.content}
                             </Typography>

@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import blogBackground from '~/assets/images/blog.webp';
-import homepageBackground from '~/assets/images/homepage.webp';
+import aiCoveletterBackground from '~/assets/images/coverletterbackground.webp';
 import internshipProgramBackground from '~/assets/images/internshipprogram.webp';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
@@ -129,7 +129,7 @@ export default function AICoverLetter() {
                         backgroundColor: (t) => (t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900]),
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
-                        backgroundImage: `url(${homepageBackground})`,
+                        backgroundImage: `url(${aiCoveletterBackground})`,
                         height: '200vh',
                         width: '100%',
                         display: 'flex',
@@ -164,18 +164,19 @@ export default function AICoverLetter() {
                                 sx={{
                                     textAlign: 'center',
                                     fontWeight: '900',
-                                    fontSize: '72px',
+                                    fontSize: '92px',
                                     color: '#051D40',
                                     padding: '0 10%',
                                 }}
                             >
-                                AI COVER LETTER SUPPORT
+                                AI COVER LETTER
                             </Typography>
                             <Typography
-                                sx={{ textAlign: 'center', fontSize: '24px', width: '100%', padding: '3% 20%' }}
+                                sx={{ textAlign: 'center', fontSize: '24px', width: '100%', padding: '0 20% 2% 20%' }}
                             >
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s
+                                Dựa trên thông tin từ công việc bạn ứng tuyển và hồ sơ cá nhân, TORTEE sẽ hỗ trợ bạn
+                                viết thư xin việc thật chuyên nghiệp, giúp bạn thể hiện tốt nhất bản thân trước nhà
+                                tuyển dụng
                             </Typography>
                             <Button
                                 onClick={() => navigate('/offer')}
@@ -248,7 +249,7 @@ export default function AICoverLetter() {
                                     padding: '0 8%',
                                 }}
                             >
-                                Featured Benefit
+                                Lợi ích
                             </Typography>
                             <Typography
                                 sx={{
@@ -259,7 +260,7 @@ export default function AICoverLetter() {
                                     color: '#ccc',
                                 }}
                             >
-                                The most professional Internship Program for you
+                                Các lợi ích mà bạn sẽ nhận được khi sử dụng AI Resume Checker
                             </Typography>
                             <Box
                                 sx={{
@@ -277,7 +278,7 @@ export default function AICoverLetter() {
                                     sx={{
                                         backgroundColor: '#051D40',
                                         width: '32%',
-                                        height: '400px',
+                                        height: '500px',
                                         borderRadius: '20px',
                                         padding: '40px',
                                         textAlign: 'left',
@@ -296,7 +297,7 @@ export default function AICoverLetter() {
                                             padding: '10px',
                                         }}
                                     >
-                                        Benefit 1
+                                        Nội dung rõ ràng
                                     </Typography>
 
                                     <Typography
@@ -310,15 +311,15 @@ export default function AICoverLetter() {
                                             marginTop: '20px',
                                         }}
                                     >
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        Thư xin việc sẽ truyền tải rõ ràng năng lực, kinh nghiệm, và đam mê của bạn đối
+                                        với công việc một cách mạch lạc và ấn tượng
                                     </Typography>
                                 </Box>{' '}
                                 <Box
                                     sx={{
                                         backgroundColor: '#051D40',
                                         width: '32%',
-                                        height: '400px',
+                                        height: '500px',
                                         borderRadius: '20px',
                                         padding: '40px',
                                         textAlign: 'left',
@@ -337,7 +338,7 @@ export default function AICoverLetter() {
                                             padding: '10px',
                                         }}
                                     >
-                                        Benefit 1
+                                        Tiết kiệm thời gian
                                     </Typography>
 
                                     <Typography
@@ -351,15 +352,15 @@ export default function AICoverLetter() {
                                             marginTop: '20px',
                                         }}
                                     >
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        Chỉ cần vài phút để có được một thư xin việc hoàn chỉnh mà không cần lo lắng về
+                                        cách trình bày hay nội dung
                                     </Typography>
                                 </Box>{' '}
                                 <Box
                                     sx={{
                                         backgroundColor: '#051D40',
                                         width: '32%',
-                                        height: '400px',
+                                        height: '500px',
                                         borderRadius: '20px',
                                         padding: '40px',
                                         textAlign: 'left',
@@ -378,7 +379,7 @@ export default function AICoverLetter() {
                                             padding: '10px',
                                         }}
                                     >
-                                        Benefit 1
+                                        Tăng sự tự tin
                                     </Typography>
 
                                     <Typography
@@ -392,8 +393,8 @@ export default function AICoverLetter() {
                                             marginTop: '20px',
                                         }}
                                     >
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        Với thư xin việc được cá nhân hóa, bạn sẽ tự tin hơn khi gửi hồ sơ ứng tuyển,
+                                        tạo ấn tượng mạnh mẽ với nhà tuyển dụng”
                                     </Typography>
                                 </Box>
                             </Box>
@@ -452,10 +453,10 @@ export default function AICoverLetter() {
                                     padding: '0 8%',
                                 }}
                             >
-                                Fill the form and get cover letter suggestions
+                                Điền vào biểu mẫu và nhận gợi ý viết thư xin việc.
                             </Typography>
                             <Typography sx={{ textAlign: 'center', fontSize: '24px', width: '100%', padding: '0 8%' }}>
-                                Enter the required information and get your cover letter
+                                Nhập thông tin cần thiết và nhận ngay cover letter của bạn.
                             </Typography>
                             <Box
                                 sx={{
@@ -478,7 +479,7 @@ export default function AICoverLetter() {
                                 >
                                     {showAlertError ? (
                                         <Alert width="50%" variant="filled" severity="error">
-                                            Required logged in and fill all fields
+                                            Cần đăng nhập, hoặc điền đầy đủ thông tin
                                         </Alert>
                                     ) : (
                                         <></>
@@ -584,7 +585,7 @@ export default function AICoverLetter() {
                                                 onChange={(event) => setLanguage(event.target.value)}
                                             >
                                                 <MenuItem value="tiếng anh">English</MenuItem>
-                                                <MenuItem value="tiếng việt">Vietnamese</MenuItem>
+                                                <MenuItem value="tiếng việt">Tiếng Việt</MenuItem>
                                             </Select>
                                             <FormHelperText>English là ngôn ngữ mặc định</FormHelperText>
                                         </FormControl>
@@ -624,7 +625,7 @@ export default function AICoverLetter() {
                                         }}
                                         onClick={handleSubmit}
                                     >
-                                        {formSuggestLoading ? <CircularProgress /> : 'Get Your Cover Letter'}
+                                        {formSuggestLoading ? <CircularProgress /> : 'Nhận gợi ý'}
                                     </Button>
                                 </Box>
                             </Box>
@@ -679,7 +680,7 @@ export default function AICoverLetter() {
                                                 padding: '0 8%',
                                             }}
                                         >
-                                            Your Cover Letter!
+                                            Cover Letter Của Bạn!! 🎉
                                         </Typography>
                                         {aiSuggestionsData?.data?.map((item) => (
                                             <Box

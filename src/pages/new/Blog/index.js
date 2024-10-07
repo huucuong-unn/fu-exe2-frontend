@@ -4,7 +4,7 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
-import aboutUsBackground from '~/assets/images/aboutus.webp';
+import blogpageBackground from '~/assets/images/blogbackground.webp';
 import blogBackground from '~/assets/images/blog.webp';
 import { Button } from '@mui/material';
 import { useEffect, useState } from 'react';
@@ -41,7 +41,7 @@ export default function Blog() {
                         backgroundColor: (t) => (t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900]),
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
-                        backgroundImage: `url(${aboutUsBackground})`,
+                        backgroundImage: `url(${blogpageBackground})`,
                         height: '150vh',
                         width: '100%',
                         display: 'flex',
@@ -136,7 +136,7 @@ export default function Blog() {
                                     padding: '0 8%',
                                 }}
                             >
-                                Outstanding Blog
+                                Cẩm nang nghề nghiệp
                             </Typography>
                             <Typography
                                 sx={{
@@ -149,13 +149,12 @@ export default function Blog() {
                             >
                                 Khám phá ngay các bài viết của chúng tôi
                             </Typography>
-                            <Grid sx={{ padding: '3% 8%' }}>
+                            <Grid sx={{ padding: '2% 8%' }}>
                                 <Grid
                                     sx={{
                                         display: 'flex',
                                         justifyContent: 'space-evenly',
                                         gap: '30px',
-                                        marginTop: '30px',
                                     }}
                                 >
                                     {blogs?.map((blog) => (
@@ -170,7 +169,7 @@ export default function Blog() {
                                             sx={{
                                                 borderRadius: '35px',
                                                 backgroundColor: '#051D40',
-                                                height: '370px',
+                                                height: '400px',
                                                 display: 'flex',
                                                 padding: '20px  ',
                                                 gap: '25px',
@@ -182,7 +181,7 @@ export default function Blog() {
                                                 <img
                                                     src={blog?.picture}
                                                     alt="techcombank"
-                                                    style={{ width: '187px', height: '157px' }}
+                                                    style={{ width: '250px', height: '157px' }}
                                                 />
                                                 <Typography
                                                     component="h1"
