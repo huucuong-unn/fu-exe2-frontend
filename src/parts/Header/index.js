@@ -12,7 +12,7 @@ const NAV_ITEMS = [
     { name: 'AI Cover Letter', path: '/ai-coverletter' },
     { name: 'Các gói đăng ký  🎉', path: '/offer' },
     { name: 'Blog', path: '/blog' },
-    { name: 'Về chúng tôi', path: '/about-us' },
+    { name: 'Về Tortee', path: '/about-us' },
 ];
 
 function Header() {
@@ -179,7 +179,7 @@ function Header() {
                             ) : (
                                 <Avatar src="https://cdn-icons-png.flaticon.com/128/12340/12340380.png" />
                             )}
-                            Profile
+                            Thông tin cá nhân
                         </MenuItem>
                         <MenuItem>{userInfo?.planType} Member</MenuItem>
                         <Divider />
@@ -187,7 +187,7 @@ function Header() {
                             <ListItemIcon>
                                 <Logout fontSize="small" />
                             </ListItemIcon>
-                            Logout
+                            Đăng xuất
                         </MenuItem>
                     </Menu>
                 </React.Fragment>

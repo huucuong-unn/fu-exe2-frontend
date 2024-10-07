@@ -193,7 +193,7 @@ export default function AICoverLetter() {
                                     },
                                 }}
                             >
-                                Explore Our Plans
+                                Khám phá các gói đăng ký !
                             </Button>
                         </Box>
                     </Grid>
@@ -496,7 +496,7 @@ export default function AICoverLetter() {
                                             required
                                             fullWidth
                                             id="name"
-                                            label="Full Name"
+                                            label="Họ và tên"
                                             name="name"
                                             autoComplete="name"
                                             sx={{ flex: 1 }}
@@ -527,7 +527,7 @@ export default function AICoverLetter() {
                                             required
                                             fullWidth
                                             id="phone"
-                                            label="Phone Number"
+                                            label="Số điện thoại"
                                             name="phone"
                                             autoComplete="phone"
                                             sx={{ flex: 1 }}
@@ -538,7 +538,7 @@ export default function AICoverLetter() {
                                             required
                                             fullWidth
                                             id="company"
-                                            label="Target Company"
+                                            label="Công ty bạn ứng tuyển"
                                             name="company"
                                             autoComplete="company"
                                             sx={{ flex: 1 }}
@@ -558,7 +558,7 @@ export default function AICoverLetter() {
                                             required
                                             fullWidth
                                             id="position"
-                                            label="Position Title"
+                                            label="Vị trí công việc"
                                             name="position"
                                             autoComplete="position"
                                             sx={{ flex: 1 }}
@@ -575,7 +575,7 @@ export default function AICoverLetter() {
                                         }}
                                     >
                                         <FormControl sx={{ flex: 1, borderRadius: '25px' }}>
-                                            <InputLabel id="demo-simple-select-label">Language</InputLabel>
+                                            <InputLabel id="demo-simple-select-label">Ngôn ngữ</InputLabel>
                                             <Select
                                                 labelId="demo-simple-select-label"
                                                 id="demo-simple-select"
@@ -586,10 +586,10 @@ export default function AICoverLetter() {
                                                 <MenuItem value="tiếng anh">English</MenuItem>
                                                 <MenuItem value="tiếng việt">Vietnamese</MenuItem>
                                             </Select>
-                                            <FormHelperText>Default is English</FormHelperText>
+                                            <FormHelperText>English là ngôn ngữ mặc định</FormHelperText>
                                         </FormControl>
                                         <FormControl sx={{ flex: 1, borderRadius: '25px' }}>
-                                            <InputLabel id="demo-simple-select-2">Experience</InputLabel>
+                                            <InputLabel id="demo-simple-select-2">Kinh nghiệm ?</InputLabel>
                                             <Select
                                                 labelId="demo-simple-select-2"
                                                 id="demo-simple-select-2"
@@ -597,10 +597,12 @@ export default function AICoverLetter() {
                                                 label="Experience"
                                                 onChange={(event) => setExp(event.target.value)}
                                             >
-                                                <MenuItem value="không có">None</MenuItem>
-                                                <MenuItem value="có">Experienced</MenuItem>
+                                                <MenuItem value="không có">Không có</MenuItem>
+                                                <MenuItem value="có">Có kinh nghiệm</MenuItem>
                                             </Select>
-                                            <FormHelperText>Default is None</FormHelperText>
+                                            <FormHelperText>
+                                                Mặc định chúng tôi đang chọn là không có kinh nghiệm
+                                            </FormHelperText>
                                         </FormControl>
                                     </Box>
 

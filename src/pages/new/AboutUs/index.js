@@ -117,7 +117,7 @@ export default function AboutUs() {
                                     padding: '0 10%',
                                 }}
                             >
-                                The Destination to Your Dream Career
+                                Đi cùng Tortee, ghi thêm chặng đường thành công
                             </Typography>
                         </Box>
                     </Grid>
@@ -144,7 +144,7 @@ export default function AboutUs() {
                                 padding: '0 10%',
                             }}
                         >
-                            Feature Partners
+                            Các đối tác đồng hành
                         </Typography>
                         <Typography
                             component="h1"
@@ -157,7 +157,7 @@ export default function AboutUs() {
                                 padding: '0 10%',
                             }}
                         >
-                            The most professional Internship Program for you
+                            Cảm ơn các đối tác đã tin tưởng và hợp tác cùng Tortee
                         </Typography>
                         <Grid sx={{ color: 'white', width: '100%', my: 6 }}>
                             <Grid
@@ -168,18 +168,17 @@ export default function AboutUs() {
                                 sx={{ display: 'flex', justifyContent: 'space-evenly', fontSize: '16px' }}
                             >
                                 <Typography sx={{ width: '20%' }}>
-                                    <img style={{ width: '50%' }} src={techcombanklogo} alt="company logo" />
-                                    Techcombank
+                                    <img style={{ width: '50%' }} src={fptlogo} alt="company logo" />
                                 </Typography>
                                 <Typography sx={{ width: '20%' }}>
                                     <img style={{ width: '50%' }} src={fptlogo} alt="company logo" />
                                 </Typography>
                                 <Typography sx={{ width: '20%' }}>
-                                    <img style={{ width: '50%' }} src={vnglogo} alt="company logo" />
+                                    <img style={{ width: '50%' }} src={fptlogo} alt="company logo" />
                                 </Typography>
                                 <Typography sx={{ width: '20%' }}>
-                                    <img style={{ width: '50%' }} src={microsoftlogo} alt="company logo" />
-                                </Typography>{' '}
+                                    <img style={{ width: '50%' }} src={fptlogo} alt="company logo" />
+                                </Typography>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -737,15 +736,14 @@ export default function AboutUs() {
                                     padding: '0 5%',
                                 }}
                             >
-                                To shape success, keep learning the ropes
+                                Để định hình thành công, hãy tiếp tục học hỏi
                             </Typography>
                             <Typography
                                 sx={{ textAlign: 'left', fontSize: '24px', width: '100%', padding: '0 5%', mt: '20px' }}
                             >
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply
-                                dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                                standard dummy text ever since the 1500s
+                                Công cụ kiểm tra và đánh giá CV thông minh sẽ phân tích CV của bạn, đưa ra các gợi ý cải
+                                thiện dựa trên thông tin bạn cung cấp, giúp CV của bạn trở nên chuyên nghiệp và ấn tượng
+                                hơn.
                             </Typography>
                         </Box>
                         <Box
@@ -817,7 +815,7 @@ export default function AboutUs() {
                                     color: 'white',
                                 }}
                             >
-                                Our Standing Feature
+                                Tính năng nổi bật
                             </Typography>
                             <Typography
                                 component="h1"
@@ -832,18 +830,7 @@ export default function AboutUs() {
                             >
                                 AI RESUME CHECKER
                             </Typography>
-                            <Typography
-                                sx={{
-                                    textAlign: 'left',
-                                    fontSize: '16px',
-                                    width: '100%',
-                                    padding: '0 8%',
-                                    color: '#ccc',
-                                }}
-                            >
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s
-                            </Typography>
+
                             <Button
                                 onClick={() => navigate('/offer')}
                                 type="submit"
@@ -863,7 +850,7 @@ export default function AboutUs() {
                                     marginTop: '20px',
                                 }}
                             >
-                                Explore Now
+                                Khám phá ngay!
                             </Button>
                             <Box
                                 sx={{
@@ -892,21 +879,21 @@ export default function AboutUs() {
                                         variant="h4"
                                         sx={{ fontWeight: '700', fontSize: '28px', color: 'white' }}
                                     >
-                                        Free Tee
+                                        Gói Miễn Phí
                                     </Typography>
                                     <Typography
                                         component="h1"
                                         variant="h4"
                                         sx={{ fontWeight: '700', fontSize: '48px', color: 'white', marginTop: '20px' }}
                                     >
-                                        FREE
+                                        MIỄN PHÍ
                                     </Typography>
                                     <Typography
                                         component="h1"
                                         variant="h4"
                                         sx={{ fontWeight: '500', fontSize: '25px', color: 'white', marginTop: '-10px' }}
                                     >
-                                        forever free
+                                        không mất phí
                                     </Typography>
                                     <Button
                                         type="submit"
@@ -925,7 +912,7 @@ export default function AboutUs() {
                                             border: '1px solid #02F18D',
                                         }}
                                     >
-                                        Default Plan
+                                        Gói mặc định
                                     </Button>
                                     <Typography
                                         component="h1"
@@ -937,7 +924,7 @@ export default function AboutUs() {
                                             marginTop: '20px',
                                         }}
                                     >
-                                        Unlimited Job Applications
+                                        1 lượt dùng AI Review CV
                                     </Typography>
                                     <Typography
                                         component="h1"
@@ -949,7 +936,7 @@ export default function AboutUs() {
                                             marginTop: '20px',
                                         }}
                                     >
-                                        1 trial of CV Reviews by AI
+                                        1 lượt dùng AI Cover Letter
                                     </Typography>
                                 </Box>
                                 <Box
@@ -968,27 +955,26 @@ export default function AboutUs() {
                                         variant="h4"
                                         sx={{ fontWeight: '700', fontSize: '28px', color: 'white' }}
                                     >
-                                        Silver Tee
+                                        Gói Bạc
                                     </Typography>
                                     <Typography
                                         component="h1"
                                         variant="h4"
                                         sx={{ fontWeight: '700', fontSize: '48px', color: 'white', marginTop: '20px' }}
                                     >
-                                        20.000 VND
+                                        50.000 VND
                                     </Typography>
                                     <Typography
                                         component="h1"
                                         variant="h4"
                                         sx={{ fontWeight: '500', fontSize: '25px', color: 'white', marginTop: '-10px' }}
                                     >
-                                        monthly
+                                        tháng
                                     </Typography>
                                     <Button
                                         type="submit"
                                         fullWidth
                                         variant="contained"
-                                        onClick={handleGoCheckoutSilverTee}
                                         sx={{
                                             mt: 2,
                                             bgcolor: '#051D40',
@@ -1003,7 +989,7 @@ export default function AboutUs() {
                                             maxHeight: '54px',
                                         }}
                                     >
-                                        {isLoadingClickSilverTee ? <CircularProgress /> : 'Get Started'}
+                                        {isLoadingClickSilverTee ? <CircularProgress /> : 'Gói Hạng Bạc'}
                                     </Button>
                                     <Typography
                                         component="h1"
@@ -1015,7 +1001,7 @@ export default function AboutUs() {
                                             marginTop: '20px',
                                         }}
                                     >
-                                        Unlimited Job Applications
+                                        30 lượt dùng AI Review CV
                                     </Typography>
                                     <Typography
                                         component="h1"
@@ -1027,7 +1013,7 @@ export default function AboutUs() {
                                             marginTop: '20px',
                                         }}
                                     >
-                                        20 trial of CV Reviews by AI
+                                        20 lượt dùng AI Cover Letter
                                     </Typography>
                                 </Box>
                                 <Box
@@ -1046,27 +1032,26 @@ export default function AboutUs() {
                                         variant="h4"
                                         sx={{ fontWeight: '700', fontSize: '28px', color: 'white' }}
                                     >
-                                        Golden Tee
+                                        Gói Vàng
                                     </Typography>
                                     <Typography
                                         component="h1"
                                         variant="h4"
                                         sx={{ fontWeight: '700', fontSize: '48px', color: 'white', marginTop: '20px' }}
                                     >
-                                        40.000 VND
+                                        70.000 VND
                                     </Typography>
                                     <Typography
                                         component="h1"
                                         variant="h4"
                                         sx={{ fontWeight: '500', fontSize: '25px', color: 'white', marginTop: '-10px' }}
                                     >
-                                        monthly
+                                        tháng
                                     </Typography>
                                     <Button
                                         type="submit"
                                         fullWidth
                                         variant="contained"
-                                        onClick={handleGoCheckoutGoldenTee}
                                         sx={{
                                             mt: 2,
                                             bgcolor: '#051D40',
@@ -1081,7 +1066,7 @@ export default function AboutUs() {
                                             maxHeight: '54px',
                                         }}
                                     >
-                                        {isLoadingClickGoldenTee ? <CircularProgress /> : 'Get Started'}
+                                        {isLoadingClickGoldenTee ? <CircularProgress /> : 'Gói Hạng Vàng'}
                                     </Button>
                                     <Typography
                                         component="h1"
@@ -1093,7 +1078,7 @@ export default function AboutUs() {
                                             marginTop: '20px',
                                         }}
                                     >
-                                        Unlimited Job Applications
+                                        50 lượt dùng AI Review CV
                                     </Typography>
                                     <Typography
                                         component="h1"
@@ -1105,7 +1090,7 @@ export default function AboutUs() {
                                             marginTop: '20px',
                                         }}
                                     >
-                                        50 trial of CV Reviews by AI
+                                        40 lượt dùng AI Cover Letter
                                     </Typography>
                                 </Box>
                             </Box>

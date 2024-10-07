@@ -89,7 +89,7 @@ export default function LoginBusiness() {
     };
 
     return (
-        <Box sx={{ fontFamily: 'Kumbh Sans' }}>
+        <Box sx={{ fontFamily: 'Montserrat' }}>
             {showAlert && (
                 <Alert width="50%" variant="filled" severity="success">
                     Registered Successfully

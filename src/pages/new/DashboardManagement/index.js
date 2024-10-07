@@ -8,6 +8,7 @@ import BlogAPI from '~/API/BlogAPI';
 
 import adminLoginBackground from '~/assets/images/adminlogin.webp';
 import CustomizedTreeView from '../CustomizedTreeView';
+import ChartUserByCountry from '~/components/new/ChartUserByCountry';
 
 function Copyright(props) {
     return (
@@ -75,9 +76,20 @@ export default function DashboardManagement() {
                     alignItems: 'center',
                 }}
             >
-                <Box sx={{ width: '100%', maxWidth: { sm: '100%', md: '1700px', padding: '30px' } }}>
+                <Box sx={{ width: '100%', maxWidth: { sm: '100%', md: '1700px', padding: '5%', height: '100%' } }}>
                     {/* cards */}
-                    <Typography component="h2" variant="h6" sx={{ mb: 2 }}>
+                    <Typography
+                        component="h1"
+                        variant="h4"
+                        sx={{
+                            fontWeight: '900',
+                            fontSize: '46px',
+                            color: '#051D40',
+                            // zIndex: 1,
+                            marginBottom: '30px',
+                            textAlign: 'left',
+                        }}
+                    >
                         Overview
                     </Typography>
                     <Grid
@@ -101,6 +113,7 @@ export default function DashboardManagement() {
                                     boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.2)',
                                     cursor: 'pointer',
                                 },
+                                backgroundColor: 'rgba(255, 255, 255, 0.8)',
                             }}
                             // onClick={() => handleItemClick(index, mentor.mentorProfile.id)}
                         >
@@ -133,6 +146,7 @@ export default function DashboardManagement() {
                                     boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.2)',
                                     cursor: 'pointer',
                                 },
+                                backgroundColor: 'rgba(255, 255, 255, 0.8)',
                             }}
                             // onClick={() => handleItemClick(index, mentor.mentorProfile.id)}
                         >
@@ -165,6 +179,7 @@ export default function DashboardManagement() {
                                     boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.2)',
                                     cursor: 'pointer',
                                 },
+                                backgroundColor: 'rgba(255, 255, 255, 0.8)',
                             }}
                             // onClick={() => handleItemClick(index, mentor.mentorProfile.id)}
                         >
@@ -184,7 +199,24 @@ export default function DashboardManagement() {
                             </Box>
                         </Card>
                     </Grid>
-                    <CustomizedTreeView />
+                    <Grid
+                        key={'1'}
+                        sx={{
+                            display: 'flex',
+                            width: '100%',
+                            justifyContent: 'center',
+                            gap: '20px',
+                            alignItems: 'space-around',
+                            marginTop: '20px',
+                        }}
+                    >
+                        <Box sx={{ width: '60%' }}>
+                            <ChartUserByCountry />
+                        </Box>
+                        <Box sx={{ width: '40%' }}>
+                            <CustomizedTreeView />
+                        </Box>
+                    </Grid>
                     <Copyright sx={{ my: 4 }} />
                 </Box>
             </Grid>

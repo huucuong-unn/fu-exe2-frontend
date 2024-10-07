@@ -59,6 +59,15 @@ const AccountAPI = {
         return axiosClient.post('/v1/user/login-google', data);
     },
 
+    //new
+    register(data, includeAuthorization = false) {
+        return axiosClient.post('/v1/account/create', data, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        });
+    },
+
     getAccountForAdminSearch(params, includeAuthorization = false) {
         const url = `/v1/account/account-for-admin`;
         const authorizedConfig = this.addAuthorizationHeader({ params }, includeAuthorization);

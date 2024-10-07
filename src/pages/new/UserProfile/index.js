@@ -41,7 +41,7 @@ export default function UserProfile() {
     };
 
     return (
-        <Box sx={{ fontFamily: 'Kumbh Sans' }}>
+        <Box sx={{ fontFamily: 'Montserrat' }}>
             <Grid
                 container
                 component="main"
@@ -88,10 +88,10 @@ export default function UserProfile() {
                             variant="h4"
                             sx={{ fontWeight: '900', fontSize: '46px', color: '#051D40' }}
                         >
-                            YOUR PROFILE
+                            THÔNG TIN CÁ NHÂN
                         </Typography>
                         <Typography sx={{ textAlign: 'center', marginTop: '12px', fontSize: '20px' }}>
-                            {userInfo?.planType} Plan
+                            {userInfo.planType ? userInfo?.planType : 'Gói Miễn Phí'}
                         </Typography>
                         <Box sx={{ width: '100%', typography: 'body1', mt: 2 }}>
                             <Box sx={{ mt: 1 }}>
@@ -108,7 +108,7 @@ export default function UserProfile() {
                                         required
                                         fullWidth
                                         id="name"
-                                        label="Full Name"
+                                        label="Họ và tên"
                                         name="name"
                                         autoComplete="name"
                                         sx={{ flex: 1 }}
@@ -120,7 +120,7 @@ export default function UserProfile() {
                                         required
                                         fullWidth
                                         id="dob"
-                                        label="Date of birth"
+                                        label="Ngày sinh"
                                         name="dob"
                                         autoComplete="dob"
                                         sx={{ flex: 1 }}

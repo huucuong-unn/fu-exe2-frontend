@@ -150,7 +150,7 @@ export default function LoginAdmin() {
                                         required
                                         fullWidth
                                         name="password"
-                                        label="Password"
+                                        label="Mật khẩu"
                                         type="password"
                                         id="password"
                                         autoComplete="current-password"
@@ -173,7 +173,7 @@ export default function LoginAdmin() {
                                             },
                                         }}
                                     >
-                                        Login
+                                        Đăng nhập
                                     </Button>
 
                                     <Copyright sx={{ mt: 5 }} />

@@ -159,7 +159,16 @@ CustomTreeItem.propTypes = {
 
 export default function CustomizedTreeView() {
     return (
-        <Card variant="outlined" sx={{ display: 'flex', flexDirection: 'column', gap: '8px', flexGrow: 1 }}>
+        <Card
+            variant="outlined"
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '8px',
+                flexGrow: 1,
+                backgroundColor: 'rgba(255, 255, 255, 0.8)',
+            }}
+        >
             <CardContent>
                 <Typography component="h2" variant="subtitle2">
                     Product tree

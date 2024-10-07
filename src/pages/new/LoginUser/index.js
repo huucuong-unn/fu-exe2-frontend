@@ -208,13 +208,13 @@ export default function LoginUser() {
                                         required
                                         fullWidth
                                         name="password"
-                                        label="Password"
+                                        label="Mật khẩu"
                                         type="password"
                                         id="password"
                                         autoComplete="current-password"
                                     />
                                     <Link to="/forgot-password" style={{ textDecoration: 'none' }}>
-                                        <Typography sx={{ textAlign: 'right' }}>Forgot Password?</Typography>
+                                        <Typography sx={{ textAlign: 'right' }}>Quên mật khẩu</Typography>
                                     </Link>
                                     <Button
                                         type="submit"
@@ -233,9 +233,9 @@ export default function LoginUser() {
                                             },
                                         }}
                                     >
-                                        Login
+                                        Đăng nhập
                                     </Button>
-                                    <Divider>Or continue with</Divider>
+                                    <Divider>Hoặc đăng nhập với</Divider>
                                     <Box sx={{ display: 'flex', justifyContent: 'center', margin: '10px 0' }}>
                                         <GoogleOAuthProvider clientId={clientId}>
                                             <GoogleLogin
@@ -250,13 +250,13 @@ export default function LoginUser() {
                                         sx={{ display: 'flex', justifyContent: 'center', marginTop: '32px' }}
                                     >
                                         <Grid item sx={{ gap: '4px' }}>
-                                            Not a member?
+                                            Bạn chưa có tài khoản?
                                             <Link
                                                 to="/register"
                                                 variant="body2"
                                                 style={{ color: '#051D40', textDecoration: 'none', fontWeight: 'bold' }}
                                             >
-                                                {' Register now'}
+                                                {' Đăng ký ngay'}
                                             </Link>
                                         </Grid>
                                     </Grid>

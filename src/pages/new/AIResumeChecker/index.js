@@ -275,7 +275,7 @@ export default function AIResumeChecker() {
                                             padding: '10px',
                                         }}
                                     >
-                                        Benefit 1
+                                        Lợi ích #1
                                     </Typography>
 
                                     <Typography
@@ -289,8 +289,7 @@ export default function AIResumeChecker() {
                                             marginTop: '20px',
                                         }}
                                     >
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        Nhận gợi ý chi tiết
                                     </Typography>
                                 </Box>{' '}
                                 <Box
@@ -316,7 +315,7 @@ export default function AIResumeChecker() {
                                             padding: '10px',
                                         }}
                                     >
-                                        Benefit 1
+                                        Lợi ích #2
                                     </Typography>
 
                                     <Typography
@@ -330,8 +329,7 @@ export default function AIResumeChecker() {
                                             marginTop: '20px',
                                         }}
                                     >
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        Tiết kiệm thời gian
                                     </Typography>
                                 </Box>{' '}
                                 <Box
@@ -357,7 +355,7 @@ export default function AIResumeChecker() {
                                             padding: '10px',
                                         }}
                                     >
-                                        Benefit 1
+                                        Lợi ích #3
                                     </Typography>
 
                                     <Typography
@@ -371,8 +369,7 @@ export default function AIResumeChecker() {
                                             marginTop: '20px',
                                         }}
                                     >
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s
+                                        Tối ưu hóa CV
                                     </Typography>
                                 </Box>
                             </Box>
@@ -438,10 +435,10 @@ export default function AIResumeChecker() {
                                     padding: '0 8%',
                                 }}
                             >
-                                Get your resume check now!
+                                Kiểm tra CV của bạn ngay!
                             </Typography>
                             <Typography sx={{ textAlign: 'center', fontSize: '24px', width: '100%', padding: '0 8%' }}>
-                                Upload your resume and you’ll get a personalized email with an actionable tasklist.{' '}
+                                Upload CV và nhận những góp ý từ AI CV Checker
                             </Typography>
                             <Box
                                 sx={{
@@ -490,7 +487,7 @@ export default function AIResumeChecker() {
                                             color: 'white',
                                         }}
                                     >
-                                        {uploading ? <CircularProgress /> : 'Upload your resume'}
+                                        {uploading ? <CircularProgress /> : 'Upload CV'}
                                         <input
                                             type="file"
                                             style={{ display: 'none' }}
@@ -507,7 +504,7 @@ export default function AIResumeChecker() {
                                             marginTop: '20px',
                                         }}
                                     >
-                                        Drop your resume here or choose a file. PDF only. Max 2MB file size
+                                        Chọn CV ngay. Định dạng PDF, dung lượng tối đa 2MB
                                     </Typography>
                                     {userInfo ? (
                                         <Typography
@@ -520,7 +517,7 @@ export default function AIResumeChecker() {
                                                 marginTop: '20px',
                                             }}
                                         >
-                                            <b>Remaining: </b> {userInfo?.remainReviewCVTimes}
+                                            <b>Lượt còn lại: </b> {userInfo?.remainReviewCVTimes}
                                         </Typography>
                                     ) : (
                                         <></>

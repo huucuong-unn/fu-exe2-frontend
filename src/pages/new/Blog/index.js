@@ -81,7 +81,7 @@ export default function Blog() {
                                     padding: '0 10%',
                                 }}
                             >
-                                The Destination to Your Dream Career
+                                Điểm đến cho công việc của bạn
                             </Typography>
                         </Box>
                     </Grid>
@@ -147,7 +147,7 @@ export default function Blog() {
                                     color: 'white',
                                 }}
                             >
-                                Explore our new outstanding blogs !
+                                Khám phá ngay các bài viết của chúng tôi
                             </Typography>
                             <Grid sx={{ padding: '3% 8%' }}>
                                 <Grid
@@ -210,7 +210,7 @@ export default function Blog() {
                                                         maxHeight: '54px',
                                                     }}
                                                 >
-                                                    Explore
+                                                    Tìm hiểu thêm
                                                 </Button>
                                             </Box>
                                         </Grid>

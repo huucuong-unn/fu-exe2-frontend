@@ -73,19 +73,20 @@ export default function Homepage() {
                                 variant="h4"
                                 sx={{
                                     textAlign: 'center',
-                                    fontWeight: '900',
+                                    fontWeight: '800',
                                     fontSize: '72px',
                                     color: '#051D40',
                                     padding: '0 10%',
                                 }}
                             >
-                                To shape success, keep learning the ropes
+                                CHÀO MỪNG BẠN ĐẾN VỚI TORTEE HUB!
                             </Typography>
                             <Typography
                                 sx={{ textAlign: 'center', fontSize: '24px', width: '100%', padding: '3% 20%' }}
                             >
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s
+                                Nền tảng AI giúp sinh viên và các chuyên gia trẻ tạo CV chuyên nghiệp và viết thư xin
+                                việc cá nhân hóa. TORTEE là một người bạn đồng hành đáng tin cậy, luôn sẵn sàng hỗ trợ
+                                bạn trong hành trình tìm kiếm cơ hội thực tập
                             </Typography>
                             <Button
                                 onClick={() => navigate('/offer')}
@@ -103,7 +104,7 @@ export default function Homepage() {
                                     },
                                 }}
                             >
-                                Explore
+                                Khám phá ngay!
                             </Button>
                         </Box>
                     </Grid>

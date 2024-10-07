@@ -101,10 +101,10 @@ export default function FindYourPlan() {
                             variant="h4"
                             sx={{ fontWeight: '900', fontSize: '72px', color: '#051D40', padding: '0 10%' }}
                         >
-                            Here are the offers created for you! 🎉
+                            Dưới đây là các gói đăng ký dành cho bạn! 🎉
                         </Typography>
                         <Typography sx={{ textAlign: 'right', marginRight: '20%', fontSize: '32px', width: '100%' }}>
-                            No contracts, no surprise fees!
+                            Không ràng buộc, không phí bất ngờ!
                         </Typography>
                         <Box
                             sx={{
@@ -132,21 +132,21 @@ export default function FindYourPlan() {
                                     variant="h4"
                                     sx={{ fontWeight: '700', fontSize: '28px', color: 'white' }}
                                 >
-                                    Free Tee
+                                    Gói Miễn Phí
                                 </Typography>
                                 <Typography
                                     component="h1"
                                     variant="h4"
                                     sx={{ fontWeight: '700', fontSize: '48px', color: 'white', marginTop: '20px' }}
                                 >
-                                    FREE
+                                    MIỄN PHÍ
                                 </Typography>
                                 <Typography
                                     component="h1"
                                     variant="h4"
                                     sx={{ fontWeight: '500', fontSize: '25px', color: 'white', marginTop: '-10px' }}
                                 >
-                                    forever free
+                                    không mất phí
                                 </Typography>
                                 <Button
                                     type="submit"
@@ -165,21 +165,21 @@ export default function FindYourPlan() {
                                         border: '1px solid #02F18D',
                                     }}
                                 >
-                                    Default Plan
+                                    Gói mặc định
                                 </Button>
                                 <Typography
                                     component="h1"
                                     variant="h4"
                                     sx={{ fontWeight: '300', fontSize: '24px', color: '#ffffff', marginTop: '20px' }}
                                 >
-                                    Unlimited Job Applications
+                                    1 lượt dùng AI Review CV
                                 </Typography>
                                 <Typography
                                     component="h1"
                                     variant="h4"
                                     sx={{ fontWeight: '300', fontSize: '24px', color: '#ffffff', marginTop: '20px' }}
                                 >
-                                    1 trial of CV Reviews by AI
+                                    1 lượt dùng AI Cover Letter
                                 </Typography>
                             </Box>
                             <Box
@@ -197,27 +197,27 @@ export default function FindYourPlan() {
                                     variant="h4"
                                     sx={{ fontWeight: '700', fontSize: '28px', color: 'white' }}
                                 >
-                                    Silver Tee
+                                    Gói Bạc
                                 </Typography>
                                 <Typography
                                     component="h1"
                                     variant="h4"
                                     sx={{ fontWeight: '700', fontSize: '48px', color: 'white', marginTop: '20px' }}
                                 >
-                                    20.000 VND
+                                    50.000 VND
                                 </Typography>
                                 <Typography
                                     component="h1"
                                     variant="h4"
                                     sx={{ fontWeight: '500', fontSize: '25px', color: 'white', marginTop: '-10px' }}
                                 >
-                                    monthly
+                                    tháng
                                 </Typography>
                                 <Button
                                     type="submit"
                                     fullWidth
                                     variant="contained"
-                                    onClick={handleGoCheckoutSilverTee}
+                                    onClick={userInfo?.planType === 'Silver Tee' ? null : handleGoCheckoutSilverTee}
                                     sx={{
                                         mt: 2,
                                         bgcolor: '#051D40',
@@ -233,11 +233,11 @@ export default function FindYourPlan() {
                                     }}
                                 >
                                     {userInfo?.planType === 'Silver Tee' ? (
-                                        'Current Plan'
+                                        'Gói hiện tại'
                                     ) : isLoadingClickSilverTee ? (
                                         <CircularProgress />
                                     ) : (
-                                        'Get Started'
+                                        'Đăng ký ngay'
                                     )}
                                 </Button>
                                 <Typography
@@ -245,14 +245,14 @@ export default function FindYourPlan() {
                                     variant="h4"
                                     sx={{ fontWeight: '300', fontSize: '24px', color: '#ffffff', marginTop: '20px' }}
                                 >
-                                    Unlimited Job Applications
+                                    30 lượt dùng AI Review CV
                                 </Typography>
                                 <Typography
                                     component="h1"
                                     variant="h4"
                                     sx={{ fontWeight: '300', fontSize: '24px', color: '#ffffff', marginTop: '20px' }}
                                 >
-                                    20 trial of CV Reviews by AI
+                                    20 lượt dùng AI Cover Letter
                                 </Typography>
                             </Box>
                             <Box
@@ -270,27 +270,27 @@ export default function FindYourPlan() {
                                     variant="h4"
                                     sx={{ fontWeight: '700', fontSize: '28px', color: 'white' }}
                                 >
-                                    Golden Tee
+                                    Gói Vàng
                                 </Typography>
                                 <Typography
                                     component="h1"
                                     variant="h4"
                                     sx={{ fontWeight: '700', fontSize: '48px', color: 'white', marginTop: '20px' }}
                                 >
-                                    40.000 VND
+                                    70.000 VND
                                 </Typography>
                                 <Typography
                                     component="h1"
                                     variant="h4"
                                     sx={{ fontWeight: '500', fontSize: '25px', color: 'white', marginTop: '-10px' }}
                                 >
-                                    monthly
+                                    tháng
                                 </Typography>
                                 <Button
                                     type="submit"
                                     fullWidth
                                     variant="contained"
-                                    onClick={handleGoCheckoutGoldenTee}
+                                    onClick={userInfo?.planType === 'Golden Tee' ? null : handleGoCheckoutGoldenTee}
                                     sx={{
                                         mt: 2,
                                         bgcolor: '#051D40',
@@ -306,11 +306,11 @@ export default function FindYourPlan() {
                                     }}
                                 >
                                     {userInfo?.planType === 'Golden Tee' ? (
-                                        'Current Plan'
+                                        'Gói Hiện Tại'
                                     ) : isLoadingClickGoldenTee ? (
                                         <CircularProgress />
                                     ) : (
-                                        'Get Started'
+                                        'Đăng ký ngay'
                                     )}
                                 </Button>
                                 <Typography
@@ -318,14 +318,14 @@ export default function FindYourPlan() {
                                     variant="h4"
                                     sx={{ fontWeight: '300', fontSize: '24px', color: '#ffffff', marginTop: '20px' }}
                                 >
-                                    Unlimited Job Applications
+                                    50 lượt dùng AI Review CV
                                 </Typography>
                                 <Typography
                                     component="h1"
                                     variant="h4"
                                     sx={{ fontWeight: '300', fontSize: '24px', color: '#ffffff', marginTop: '20px' }}
                                 >
-                                    50 trial of CV Reviews by AI
+                                    40 lượt dùng AI Cover Letter
                                 </Typography>
                             </Box>
                         </Box>
