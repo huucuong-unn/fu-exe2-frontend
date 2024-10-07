@@ -235,8 +235,9 @@ export default function RegisterUser() {
                                 ĐĂNG KÝ TÀI KHOẢN
                             </Typography>
                             <Typography sx={{ textAlign: 'center', marginTop: '12px' }}>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s
+                                TORTEE là nền tảng AI thông minh giúp bạn tối ưu hóa CV và tạo thư xin việc chỉ trong
+                                vài phút. Hãy tham gia cùng chúng tôi ngay hôm nay để bắt đầu hành trình chuẩn bị cho
+                                những cơ hội thực tập và công việc mơ ước
                             </Typography>
                             <Box sx={{ width: '100%', typography: 'body1', mt: 2 }}>
                                 <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>

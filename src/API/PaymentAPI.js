@@ -15,6 +15,11 @@ const PaymentAPI = {
         const url = `v1/payment`;
         return axiosClient.get(url);
     },
+
+    getPaymentsDashboard() {
+        const url = `v1/payment/dashboard`;
+        return axiosClient.get(url);
+    },
 };
 
 export default PaymentAPI;

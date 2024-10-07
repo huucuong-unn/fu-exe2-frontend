@@ -1,16 +1,17 @@
-import { Avatar, Card, CardContent, CardHeader, Chip, Skeleton, Stack } from '@mui/material';
+import { Card, CardHeader } from '@mui/material';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useEffect, useState } from 'react';
-import BlogAPI from '~/API/BlogAPI';
 
-import adminLoginBackground from '~/assets/images/adminlogin.webp';
-import CustomizedTreeView from '../CustomizedTreeView';
-import ChartUserByCountry from '~/components/new/ChartUserByCountry';
 import AccountAPI from '~/API/AccountAPI';
+import adminLoginBackground from '~/assets/images/adminlogin.webp';
+import ChartUserByCountry from '~/components/new/ChartUserByCountry';
 import PageViewsBarChart from '~/components/new/PageViewsBarChart';
+import CustomizedTreeView from '../CustomizedTreeView';
+import PaymentAPI from '~/API/PaymentAPI';
+import SessionsChart from '~/components/new/SessionsChart';
 
 function Copyright(props) {
     return (
@@ -25,52 +26,32 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function DashboardManagement() {
-    const data = [
-        {
-            title: 'Users',
-            value: '14k',
-            interval: 'Last 30 days',
-            trend: 'up',
-            data: [
-                200, 24, 220, 260, 240, 380, 100, 240, 280, 240, 300, 340, 320, 360, 340, 380, 360, 400, 380, 420, 400,
-                640, 340, 460, 440, 480, 460, 600, 880, 920,
-            ],
-        },
-        {
-            title: 'Conversions',
-            value: '325',
-            interval: 'Last 30 days',
-            trend: 'down',
-            data: [
-                1640, 1250, 970, 1130, 1050, 900, 720, 1080, 900, 450, 920, 820, 840, 600, 820, 780, 800, 760, 380, 740,
-                660, 620, 840, 500, 520, 480, 400, 360, 300, 220,
-            ],
-        },
-        {
-            title: 'Event count',
-            value: '200k',
-            interval: 'Last 30 days',
-            trend: 'neutral',
-            data: [
-                500, 400, 510, 530, 520, 600, 530, 520, 510, 730, 520, 510, 530, 620, 510, 530, 520, 410, 530, 520, 610,
-                530, 520, 610, 530, 420, 510, 430, 520, 510,
-            ],
-        },
-    ];
-
     const [numberOfAccounts, setNumberOfAccounts] = useState(0);
+    const [totalRevenue, setTotalRevenue] = useState(0);
 
     useEffect(() => {
         const fetchBlogs = async () => {
             try {
                 const response = await AccountAPI.getAllAccount();
                 setNumberOfAccounts(response.length);
-                console.log(response);
             } catch (error) {
                 console.log('Failed to fetch accounts: ', error);
             }
         };
         fetchBlogs();
+
+        const fetchPaymentsDashboard = async () => {
+            try {
+                const response = await PaymentAPI.getPaymentsDashboard();
+                setTotalRevenue(response?.totalAllPayment);
+                console.log(response);
+            } catch (error) {
+                console.log('Failed to fetch payments: ', error);
+            }
+        };
+
+        fetchBlogs();
+        fetchPaymentsDashboard();
     }, []);
 
     return (
@@ -176,7 +157,10 @@ export default function DashboardManagement() {
                                     pr: 2,
                                 }}
                             >
-                                <CardHeader title={<Typography fontWeight="bold">Revenue</Typography>} subheader="3" />
+                                <CardHeader
+                                    title={<Typography fontWeight="bold">Revenue (VNĐ)</Typography>}
+                                    subheader={totalRevenue}
+                                />
                                 {/* <CardContent>
                                     <Chip key={'1'} label={'Label'} sx={{ mr: 1, mb: 1 }} onClick={() => {}} />
                                 </CardContent> */}
@@ -228,8 +212,22 @@ export default function DashboardManagement() {
                             <CustomizedTreeView />
                         </Box>
                     </Grid>
-                    <Grid>
-                        <PageViewsBarChart />
+                    <Grid
+                        sx={{
+                            display: 'flex',
+                            width: '100%',
+                            justifyContent: 'center',
+                            gap: '20px',
+                            alignItems: 'space-around',
+                            marginTop: '20px',
+                        }}
+                    >
+                        <Box sx={{ width: '50%' }}>
+                            <SessionsChart />
+                        </Box>
+                        <Box sx={{ width: '50%' }}>
+                            <PageViewsBarChart />
+                        </Box>
                     </Grid>
                     <Copyright sx={{ my: 4 }} />
                 </Box>

@@ -9,24 +9,7 @@ import CardContent from '@mui/material/CardContent';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
-
-const data = [
-    { label: 'India', value: 50000 },
-    { label: 'USA', value: 35000 },
-];
-
-const countries = [
-    {
-        name: 'India',
-        value: 50,
-        color: 'hsl(220, 25%, 65%)',
-    },
-    {
-        name: 'USA',
-        value: 35,
-        color: 'hsl(220, 25%, 45%)',
-    },
-];
+import PaymentAPI from '~/API/PaymentAPI';
 
 const StyledText = styled('text', {
     shouldForwardProp: (prop) => prop !== 'variant',
@@ -88,9 +71,32 @@ PieCenterLabel.propTypes = {
     secondaryText: PropTypes.string.isRequired,
 };
 
-const colors = ['hsl(220, 20%, 65%)', 'hsl(220, 20%, 42%)', 'hsl(220, 20%, 35%)', 'hsl(220, 20%, 25%)'];
+// const colors = ['hsl(220, 20%, 65%)', 'hsl(220, 20%, 42%)', 'hsl(220, 20%, 35%)', 'hsl(220, 20%, 25%)'];
+const colors = ['#02F18D', '#051D40'];
 
 export default function ChartUserByCountry() {
+    const [paymentDashBoard, setPaymentDashBoard] = React.useState([]);
+    const [totalAllPayment, setTotalAllPayment] = React.useState(0);
+    const data = [
+        { label: 'Silver Tee', value: paymentDashBoard?.[0]?.total || 0 },
+        { label: 'Golden Tee', value: paymentDashBoard?.[1]?.total || 0 },
+    ];
+
+    React.useEffect(() => {
+        const fetchPaymentsDashboard = async () => {
+            try {
+                const response = await PaymentAPI.getPaymentsDashboard();
+                setPaymentDashBoard(response?.paymentDashBoard);
+                setTotalAllPayment(response?.totalAllPayment);
+                console.log(response);
+            } catch (error) {
+                console.log('Failed to fetch payments: ', error);
+            }
+        };
+
+        fetchPaymentsDashboard();
+    }, []);
+
     return (
         <Card
             variant="outlined"
@@ -130,10 +136,13 @@ export default function ChartUserByCountry() {
                             legend: { hidden: true },
                         }}
                     >
-                        <PieCenterLabel primaryText="98.5K" secondaryText="Total" />
+                        <PieCenterLabel
+                            primaryText={totalAllPayment ? totalAllPayment + 'đ' : 0}
+                            secondaryText="Total"
+                        />
                     </PieChart>
                 </Box>
-                {countries.map((country, index) => (
+                {paymentDashBoard?.map((plan, index) => (
                     <Stack key={index} direction="row" sx={{ alignItems: 'center', gap: 2, pb: 2 }}>
                         <Stack sx={{ gap: 1, flexGrow: 1 }}>
                             <Stack
@@ -145,19 +154,19 @@ export default function ChartUserByCountry() {
                                 }}
                             >
                                 <Typography variant="body2" sx={{ fontWeight: '500' }}>
-                                    {country.name}
+                                    {plan?.tierName}
                                 </Typography>
                                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                                    {country.value}%
+                                    {(plan?.total / totalAllPayment) * 100}%
                                 </Typography>
                             </Stack>
                             <LinearProgress
                                 variant="determinate"
                                 aria-label="Number of users by country"
-                                value={country.value}
+                                value={(plan?.total / totalAllPayment) * 100}
                                 sx={{
                                     [`& .${linearProgressClasses.bar}`]: {
-                                        backgroundColor: country.color,
+                                        backgroundColor: colors[index],
                                     },
                                 }}
                             />
