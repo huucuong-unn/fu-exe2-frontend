@@ -249,7 +249,7 @@ export default function AICoverLetter() {
                                     padding: '0 8%',
                                 }}
                             >
-                                Lợi ích
+                                Lợi ích nổi bật
                             </Typography>
                             <Typography
                                 sx={{

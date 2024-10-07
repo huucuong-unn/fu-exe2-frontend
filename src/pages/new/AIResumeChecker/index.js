@@ -228,7 +228,7 @@ export default function AIResumeChecker() {
                                     padding: '0 8%',
                                 }}
                             >
-                                Lợi ích
+                                Lợi ích nổi bật
                             </Typography>
                             <Typography
                                 sx={{

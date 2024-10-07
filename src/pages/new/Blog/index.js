@@ -76,7 +76,7 @@ export default function Blog() {
                                 sx={{
                                     textAlign: 'center',
                                     fontWeight: '900',
-                                    fontSize: '72px',
+                                    fontSize: '92px',
                                     color: '#051D40',
                                     padding: '0 10%',
                                 }}
