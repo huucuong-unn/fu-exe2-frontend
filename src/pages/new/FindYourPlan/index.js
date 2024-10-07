@@ -20,6 +20,8 @@ export default function FindYourPlan() {
     const handleGoCheckoutSilverTee = async (event) => {
         try {
             if (userInfo) {
+                if (userInfo?.planType === 'Golden Tee' || userInfo?.planType === 'Silver Tee') return;
+
                 setIsLoadingClickSilverTee(true);
                 const response = await PayosAPI.goCheckout({
                     productName: 'Silver Tee',
@@ -39,6 +41,8 @@ export default function FindYourPlan() {
     const handleGoCheckoutGoldenTee = async (event) => {
         try {
             if (userInfo) {
+                if (userInfo?.planType === 'Golden Tee' || userInfo?.planType === 'Silver Tee') return;
+
                 setIsLoadingClickGoldenTee(true);
 
                 const response = await PayosAPI.goCheckout({

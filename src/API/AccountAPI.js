@@ -61,7 +61,7 @@ const AccountAPI = {
 
     //new
     register(data, includeAuthorization = false) {
-        return axiosClient.post('/v1/account/create', data, {
+        return axiosClient.post('/v1/user/create', data, {
             headers: {
                 'Content-Type': 'multipart/form-data',
             },
