@@ -1,18 +1,5 @@
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useNavigate } from 'react-router-dom';
-import blogBackground from '~/assets/images/blog.webp';
-import aiCoveletterBackground from '~/assets/images/coverletterbackground.webp';
-import internshipProgramBackground from '~/assets/images/internshipprogram.webp';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect, useState } from 'react';
 import {
     Alert,
-    Autocomplete,
     CircularProgress,
     FormControl,
     FormHelperText,
@@ -22,10 +9,22 @@ import {
     Skeleton,
     TextField,
 } from '@mui/material';
-import storageService from '~/components/StorageService/storageService';
-import AIResumeAPI from '~/API/AIResumeAPI';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Document, Packer, Paragraph, TextRun } from 'docx';
 import { saveAs } from 'file-saver';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import AIResumeAPI from '~/API/AIResumeAPI';
+import AccountAPI from '~/API/AccountAPI';
+import blogBackground from '~/assets/images/blog.webp';
+import aiCoveletterBackground from '~/assets/images/coverletterbackground.webp';
+import internshipProgramBackground from '~/assets/images/internshipprogram.webp';
+import storageService from '~/components/StorageService/storageService';
 
 const defaultTheme = createTheme();
 
@@ -39,10 +38,11 @@ export default function AICoverLetter() {
     const [company, setCompany] = useState('');
     const [position, setPosition] = useState('');
     const [language, setLanguage] = useState('English');
-    const [exp, setExp] = useState('None');
+    const [exp, setExp] = useState('');
     const [showAlertError, setShowAlertError] = useState(false);
 
     const [userInfo, setUserInfo] = useState(storageService.getItem('userInfo') || null);
+    const [user, setUser] = useState();
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -56,8 +56,15 @@ export default function AICoverLetter() {
             }
         };
         fetchUser();
+        fetchUserNew();
     }, []);
 
+    const fetchUserNew = async () => {
+        // This useEffect is now only for updating userInfo if it changes in localStorage
+        const storedUserInfo = await storageService.getItem('userInfo');
+        const userResponse = await AccountAPI.getUserById(storedUserInfo?.id);
+        setUser(userResponse);
+    };
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
@@ -67,6 +74,15 @@ export default function AICoverLetter() {
             if (!userId || !name || !email || !phone || !company || !position) {
                 setShowAlertError(true);
                 setTimeout(() => setShowAlertError(false), 5000); // Hide alert after 5s
+                return;
+            }
+
+            if (user?.remainInterviewTimes <= 0) {
+                setShowAlertError(true); // Show error alert
+                setTimeout(() => setShowAlertError(false), 5000); // Hide
+                setUploading(false); // Reset the loading state
+                setFormSuggestLoading(false);
+
                 return;
             }
 
@@ -88,6 +104,7 @@ export default function AICoverLetter() {
             }
             setAiSuggestionsData(coverLetter);
             console.log('cv letter: ', coverLetter);
+            fetchUserNew();
         } catch (error) {
             console.error('Login error:', error);
             setShowAlertError(true); // Show error alert
@@ -479,7 +496,7 @@ export default function AICoverLetter() {
                                 >
                                     {showAlertError ? (
                                         <Alert width="50%" variant="filled" severity="error">
-                                            Cần đăng nhập, hoặc điền đầy đủ thông tin
+                                            Bạn chưa đăng nhập, hoặc hết lượt sử dụng, hoặc chưa điền đầy đủ thông tin
                                         </Alert>
                                     ) : (
                                         <></>
@@ -575,6 +592,20 @@ export default function AICoverLetter() {
                                             mt: 2,
                                         }}
                                     >
+                                        <FormControl sx={{ flex: 1 }}>
+                                            <TextField
+                                                margin="normal"
+                                                required
+                                                fullWidth
+                                                id="experience"
+                                                label="Kinh nghiệm"
+                                                name="experience"
+                                                autoComplete="experience"
+                                                onChange={(e) => setExp(e.target.value)}
+                                            />
+                                            <FormHelperText>Không có thì điền là Không có</FormHelperText>
+                                        </FormControl>
+
                                         <FormControl sx={{ flex: 1, borderRadius: '25px' }}>
                                             <InputLabel id="demo-simple-select-label">Ngôn ngữ</InputLabel>
                                             <Select
@@ -583,35 +614,20 @@ export default function AICoverLetter() {
                                                 value={language}
                                                 label="Language"
                                                 onChange={(event) => setLanguage(event.target.value)}
+                                                sx={{ borderRadius: '25px' }}
                                             >
                                                 <MenuItem value="tiếng anh">English</MenuItem>
                                                 <MenuItem value="tiếng việt">Tiếng Việt</MenuItem>
                                             </Select>
                                             <FormHelperText>English là ngôn ngữ mặc định</FormHelperText>
                                         </FormControl>
-                                        <FormControl sx={{ flex: 1, borderRadius: '25px' }}>
-                                            <InputLabel id="demo-simple-select-2">Kinh nghiệm ?</InputLabel>
-                                            <Select
-                                                labelId="demo-simple-select-2"
-                                                id="demo-simple-select-2"
-                                                value={exp}
-                                                label="Experience"
-                                                onChange={(event) => setExp(event.target.value)}
-                                            >
-                                                <MenuItem value="không có">Không có</MenuItem>
-                                                <MenuItem value="có">Có kinh nghiệm</MenuItem>
-                                            </Select>
-                                            <FormHelperText>
-                                                Mặc định chúng tôi đang chọn là không có kinh nghiệm
-                                            </FormHelperText>
-                                        </FormControl>
                                     </Box>
 
                                     <Button
                                         type="submit"
-                                        fullWidth
                                         variant="contained"
                                         sx={{
+                                            width: '80%',
                                             mt: 3,
                                             mb: 2,
                                             bgcolor: '#051D40',
@@ -627,6 +643,24 @@ export default function AICoverLetter() {
                                     >
                                         {formSuggestLoading ? <CircularProgress /> : 'Nhận gợi ý'}
                                     </Button>
+
+                                    {userInfo ? (
+                                        <Typography
+                                            component="h1"
+                                            variant="h4"
+                                            sx={{
+                                                fontWeight: '300',
+                                                fontSize: '18px',
+                                                color: '#051D40',
+                                                marginTop: '20px',
+                                                fontWeight: '700',
+                                            }}
+                                        >
+                                            Lượt còn lại: {user?.remainInterviewTimes}
+                                        </Typography>
+                                    ) : (
+                                        <></>
+                                    )}
                                 </Box>
                             </Box>
                             {formSuggestLoading ? (

@@ -363,7 +363,8 @@ export default function AboutUs() {
                                         variant="contained"
                                         sx={{
                                             mt: 2,
-                                            bgcolor: '#051D40',
+                                            bgcolor: '#02F18D',
+                                            color: '#051D40',
                                             borderRadius: '24px',
                                             padding: '12px 0',
                                             fontSize: '16px',
@@ -372,6 +373,7 @@ export default function AboutUs() {
                                                 color: '#051D40',
                                             },
                                             border: '1px solid #02F18D',
+                                            maxHeight: '54px',
                                         }}
                                     >
                                         Gói mặc định
@@ -440,7 +442,8 @@ export default function AboutUs() {
                                         variant="contained"
                                         sx={{
                                             mt: 2,
-                                            bgcolor: '#051D40',
+                                            bgcolor: '#02F18D',
+                                            color: '#051D40',
                                             borderRadius: '24px',
                                             padding: '12px 0',
                                             fontSize: '16px',
@@ -518,7 +521,8 @@ export default function AboutUs() {
                                         variant="contained"
                                         sx={{
                                             mt: 2,
-                                            bgcolor: '#051D40',
+                                            bgcolor: '#02F18D',
+                                            color: '#051D40',
                                             borderRadius: '24px',
                                             padding: '12px 0',
                                             fontSize: '16px',

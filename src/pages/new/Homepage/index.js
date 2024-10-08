@@ -208,7 +208,7 @@ export default function Homepage() {
                             <Button
                                 type="submit"
                                 variant="contained"
-                                onClick={() => navigate('/offer')}
+                                onClick={() => navigate('/ai-resume')}
                                 sx={{
                                     mt: 5,
                                     bgcolor: '#051D40',
@@ -350,7 +350,7 @@ export default function Homepage() {
                             <Button
                                 type="submit"
                                 variant="contained"
-                                onClick={() => navigate('/offer')}
+                                onClick={() => navigate('/ai-coverletter')}
                                 sx={{
                                     mt: 5,
                                     bgcolor: '#051D40',

@@ -24,6 +24,7 @@ export default function AIResumeChecker() {
     const [formSuggestLoading, setFormSuggestLoading] = useState(false); // State to manage upload status'
     const [userInfo, setUserInfo] = useState(storageService.getItem('userInfo') || null);
     const [showAlertError, setShowAlertError] = useState(false);
+    const [user, setUser] = useState();
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -37,6 +38,7 @@ export default function AIResumeChecker() {
             }
         };
         fetchUser();
+        fetchUserNew();
     }, []);
 
     // Function to call API and upload the file
@@ -53,7 +55,7 @@ export default function AIResumeChecker() {
             return;
         }
 
-        if (userInfo?.remainReviewCVTimes <= 0) {
+        if (user?.remainReviewCVTimes <= 0) {
             setShowAlertError(true); // Show error alert
             setTimeout(() => setShowAlertError(false), 5000); // Hide
             setUploading(false); // Reset the loading state
@@ -78,6 +80,7 @@ export default function AIResumeChecker() {
                 setFormSuggestLoading(false);
             }
             setAiSuggestionsData(response.data);
+            fetchUserNew();
         } catch (error) {
             console.error('Error uploading file:', error);
             setShowAlertError(true); // Show error alert
@@ -85,6 +88,13 @@ export default function AIResumeChecker() {
         } finally {
             setUploading(false); // Reset the loading state
         }
+    };
+
+    const fetchUserNew = async () => {
+        // This useEffect is now only for updating userInfo if it changes in localStorage
+        const storedUserInfo = await storageService.getItem('userInfo');
+        const userResponse = await AccountAPI.getUserById(storedUserInfo?.id);
+        setUser(userResponse);
     };
 
     const navigate = useNavigate();
@@ -424,7 +434,7 @@ export default function AIResumeChecker() {
                         >
                             {showAlertError ? (
                                 <Alert width="50%" variant="filled" severity="error">
-                                    Your using time is end or Required logged in
+                                    Bạn chưa đăng nhập, hoặc hết lượt sử dụng
                                 </Alert>
                             ) : (
                                 <></>
@@ -516,13 +526,13 @@ export default function AIResumeChecker() {
                                             component="h1"
                                             variant="h4"
                                             sx={{
-                                                fontWeight: '300',
                                                 fontSize: '18px',
                                                 color: '#ffffff',
                                                 marginTop: '20px',
+                                                fontWeight: '700',
                                             }}
                                         >
-                                            <b>Lượt còn lại: </b> {userInfo?.remainReviewCVTimes}
+                                            Lượt còn lại: {user?.remainReviewCVTimes}
                                         </Typography>
                                     ) : (
                                         <></>

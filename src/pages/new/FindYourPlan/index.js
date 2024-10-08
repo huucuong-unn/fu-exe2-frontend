@@ -9,6 +9,7 @@ import storageService from '~/components/StorageService/storageService';
 import findYourPlanBackground from '~/assets/images/findyourplan.webp';
 import PayosAPI from '~/API/PayosAPI';
 import { CircularProgress } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const defaultTheme = createTheme();
 
@@ -16,6 +17,7 @@ export default function FindYourPlan() {
     const [userInfo, setUserInfo] = useState(storageService.getItem('userInfo') || null);
     const [isLoadingClickSilverTee, setIsLoadingClickSilverTee] = useState(false);
     const [isLoadingClickGoldenTee, setIsLoadingClickGoldenTee] = useState(false);
+    const navigate = useNavigate();
 
     const handleGoCheckoutSilverTee = async (event) => {
         try {
@@ -32,6 +34,8 @@ export default function FindYourPlan() {
                     setIsLoadingClickSilverTee(false);
                     window.location.href = response.data.checkoutUrl;
                 }
+            } else {
+                navigate('/login');
             }
         } catch (error) {
             console.log(error);
@@ -54,6 +58,8 @@ export default function FindYourPlan() {
                     setIsLoadingClickGoldenTee(false);
                     window.location.href = response.data.checkoutUrl;
                 }
+            } else {
+                navigate('/login');
             }
         } catch (error) {
             console.log(error);

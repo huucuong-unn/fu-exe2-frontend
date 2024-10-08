@@ -106,6 +106,10 @@ const AccountAPI = {
         const url = `/v1/user`;
         return axiosClient.get(url);
     },
+    getUserById(id) {
+        const url = `/v1/user/${id}`;
+        return axiosClient.get(url);
+    },
 };
 
 export default AccountAPI;

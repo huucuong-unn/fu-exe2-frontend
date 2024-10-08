@@ -10,13 +10,13 @@ export default function FooterHome() {
                     <div className="col-sm-12 col-md-6">
                         <h1>tortee</h1>
                         <p className="text-justify">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s, when an unknown printer
+                            Hãy tiếp tục hành trình tối ưu hóa CV và thư xin việc của bạn với sự hỗ trợ từ AI. Chúng tôi
+                            luôn ở đây để giúp bạn chuẩn bị tốt nhất cho cơ hội thực tập và việc làm mơ ước
                         </p>
                     </div>
 
                     <div className="col-xs-6 col-md-2">
-                        <h6>About Us</h6>
+                        <h6>Về Tortee</h6>
                         <ul className="footer-links">
                             <li>
                                 <a href="http://scanfcode.com/category/c-language/">Our Story</a>
@@ -40,7 +40,7 @@ export default function FooterHome() {
                     </div>
 
                     <div className="col-xs-6 col-md-2">
-                        <h6>For Students</h6>
+                        <h6>Các Tính Năng</h6>
                         <ul className="footer-links">
                             <li>
                                 <a href="http://scanfcode.com/category/c-language/">C</a>
@@ -64,7 +64,7 @@ export default function FooterHome() {
                     </div>
 
                     <div className="col-xs-6 col-md-2">
-                        <h6>For Companies</h6>
+                        <h6>Liên lạc</h6>
                         <ul className="footer-links">
                             <li>
                                 <a href="http://scanfcode.com/about/">About Us</a>
