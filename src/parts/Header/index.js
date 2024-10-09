@@ -22,6 +22,7 @@ function Header() {
     const openForUserOption = Boolean(anchorEl);
 
     const handleClick = (event) => {
+        fetchUser();
         setAnchorEl(event.currentTarget);
     };
     const handleLogout = () => {
@@ -48,17 +49,17 @@ function Header() {
         setAnchorEl(null);
     };
 
-    useEffect(() => {
-        const fetchUser = async () => {
-            // This useEffect is now only for updating userInfo if it changes in localStorage
-            const storedUserInfo = await storageService.getItem('userInfo');
+    const fetchUser = async () => {
+        // This useEffect is now only for updating userInfo if it changes in localStorage
+        const storedUserInfo = await storageService.getItem('userInfo');
 
-            if (storedUserInfo !== null) {
-                setUserInfo(storedUserInfo);
-                console.log(storedUserInfo);
-                console.log(userInfo);
-            }
-        };
+        if (storedUserInfo !== null) {
+            setUserInfo(storedUserInfo);
+            console.log(storedUserInfo);
+            console.log(userInfo);
+        }
+    };
+    useEffect(() => {
         fetchUser();
     }, []);
 
