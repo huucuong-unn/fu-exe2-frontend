@@ -1,9 +1,39 @@
 import { Box, Button, Divider, Grid } from '@mui/material';
 import SuccessCircle from '~/components/new/SuccessCircle';
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import storageService from '~/components/StorageService/storageService';
+import AccountAPI from '~/API/AccountAPI';
 
 export default function PaymentSuccess() {
     const navigate = useNavigate();
+
+    const [userInfo, setUserInfo] = useState(storageService.getItem('userInfo') || null);
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            // This useEffect is now only for updating userInfo if it changes in localStorage
+            const storedUserInfo = await storageService.getItem('userInfo');
+
+            if (storedUserInfo !== null) {
+                // Fetch the updated user info based on the stored user id
+                const userResponse = await AccountAPI.getUserById(storedUserInfo?.id);
+
+                // Remove old userInfo from local storage
+                storageService.removeItem('userInfo');
+
+                // Set the new user info in local storage
+                storageService.setItem('userInfo', userResponse);
+
+                // Update the state with the new user info
+                setUserInfo(userResponse);
+
+                // Optionally log the updated user info
+                console.log(userResponse);
+            }
+        };
+        fetchUser();
+    }, []);
 
     return (
         <Grid
