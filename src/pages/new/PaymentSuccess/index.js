@@ -60,24 +60,10 @@ export default function PaymentSuccess() {
                         <SuccessCircle />
                     </Box>
                     <h1>Payment Successful</h1>
-                    <p>Thank you for your payment. Your order is being processed.Katina</p>
+                    <p>Thank you for your payment. Your order is being processed.</p>
                 </Box>
 
                 <Divider />
-                <Box sx={{ my: 3 }}>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <p>Amount Paid:</p>
-                        <p>$99.99</p>
-                    </Box>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <p>Payment Method:</p>
-                        <p>Visa</p>
-                    </Box>{' '}
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <p>Date & Time:</p>
-                        <p>April 18, 2024 at 3:45 PM</p>
-                    </Box>
-                </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <Button
                         type="submit"
