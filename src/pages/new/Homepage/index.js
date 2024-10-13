@@ -11,16 +11,6 @@ import homepageBackground from '~/assets/images/homepage.webp';
 import blogBackground from '~/assets/images/blog.webp';
 import FAQ from '~/components/FAQ';
 
-function Copyright(props) {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center" {...props}>
-            {'Copyright ©Tortee '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
-
 const defaultTheme = createTheme();
 
 export default function Homepage() {
@@ -40,7 +30,7 @@ export default function Homepage() {
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                         backgroundImage: `url(${homepageBackground})`,
-                        height: '200vh',
+                        height: '1800px',
                         width: '100%',
                         display: 'flex',
                         justifyContent: 'center',
@@ -77,7 +67,17 @@ export default function Homepage() {
                                     fontSize: '92px',
                                     color: '#051D40',
                                     padding: '0 10%',
-                                    lineHeight: '1.1', // Điều chỉnh line-height cho khoảng cách giữa các dòng
+                                    lineHeight: '1.1',
+                                    textShadow: `
+                                        -2px -2px 0 #FFFFFF, 
+                                        2px -2px 0 #FFFFFF, 
+                                        -2px 2px 0 #FFFFFF, 
+                                        2px 2px 0 #FFFFFF, 
+                                        0px -2px 0 #FFFFFF, 
+                                        0px 2px 0 #FFFFFF, 
+                                        -2px 0px 0 #FFFFFF, 
+                                        2px 0px 0 #FFFFFF
+                                    `,
                                 }}
                             >
                                 CHÀO MỪNG BẠN ĐẾN VỚI TORTEE HUB!
@@ -89,6 +89,17 @@ export default function Homepage() {
                                     width: '100%',
                                     padding: '0 20% 10px 20%',
                                     mt: '5px',
+                                    textShadow: `
+                                    -2px -2px 0 #FFFFFF, 
+                                    2px -2px 0 #FFFFFF, 
+                                    -2px 2px 0 #FFFFFF, 
+                                    2px 2px 0 #FFFFFF, 
+                                    0px -2px 0 #FFFFFF, 
+                                    0px 2px 0 #FFFFFF, 
+                                    -2px 0px 0 #FFFFFF, 
+                                    2px 0px 0 #FFFFFF
+                                `,
+                                    fontWeight: '500',
                                 }}
                             >
                                 Nền tảng AI giúp sinh viên và các chuyên gia trẻ tạo CV chuyên nghiệp và viết thư xin
@@ -110,6 +121,7 @@ export default function Homepage() {
                                         color: '#051D40',
                                     },
                                     mt: 2,
+                                    border: '3px solid #02F18D',
                                 }}
                             >
                                 Khám phá ngay!
@@ -128,7 +140,7 @@ export default function Homepage() {
                         backgroundColor: '#051D40',
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
-                        height: '100vh',
+                        height: '100%',
                         width: '100%',
                         display: 'flex',
                         justifyContent: 'center',
@@ -258,7 +270,7 @@ export default function Homepage() {
                         backgroundColor: (t) => (t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900]),
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
-                        height: '100vh',
+                        height: '100%',
                         width: '100%',
                         display: 'flex',
                         justifyContent: 'center',
@@ -383,7 +395,7 @@ export default function Homepage() {
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                         backgroundImage: `url(${blogBackground})`,
-                        height: '80vh',
+                        height: '100%',
                         width: '100%',
                         display: 'flex',
                         justifyContent: 'center',

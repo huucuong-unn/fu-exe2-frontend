@@ -20,6 +20,9 @@ export default function PaymentSuccess() {
             storageService.removeItem('userInfo');
 
             // Fetch the updated user info based on the stored user id
+            if (!storedUserInfo?.id) {
+                return;
+            }
             const userResponse = await AccountAPI.getUserById(storedUserInfo?.id);
             const currentPlan = await SubscriptionAPI.getByUserId(userResponse?.id);
             userResponse.planType = currentPlan.planType;

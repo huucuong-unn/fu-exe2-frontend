@@ -42,7 +42,7 @@ export default function Blog() {
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                         backgroundImage: `url(${blogpageBackground})`,
-                        height: '150vh',
+                        height: '1300px',
                         width: '100%',
                         display: 'flex',
                         justifyContent: 'center',
@@ -79,6 +79,16 @@ export default function Blog() {
                                     fontSize: '92px',
                                     color: '#051D40',
                                     padding: '0 10%',
+                                    textShadow: `
+                                    -2px -2px 0 #FFFFFF, 
+                                    2px -2px 0 #FFFFFF, 
+                                    -2px 2px 0 #FFFFFF, 
+                                    2px 2px 0 #FFFFFF, 
+                                    0px -2px 0 #FFFFFF, 
+                                    0px 2px 0 #FFFFFF, 
+                                    -2px 0px 0 #FFFFFF, 
+                                    2px 0px 0 #FFFFFF
+                                `,
                                 }}
                             >
                                 Điểm đến cho công việc của bạn
@@ -98,7 +108,7 @@ export default function Blog() {
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                         backgroundImage: `url(${blogBackground})`,
-                        height: '80vh',
+                        height: '100%',
                         width: '100%',
                         display: 'flex',
                         justifyContent: 'center',

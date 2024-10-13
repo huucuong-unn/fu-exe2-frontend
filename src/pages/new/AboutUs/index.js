@@ -36,7 +36,7 @@ export default function AboutUs() {
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                         backgroundImage: `url(${aboutUsBackground})`,
-                        height: '150vh',
+                        height: '1500px',
                         width: '100%',
                         display: 'flex',
                         justifyContent: 'center',
@@ -73,6 +73,16 @@ export default function AboutUs() {
                                     fontSize: '92px',
                                     color: '#051D40',
                                     padding: '0 10%',
+                                    textShadow: `
+                                    -2px -2px 0 #FFFFFF, 
+                                    2px -2px 0 #FFFFFF, 
+                                    -2px 2px 0 #FFFFFF, 
+                                    2px 2px 0 #FFFFFF, 
+                                    0px -2px 0 #FFFFFF, 
+                                    0px 2px 0 #FFFFFF, 
+                                    -2px 0px 0 #FFFFFF, 
+                                    2px 0px 0 #FFFFFF
+                                `,
                                 }}
                             >
                                 Đi cùng Tortee, ghi thêm chặng đường thành công

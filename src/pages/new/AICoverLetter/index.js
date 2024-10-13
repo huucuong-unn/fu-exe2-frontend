@@ -62,6 +62,9 @@ export default function AICoverLetter() {
     const fetchUserNew = async () => {
         // This useEffect is now only for updating userInfo if it changes in localStorage
         const storedUserInfo = await storageService.getItem('userInfo');
+        if (storedUserInfo === null) {
+            return;
+        }
         const userResponse = await AccountAPI.getUserById(storedUserInfo?.id);
         setUser(userResponse);
     };
@@ -147,7 +150,7 @@ export default function AICoverLetter() {
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                         backgroundImage: `url(${aiCoveletterBackground})`,
-                        height: '200vh',
+                        height: '1500px',
                         width: '100%',
                         display: 'flex',
                         justifyContent: 'center',
@@ -184,12 +187,38 @@ export default function AICoverLetter() {
                                     fontSize: '92px',
                                     color: '#051D40',
                                     padding: '0 10%',
+                                    textShadow: `
+                                    -2px -2px 0 #FFFFFF, 
+                                    2px -2px 0 #FFFFFF, 
+                                    -2px 2px 0 #FFFFFF, 
+                                    2px 2px 0 #FFFFFF, 
+                                    0px -2px 0 #FFFFFF, 
+                                    0px 2px 0 #FFFFFF, 
+                                    -2px 0px 0 #FFFFFF, 
+                                    2px 0px 0 #FFFFFF
+                                `,
                                 }}
                             >
                                 AI COVER LETTER
                             </Typography>
                             <Typography
-                                sx={{ textAlign: 'center', fontSize: '24px', width: '100%', padding: '0 20% 2% 20%' }}
+                                sx={{
+                                    textAlign: 'center',
+                                    fontSize: '24px',
+                                    width: '100%',
+                                    padding: '0 20% 2% 20%',
+                                    textShadow: `
+                                    -2px -2px 0 #FFFFFF, 
+                                    2px -2px 0 #FFFFFF, 
+                                    -2px 2px 0 #FFFFFF, 
+                                    2px 2px 0 #FFFFFF, 
+                                    0px -2px 0 #FFFFFF, 
+                                    0px 2px 0 #FFFFFF, 
+                                    -2px 0px 0 #FFFFFF, 
+                                    2px 0px 0 #FFFFFF
+                                `,
+                                    fontWeight: '500',
+                                }}
                             >
                                 Dựa trên thông tin từ công việc bạn ứng tuyển và hồ sơ cá nhân, TORTEE sẽ hỗ trợ bạn
                                 viết thư xin việc thật chuyên nghiệp, giúp bạn thể hiện tốt nhất bản thân trước nhà
@@ -209,6 +238,7 @@ export default function AICoverLetter() {
                                         bgcolor: '#02F18D',
                                         color: '#051D40',
                                     },
+                                    border: '3px solid #02F18D',
                                 }}
                             >
                                 Khám phá các gói đăng ký !

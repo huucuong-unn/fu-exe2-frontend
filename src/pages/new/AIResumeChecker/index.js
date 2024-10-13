@@ -93,6 +93,9 @@ export default function AIResumeChecker() {
     const fetchUserNew = async () => {
         // This useEffect is now only for updating userInfo if it changes in localStorage
         const storedUserInfo = await storageService.getItem('userInfo');
+        if (storedUserInfo === null) {
+            return;
+        }
         const userResponse = await AccountAPI.getUserById(storedUserInfo?.id);
         setUser(userResponse);
     };
@@ -120,7 +123,7 @@ export default function AIResumeChecker() {
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                         backgroundImage: `url(${aiCVBackground})`,
-                        height: '200vh',
+                        height: '1500px',
                         width: '100%',
                         display: 'flex',
                         justifyContent: 'center',
@@ -157,12 +160,38 @@ export default function AIResumeChecker() {
                                     fontSize: '92px',
                                     color: '#051D40',
                                     padding: '0 10%',
+                                    textShadow: `
+                                    -2px -2px 0 #FFFFFF, 
+                                    2px -2px 0 #FFFFFF, 
+                                    -2px 2px 0 #FFFFFF, 
+                                    2px 2px 0 #FFFFFF, 
+                                    0px -2px 0 #FFFFFF, 
+                                    0px 2px 0 #FFFFFF, 
+                                    -2px 0px 0 #FFFFFF, 
+                                    2px 0px 0 #FFFFFF
+                                `,
                                 }}
                             >
                                 AI RÉSUME CHECKER
                             </Typography>
                             <Typography
-                                sx={{ textAlign: 'center', fontSize: '24px', width: '100%', padding: '0 20% 2% 20%' }}
+                                sx={{
+                                    textAlign: 'center',
+                                    fontSize: '24px',
+                                    width: '100%',
+                                    padding: '0 20% 2% 20%',
+                                    textShadow: `
+                                    -2px -2px 0 #FFFFFF, 
+                                    2px -2px 0 #FFFFFF, 
+                                    -2px 2px 0 #FFFFFF, 
+                                    2px 2px 0 #FFFFFF, 
+                                    0px -2px 0 #FFFFFF, 
+                                    0px 2px 0 #FFFFFF, 
+                                    -2px 0px 0 #FFFFFF, 
+                                    2px 0px 0 #FFFFFF
+                                `,
+                                    fontWeight: '500',
+                                }}
                             >
                                 Công cụ kiểm tra và đánh giá CV thông minh sẽ phân tích CV của bạn, đưa ra các gợi ý cải
                                 thiện dựa trên thông tin bạn cung cấp, giúp CV của bạn trở nên chuyên nghiệp và ấn tượng
@@ -182,6 +211,7 @@ export default function AIResumeChecker() {
                                         bgcolor: '#02F18D',
                                         color: '#051D40',
                                     },
+                                    border: '3px solid #02F18D',
                                 }}
                             >
                                 Khám phá các gói đăng ký !
