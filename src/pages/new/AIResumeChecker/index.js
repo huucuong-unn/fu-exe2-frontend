@@ -624,7 +624,7 @@ export default function AIResumeChecker() {
                                                 padding: '0 8%',
                                             }}
                                         >
-                                            Our Suggestions !
+                                            Gợi Ý Từ AI Của Chúng Tôi 🤓
                                         </Typography>
                                         <Typography
                                             component="h1"
@@ -638,7 +638,7 @@ export default function AIResumeChecker() {
                                                 my: 2,
                                             }}
                                         >
-                                            * Spelling
+                                            * Chính tả
                                         </Typography>
 
                                         {aiSuggestionsData?.spelling?.map((item) => (
@@ -658,7 +658,7 @@ export default function AIResumeChecker() {
                                                         color: 'lightcoral',
                                                     }}
                                                 >
-                                                    Incorrect: {item.incorrect}
+                                                    <b style={{ fontWeight: '700' }}>Chưa đúng:</b> {item.incorrect}
                                                 </Typography>
                                                 <Typography
                                                     component="h1"
@@ -670,7 +670,8 @@ export default function AIResumeChecker() {
                                                         color: 'lightgreen',
                                                     }}
                                                 >
-                                                    Correct: {item.correct}
+                                                    <b style={{ fontWeight: '700' }}>Gợi ý của chúng tôi:</b>{' '}
+                                                    {item.correct}
                                                 </Typography>
                                             </Box>
                                         ))}
@@ -688,7 +689,7 @@ export default function AIResumeChecker() {
                                                 mt: 5,
                                             }}
                                         >
-                                            * Sentences
+                                            * Chỉnh sửa câu
                                         </Typography>
 
                                         {aiSuggestionsData?.sentences?.map((item) => (
@@ -708,7 +709,8 @@ export default function AIResumeChecker() {
                                                         color: 'lightcoral',
                                                     }}
                                                 >
-                                                    Original: {item.original}
+                                                    <b style={{ fontWeight: '700' }}>Version của bạn:</b>{' '}
+                                                    {item.original}
                                                 </Typography>
                                                 <Typography
                                                     component="h1"
@@ -720,7 +722,8 @@ export default function AIResumeChecker() {
                                                         color: 'lightgreen',
                                                     }}
                                                 >
-                                                    Our advise: {item.revised}
+                                                    <b style={{ fontWeight: '700' }}>Gợi ý của chúng tôi:</b>{' '}
+                                                    {item.revised}
                                                 </Typography>
                                             </Box>
                                         ))}
@@ -737,7 +740,7 @@ export default function AIResumeChecker() {
                                                 mt: 5,
                                             }}
                                         >
-                                            * Suggestions
+                                            * Các gợi ý khác
                                         </Typography>
 
                                         {aiSuggestionsData?.positions?.map((item) => (
