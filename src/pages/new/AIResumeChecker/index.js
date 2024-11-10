@@ -70,7 +70,7 @@ export default function AIResumeChecker() {
         formData.append('userId', userInfo?.id);
 
         try {
-            const response = await axios.post('https://orca-app-7tb86.ondigitalocean.app/api/v1/coze/file', formData, {
+            const response = await axios.post('https://lionfish-app-axajp.ondigitalocean.app/api/v1/coze/file', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
