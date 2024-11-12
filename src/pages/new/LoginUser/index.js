@@ -235,7 +235,7 @@ export default function LoginUser() {
                                     >
                                         Đăng nhập
                                     </Button>
-                                    <Divider>Hoặc đăng nhập với</Divider>
+                                    {/* <Divider>Hoặc đăng nhập với</Divider>
                                     <Box sx={{ display: 'flex', justifyContent: 'center', margin: '10px 0' }}>
                                         <GoogleOAuthProvider clientId={clientId}>
                                             <GoogleLogin
@@ -243,7 +243,7 @@ export default function LoginUser() {
                                                 onFailure={handleGoogleLoginFailure}
                                             />
                                         </GoogleOAuthProvider>
-                                    </Box>
+                                    </Box> */}
 
                                     <Grid
                                         container
